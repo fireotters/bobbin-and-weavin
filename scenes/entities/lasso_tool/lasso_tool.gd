@@ -50,8 +50,29 @@ func has_self_intersection() -> bool:
 	return false
 
 func handle_line_completion():
-	build_area_geometry()
+	var vertices := create_pollygon_from_intersection()
+	build_area_geometry(vertices)
+	detect_collisions(vertices)
 	init_new_line()
+
+func detect_collisions(vertices: PackedVector2Array):
+	var shape := ConvexPolygonShape2D.new()
+	shape.set_points(vertices)
+	var space_state := get_world_2d().direct_space_state
+	var params := PhysicsShapeQueryParameters2D.new()
+	params.shape = shape
+	var transform := Transform2D()
+	params.transform = transform
+	params.collision_mask = (1 << 32) - 1
+	params.collide_with_areas = true
+	params.collide_with_bodies = true
+	var result := space_state.intersect_shape(params)
+	if result.size() > 0:
+		for i in range(result.size()):
+			print("Collided with ", result[i].collider)
+	else:
+		print("No collisions")
+	
 
 # https://en.wikipedia.org/wiki/Centroid
 # Used "Of a finite set of points"
@@ -64,7 +85,7 @@ func calculate_pollygon_centroid(polygon: PackedVector2Array) -> Vector2:
 	
 	return Vector2(x_acc, y_acc) / polygon.size()
 
-func build_area_geometry():
+func create_pollygon_from_intersection() -> PackedVector2Array:
 	var polygon_vertex_count:int = abs(intersection_index_b - intersection_index_a) + 1
 	var vertices : PackedVector2Array
 	
@@ -72,6 +93,9 @@ func build_area_geometry():
 	for i in range(intersection_index_a + 1, intersection_index_b):
 		vertices.append(line2d.get_point_position(i))
 	
+	return vertices
+
+func build_area_geometry(vertices: PackedVector2Array):
 	var new_area:Polygon2D = area.instantiate()
 	new_area.global_position = calculate_pollygon_centroid(vertices)
 	new_area.offset = -new_area.global_position
@@ -103,3 +127,5 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_pressed("pointer_interaction"):
 		handle_line_creation()
 		if(has_self_intersection()): handle_line_completion()
+	elif Input.is_action_just_released("pointer_interaction"):
+		line2d.clear_points()
