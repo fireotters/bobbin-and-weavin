@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx20eak6b43c"]
+
+[ext_resource type="Script" uid="uid://dv4t3rplttpl3" path="res://scenes/entities/capture_area/capture_area.gd" id="1_vbcrn"]
+
+[node name="CaptureArea" type="Polygon2D"]
+polygon = PackedVector2Array(0, -5, 361, 220, 123, 296)
+script = ExtResource("1_vbcrn")

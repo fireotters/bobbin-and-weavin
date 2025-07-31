@@ -5,16 +5,29 @@ extends Node2D
 @onready var point_distance: float = max_line_distance / subdivisions
 @onready var line2d: Line2D = $line2d_path
 
-var debug := true
+
+# This should not be here but whatever
+@export var area: PackedScene
+
+var intersection_index_a: int
+var intersection_index_b: int
+var intersection_point: Vector2
 
 func get_last_pos() -> Vector2: return line2d.to_global(line2d.get_point_position(line2d.get_point_count() -1))
 
+# https://stackoverflow.com/questions/3838329/how-can-i-check-if-two-segments-intersect#9997374
 func ccw(A, B, C):
 	return (C.y - A.y) * (B.x - A.x) > (B.y - A.y) * (C.x - A.x)
 
 # Return true if line segments AB and CD intersect
 func intersect(A, B, C, D) -> bool:
 	return ccw(A, C, D) != ccw(B, C, D) and ccw(A, B, C) != ccw(A, B, D)
+
+# https://stackoverflow.com/questions/20677795/how-do-i-compute-the-intersection-point-of-two-lines
+func find_intersection(A: Vector2, B: Vector2, C: Vector2, D: Vector2):
+	var px := ((A.x*B.y - A.y*B.x)*(C.x - D.x) - (A.x - B.x)*(C.x*D.y - C.y*D.x)) / ((A.x - B.x)*(C.y - D.y) - (A.y - B.y)*(C.x - D.x))
+	var py := ((A.x*B.y - A.y*B.x)*(C.y - D.y) - (A.y - B.y)*(C.x*D.y - C.y*D.x)) / ((A.x - B.x)*(C.y - D.y) - (A.y - B.y)*(C.x - D.x))
+	return Vector2(px, py)
 
 func has_self_intersection() -> bool:
 	var p_count = line2d.get_point_count()
@@ -28,15 +41,43 @@ func has_self_intersection() -> bool:
 			var C = line2d.get_point_position(j)
 			var D = line2d.get_point_position(j + 1)
 
-			if intersect(A, B, C, D):
+			if intersect(A, B, C, D): 
+				intersection_index_a = i
+				intersection_index_b = j
+				intersection_point = line2d.to_global(find_intersection(A,B,C,D))
 				return true
 
 	return false
 
-
 func handle_line_completion():
-	print("Completed area")
+	build_area_geometry()
 	init_new_line()
+
+# https://en.wikipedia.org/wiki/Centroid
+# Used "Of a finite set of points"
+func calculate_pollygon_centroid(polygon: PackedVector2Array) -> Vector2:
+	var x_acc: float = 0
+	var y_acc: float = 0
+	for vec in polygon:
+		x_acc += vec.x
+		y_acc += vec.y
+	
+	return Vector2(x_acc, y_acc) / polygon.size()
+
+func build_area_geometry():
+	var polygon_vertex_count:int = abs(intersection_index_b - intersection_index_a) + 1
+	var vertices : PackedVector2Array
+	
+	vertices.append(intersection_point)
+	for i in range(intersection_index_a + 1, intersection_index_b):
+		vertices.append(line2d.get_point_position(i))
+	
+	var new_area:Polygon2D = area.instantiate()
+	new_area.global_position = calculate_pollygon_centroid(vertices)
+	new_area.offset = -new_area.global_position
+	new_area.set_polygon(vertices)
+	add_child(new_area)
+	pass
 
 func init_new_line():
 	line2d.clear_points()
@@ -57,7 +98,6 @@ func handle_line_creation():
 		last_pos = get_last_pos()
 
 func _process(_delta: float) -> void:
-	has_self_intersection()
 	if Input.is_action_just_pressed("pointer_interaction"):
 		init_new_line()
 	elif Input.is_action_pressed("pointer_interaction"):
