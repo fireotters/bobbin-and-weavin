@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://gjfhte4qvwx3"]
+
+[ext_resource type="Script" uid="uid://s6j2y77g74c6" path="res://scenes/ui/menu_help.gd" id="1_t5gox"]
+[ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/change_scene_button.gd" id="2_17g36"]
+
+[node name="MenuHelp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t5gox")
+
+[node name="Title_Logo" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -158.0
+offset_right = 126.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is a help screen"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -181.01
+offset_top = -233.22
+offset_right = 181.01
+offset_bottom = -193.22
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ExitButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit"
+script = ExtResource("2_17g36")
+scene_path = "uid://olxmp2tfg8yc"
+
+[connection signal="pressed" from="ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]

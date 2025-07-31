@@ -1,0 +1,210 @@
+[gd_scene load_steps=5 format=3 uid="uid://npw4l30hf0k5"]
+
+[ext_resource type="Script" uid="uid://dohmmorlfpwbm" path="res://scenes/ui/volume_slider.gd" id="1_eevsp"]
+[ext_resource type="Script" uid="uid://c1nyptul1x6kv" path="res://scenes/ui/panel_settings.gd" id="1_uyryx"]
+[ext_resource type="Theme" uid="uid://dhfwef3ix4t7g" path="res://scenes/ui/panel_theme.tres" id="2_1ebox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_237h2"]
+bg_color = Color(0.309804, 0.490196, 0.6, 1)
+
+[node name="Control - Settings Panel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uyryx")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0588235, 0.0588235, 0.458824)
+
+[node name="panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -165.0
+offset_right = 275.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_1ebox")
+theme_override_styles/panel = SubResource("StyleBoxFlat_237h2")
+
+[node name="left_half" type="Control" parent="panel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 150.0
+grow_vertical = 2
+
+[node name="subpanel_selector" type="VBoxContainer" parent="panel/left_half"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 39.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="btn_audio" type="Button" parent="panel/left_half/subpanel_selector"]
+layout_mode = 2
+text = "🔉 Audio"
+
+[node name="btn_video" type="Button" parent="panel/left_half/subpanel_selector"]
+layout_mode = 2
+text = "🖥️ Graphics"
+
+[node name="btn_game" type="Button" parent="panel/left_half/subpanel_selector"]
+layout_mode = 2
+text = "🎮 Gameplay"
+
+[node name="btn_back" type="Button" parent="panel/left_half"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="right_half" type="Control" parent="panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -397.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="subpanel_audio" type="Control" parent="panel/right_half"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="panel/right_half/subpanel_audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.5
+offset_right = 114.5
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Audio Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sliders" type="VBoxContainer" parent="panel/right_half/subpanel_audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 53.0
+offset_right = -20.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Master" type="Label" parent="panel/right_half/subpanel_audio/sliders"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="slider_master" type="HSlider" parent="panel/right_half/subpanel_audio/sliders"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_eevsp")
+bus_name = "Master"
+
+[node name="Music" type="Label" parent="panel/right_half/subpanel_audio/sliders"]
+layout_mode = 2
+text = "Music"
+
+[node name="slider_music" type="HSlider" parent="panel/right_half/subpanel_audio/sliders"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_eevsp")
+bus_name = "music"
+
+[node name="SFX" type="Label" parent="panel/right_half/subpanel_audio/sliders"]
+layout_mode = 2
+text = "SFX"
+
+[node name="slider_sfx" type="HSlider" parent="panel/right_half/subpanel_audio/sliders"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_eevsp")
+bus_name = "sfx"
+
+[node name="subpanel_video" type="Control" parent="panel/right_half"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="panel/right_half/subpanel_video"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.5
+offset_right = 114.5
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Graphics Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="subpanel_game" type="Control" parent="panel/right_half"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="panel/right_half/subpanel_game"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.5
+offset_right = 114.5
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Gameplay Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="panel/left_half/subpanel_selector/btn_audio" to="." method="_on_btn_audio_pressed"]
+[connection signal="pressed" from="panel/left_half/subpanel_selector/btn_video" to="." method="_on_btn_video_pressed"]
+[connection signal="pressed" from="panel/left_half/subpanel_selector/btn_game" to="." method="_on_btn_game_pressed"]
+[connection signal="pressed" from="panel/left_half/btn_back" to="." method="_on_btn_back_pressed"]
