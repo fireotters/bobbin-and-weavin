@@ -10,10 +10,12 @@ var is_immobilised = false
 const movement_wait_times = [3.0, 5.0, 7.0]
 const speed = 30
 
+@export var life_points := 2
+
 var being_pulled := false
 @export var on_release_inertia_multiplier := 40
 
-@export var collision_repulse_force_multiplier := 1200
+@export var collision_repulse_force_multiplier := 900
 
 func _ready() -> void:
 	isAlly = true;
@@ -50,9 +52,16 @@ func do_movement(delta: float):
 			handle_collision_with_enemy(collision)
 
 func handle_collision_with_enemy(collision: KinematicCollision2D):
+	life_points -= 1
+	
+	print("Collided, I have now " ,life_points)
+	if life_points <= 0:
+		queue_free()
+		return
+	
 	$Rope.detach_target()
 	being_pulled = false
-	velocity += collision.get_normal() * collision_repulse_force_multiplier
+	velocity = collision.get_normal() * collision_repulse_force_multiplier
 	move_and_slide()
 
 func _on_timer_movement_timeout() -> void:
