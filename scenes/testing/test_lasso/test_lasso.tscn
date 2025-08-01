@@ -1,22 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://6pjfvwxdm6im"]
+[gd_scene load_steps=3 format=3 uid="uid://6pjfvwxdm6im"]
 
 [ext_resource type="PackedScene" uid="uid://cv3re4nykmk1w" path="res://scenes/entities/lasso_tool/lasso_tool.tscn" id="1_akt8r"]
-[ext_resource type="Texture2D" uid="uid://bmymjg3w7woom" path="res://icon.svg" id="2_swjn2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dng74"]
-size = Vector2(50, 49)
+[ext_resource type="PackedScene" uid="uid://bywj01bfk33xe" path="res://scenes/entities/npcs/npc.tscn" id="2_swjn2"]
 
 [node name="TestLasso" type="Node2D"]
 
 [node name="LassoTool" parent="." instance=ExtResource("1_akt8r")]
 
-[node name="EntityTest" type="StaticBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="EntityTest"]
-position = Vector2(490, 277)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_swjn2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityTest"]
-position = Vector2(491, 276)
-shape = SubResource("RectangleShape2D_dng74")
+[node name="EntityTest" parent="." instance=ExtResource("2_swjn2")]

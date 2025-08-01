@@ -70,6 +70,7 @@ func detect_collisions(vertices: PackedVector2Array):
 	if result.size() > 0:
 		for i in range(result.size()):
 			print("Collided with ", result[i].collider)
+			SignalBus.enemy_died.emit("testEnemy", 10)
 	else:
 		print("No collisions")
 	

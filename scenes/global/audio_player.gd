@@ -3,6 +3,7 @@ extends AudioStreamPlayer
 
 # music tracks. Set OGG import settings to 'Loop'
 const mainmenu_music = preload("res://assets/music/ultimategamemusiccollection_title_piano_loop.ogg")
+const level_music = preload("res://assets/music/ultimategamemusiccollection_jungle_2_loop.ogg")
 
 # sound play functions
 func _ready():
@@ -16,6 +17,9 @@ func _play_music(music: AudioStream):
 	
 func play_music__mainmenu():
 	_play_music(mainmenu_music)
+	
+func play_music__level():
+	_play_music(level_music)
 
 func play_FX(stream: AudioStream, name:String = "FX_UNNAMED", volume_modifier:float = 1.0):
 	var fx_player = AudioStreamPlayer.new()
