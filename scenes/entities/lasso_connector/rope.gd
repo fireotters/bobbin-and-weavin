@@ -5,6 +5,9 @@ extends Line2D
 @export var tension := 0.741
 @export var constraint_iterations := 5
 
+@export_flags_2d_physics var path_collision_layermask := (1 << 1)
+@export var particle: PackedScene
+
 var entity: Node2D # Kept as legacy as a toggle for when the rope is enabled
 
 var prev_points := []
@@ -33,8 +36,13 @@ func attach_target(target: Node2D):
 # Resources: 
 # https://toqoz.fyi/game-rope.html
 # https://www.youtube.com/watch?v=MeFZbiJM8zo
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if entity == null:
+		return
+	
+	if detect_collision_with_path(): 
+		particles_from_path()
+		detach_target()
 		return
 	
 	var start_pos := get_global_mouse_position()
@@ -63,7 +71,37 @@ func _physics_process(delta: float) -> void:
 			
 			points[i + 1] -= correction * 0.5
 
+func detect_collision_with_path() -> bool:
+	var shape := SegmentShape2D.new()
+	var space_state := get_world_2d().direct_space_state
+	var params := PhysicsShapeQueryParameters2D.new()
+	params.shape = shape
+	var _transform := Transform2D()
+	params.transform = _transform
+	params.collision_mask = path_collision_layermask
+	params.collide_with_areas = true
+	params.collide_with_bodies = true
+	
+	for i in range(get_point_count() - 1):
+		shape.a = get_point_position(i)
+		shape.b = get_point_position(i + 1)
+		var result := space_state.intersect_shape(params)
+		if result.size() > 0: return true
+		
+	return false
+
+
+func is_attached() -> bool: return entity != null
+
 func detach_target():
 	entity = null
 	points = []
 	prev_points = []
+	
+	
+func particles_from_path():
+	for i in range(get_point_count()):
+		var new_particle: Sprite2D = particle.instantiate()
+		new_particle.global_position = get_point_position(i)
+		new_particle.modulate = modulate
+		add_child(new_particle)

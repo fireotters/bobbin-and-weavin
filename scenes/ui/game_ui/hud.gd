@@ -24,7 +24,7 @@ func resume():
 
 func _on_btn_pause_pressed() -> void:
 	pause()
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("pause"):
 		if panel_pause.visible:
 			resume()

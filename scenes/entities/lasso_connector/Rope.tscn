@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmog5acf0kbl3"]
+[gd_scene load_steps=5 format=3 uid="uid://dmog5acf0kbl3"]
 
 [ext_resource type="Script" uid="uid://4d2pcxoel8pc" path="res://scenes/entities/lasso_connector/rope.gd" id="1_pbjqq"]
+[ext_resource type="Texture2D" uid="uid://c6rq2ca8q705y" path="res://scenes/entities/lasso_tool/break_particle/break_particle.png" id="1_trmhm"]
+[ext_resource type="PackedScene" uid="uid://qjjqdlw10sxb" path="res://scenes/entities/lasso_tool/break_particle/break_particle.tscn" id="2_e1w0f"]
+
+[sub_resource type="Curve" id="Curve_1bcx2"]
+_data = [Vector2(0.00547945, 1), 0.0, 0.0, 0, 0, Vector2(0.509589, 0.464133), 0.0, 0.0, 0, 0, Vector2(0.983562, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Rope" type="Line2D"]
+modulate = Color(0, 0.84, 0.378, 1)
+width = 15.0
+width_curve = SubResource("Curve_1bcx2")
+texture = ExtResource("1_trmhm")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
 script = ExtResource("1_pbjqq")
+particle = ExtResource("2_e1w0f")

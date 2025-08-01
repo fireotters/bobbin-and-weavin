@@ -26,6 +26,10 @@ func _physics_process(_delta: float) -> void:
 		if position.distance_to(target) > 10:
 			move_and_slide()
 	else:
+		if !$Rope.is_attached():
+			being_pulled = false
+			return
+		
 		var rope_last = $Rope.last_point_position()
 		if Input.is_action_just_released("pointer_interaction"): 
 			$Rope.detach_target()
@@ -75,7 +79,7 @@ func _on_timer_rope_remove_timeout() -> void:
 
 
 # Pickup & Rescue
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	# TODO: Ensure this actually works for touchscreen!
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) or event is InputEventScreenTouch:
 		if event.pressed:
