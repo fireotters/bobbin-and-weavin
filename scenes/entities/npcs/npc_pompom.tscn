@@ -38,12 +38,12 @@ texture = ExtResource("5_n0tqn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dng74")
 
-[node name="timer_recovery" type="Timer" parent="."]
+[node name="timer_rope_remove" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 3.0
 
 [node name="timer_movement" type="Timer" parent="."]
 autostart = true
 
-[connection signal="timeout" from="timer_recovery" to="." method="_on_timer_recovery_timeout"]
+[connection signal="timeout" from="timer_rope_remove" to="." method="_on_timer_rope_remove_timeout"]
 [connection signal="timeout" from="timer_movement" to="." method="_on_timer_movement_timeout"]

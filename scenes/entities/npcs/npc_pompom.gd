@@ -2,7 +2,7 @@ extends NPC
 
 # Child Nodes
 @export var rope_sprites: Array[Sprite2D] = []
-@onready var _timer_recovery: Timer = %timer_recovery
+@onready var _timer_rope_remove: Timer = %timer_rope_remove
 # Health
 var rope_state = -1 # -1 = no ropes attached. 0/1 = partly tied up. 2 = fully tied up
 var is_immobilised = false
@@ -28,9 +28,9 @@ func _on_timer_movement_timeout() -> void:
 
 
 
-# Health States
-func damage():
-	_timer_recovery.start()
+# Rope States
+func rope_add():
+	_timer_rope_remove.start()
 	if rope_state < 2:
 		print(name + ": I took damage")
 		rope_state += 1
@@ -38,16 +38,16 @@ func damage():
 	if rope_state == 3:
 		print(name + ": I am now stuck")
 		is_immobilised = true
-	SignalBus.enemy_died.emit("testEnemy", 10)
+	SignalBus.pompom_lasso.emit(5)
 
-func recover():
+func rope_remove():
 	if rope_state > -1:
 		print(name + ": I recovered health")
 		is_immobilised = false
 		rope_state -= 1
 		_update_ropes()
 	if rope_state == -1:
-		_timer_recovery.stop()
+		_timer_rope_remove.stop()
 
 func _update_ropes():
 	for r in rope_sprites:
@@ -56,5 +56,5 @@ func _update_ropes():
 	if rope_state > -1:
 		rope_sprites[rope_state].visible = true
 
-func _on_timer_recovery_timeout() -> void:
-	recover()
+func _on_timer_rope_remove_timeout() -> void:
+	rope_remove()
