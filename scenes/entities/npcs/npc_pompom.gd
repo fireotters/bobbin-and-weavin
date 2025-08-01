@@ -10,6 +10,12 @@ var is_immobilised = false
 const movement_wait_times = [3.0, 5.0, 7.0]
 const speed = 30
 
+@export_flags_2d_physics var enemy_layermask := (1 << 1)
+@export_flags_2d_physics var box_layermask := (1 << 2)
+# Extra time that the entity will be able to collide with the
+# bpx after being released from the pull
+@export var inertia_time:= 1.0
+
 @export var life_points := 2
 
 var being_pulled := false
@@ -19,6 +25,7 @@ var being_pulled := false
 
 func _ready() -> void:
 	isAlly = true;
+	collision_mask = enemy_layermask
 
 # Movement
 # Helped by Godot docs: https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html#click-and-move
@@ -31,18 +38,25 @@ func _physics_process(delta: float) -> void:
 			do_movement(delta)
 	else:
 		if !$Rope.is_attached():
-			being_pulled = false
+			stop_pulling()
 			return
 		
 		var rope_last = $Rope.last_point_position()
 		if Input.is_action_just_released("pointer_interaction"): 
 			$Rope.detach_target()
-			being_pulled = false
+			stop_pulling()
 		else:
 			# This is like doing global_position = rope_last but with physics
 			var delta_pos = rope_last - global_position
 			velocity = delta_pos / delta
 			do_movement(delta)
+
+func stop_pulling():
+	$Rope.detach_target()
+	being_pulled = false
+	
+	# Start timer to restore layermask
+	get_tree().create_timer(inertia_time).timeout.connect(func(): if !being_pulled: collision_mask = enemy_layermask)
 
 func do_movement(delta: float):
 	var collision := move_and_collide(velocity * delta)
@@ -50,6 +64,12 @@ func do_movement(delta: float):
 		var entity := collision.get_collider()
 		if entity is NPC && "isAlly" in entity && !entity.isAlly:
 			handle_collision_with_enemy(collision)
+		if entity is PompomBox:
+			handle_collision_with_box(collision)
+
+func handle_collision_with_box(_collision: KinematicCollision2D):
+	print("I have been freed, Yippee!")
+	queue_free()
 
 func handle_collision_with_enemy(collision: KinematicCollision2D):
 	life_points -= 1
@@ -111,6 +131,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				# TODO: Handle the capturing game mechanic. For now, clicking a tied-up pompom will capture them
 				SignalBus.pompom_capture.emit(100)
 				being_pulled = true
+				collision_mask |= box_layermask
 				$Rope.attach_target(self)
 				#print(name + ": *was Thanos snapped*")
 				#queue_free()
