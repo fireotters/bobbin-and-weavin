@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://gjfhte4qvwx3"]
+[gd_scene load_steps=4 format=3 uid="uid://gjfhte4qvwx3"]
 
 [ext_resource type="Script" uid="uid://s6j2y77g74c6" path="res://scenes/ui/menu_help.gd" id="1_t5gox"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/change_scene_button.gd" id="2_17g36"]
+[ext_resource type="Texture2D" uid="uid://bn6gjnmlwk03q" path="res://assets/art/ui/fire_otters_logo.png" id="2_x3nge"]
 
 [node name="MenuHelp" type="Control"]
 layout_mode = 3
@@ -12,41 +13,326 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t5gox")
 
-[node name="Title_Logo" type="RichTextLabel" parent="."]
+[node name="page_1" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="RichTextLabel" parent="page_1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -124.0
-offset_top = -158.0
-offset_right = 126.0
-offset_bottom = -132.0
+offset_left = -125.0
+offset_top = -228.0
+offset_right = 125.0
+offset_bottom = -186.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "This is a help screen"
+bbcode_enabled = true
+text = "[font_size=30]The Story[/font_size]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ButtonContainer" type="HBoxContainer" parent="."]
+[node name="txt_story" type="RichTextLabel" parent="page_1"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.5
+offset_top = -191.0
+offset_right = 324.5
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "🪶 (Draft story)
+
+[font_size=20]There once were a gang of crafty Pom-Poms. They were very cute, and (they'd like to think) almost as smart. Smart enough to escape from their craft-box prison.
+
+However, they've leapt from the frying pan into the fire. They're now surrounded by haphazard craft tools; pools of glue, pairs of scissors, sewing needles...
+
+You must gather them up as best you can, before too many of them wander into danger! Use your mouse or finger to draw circles around a PomPom. Once immobilised, the PomPom can be dragged back into the box where they came from.[/font_size]"
+fit_content = true
+scroll_active = false
+
+[node name="NextButton" type="Button" parent="page_1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -181.01
-offset_top = -233.22
-offset_right = 181.01
-offset_bottom = -193.22
+offset_left = -256.0
+offset_top = -100.0
+offset_right = -218.0
+offset_bottom = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+text = "➡️"
+
+[node name="page_2" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Control" parent="page_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = -226.0
+offset_right = 295.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="logo" type="TextureRect" parent="page_2/title"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -107.0
+offset_right = 600.0
+offset_bottom = 493.0
+grow_vertical = 2
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("2_x3nge")
+
+[node name="titletext" type="RichTextLabel" parent="page_2/title"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -366.0
+offset_top = -55.0
+offset_bottom = 55.0
+grow_horizontal = 0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=40]Brought to you by the Fire Otters[/font_size]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="draft" type="RichTextLabel" parent="page_2/title"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -366.0
+offset_top = 48.0
+offset_bottom = 82.0
+grow_horizontal = 0
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=20]🪶 Draft[/font_size]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="devs" type="GridContainer" parent="page_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -379.0
+offset_top = -12.0
+offset_right = 379.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="acorn" type="Control" parent="page_2/devs"]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+
+[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/acorn"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Acorn
+(Artist)"
+horizontal_alignment = 1
+
+[node name="site" type="RichTextLabel" parent="page_2/devs/acorn"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
-alignment = 1
+bbcode_enabled = true
+text = "[color=cyan][url=\"https://www.example.com/\"]?[/url][/color]"
+horizontal_alignment = 1
 
-[node name="ExitButton" type="Button" parent="ButtonContainer"]
+[node name="benchi" type="Control" parent="page_2/devs"]
+custom_minimum_size = Vector2(250, 110)
 layout_mode = 2
+
+[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/benchi"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "benchi99
+(Programmer)"
+horizontal_alignment = 1
+
+[node name="site" type="RichTextLabel" parent="page_2/devs/benchi"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[color=cyan][url=https://about.ruben
+bermejoromero.com]about.ruben
+bermejoromero.com[/url][/color]"
+horizontal_alignment = 1
+
+[node name="crossfirecam" type="Control" parent="page_2/devs"]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+
+[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/crossfirecam"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "CrossfireCam
+(Programmer)"
+horizontal_alignment = 1
+
+[node name="site" type="RichTextLabel" parent="page_2/devs/crossfirecam"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[color=cyan][url=https://crossfirecam.itch.io]crossfirecam.itch.io[/url][/color]"
+horizontal_alignment = 1
+
+[node name="makako" type="Control" parent="page_2/devs"]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+
+[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/makako"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Makako
+(Music & Sound)"
+horizontal_alignment = 1
+
+[node name="site" type="RichTextLabel" parent="page_2/devs/makako"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[color=cyan][url=\"https://www.example.com/\"]?[/url][/color]"
+horizontal_alignment = 1
+
+[node name="rioni" type="Control" parent="page_2/devs"]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+
+[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/rioni"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Rioni
+(Programmer)"
+horizontal_alignment = 1
+
+[node name="site" type="RichTextLabel" parent="page_2/devs/rioni"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[color=cyan][url=https://github.com/Nrosa01]github.com/Nrosa01[/url][/color]"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="page_2"]
+layout_mode = 2
+offset_left = 899.0
+offset_top = 545.0
+offset_right = 937.0
+offset_bottom = 585.0
 size_flags_horizontal = 3
-text = "Exit"
+text = "↩️"
 script = ExtResource("2_17g36")
 scene_path = "uid://olxmp2tfg8yc"
 
-[connection signal="pressed" from="ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="page_1/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="meta_clicked" from="page_2/devs/acorn/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_2/devs/benchi/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_2/devs/crossfirecam/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_2/devs/makako/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_2/devs/rioni/site" to="." method="_on_site_label_clicked"]
+[connection signal="pressed" from="page_2/ExitButton" to="." method="_on_exit_button_pressed"]

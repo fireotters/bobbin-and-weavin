@@ -1,4 +1,6 @@
-# Godot Game Jam Template for 'Fire Otters'
+# GMTK 2025 Game by Fire Otters
+
+Name undecided.
 
 ## Placeholder audio
 Music from 'Ultimate Game Music Collection' by John Leonard French: https://johnleonardfrench.gumroad.com/l/Gqks
