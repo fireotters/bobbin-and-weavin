@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name NPC
 
-var isAlly = false;
+var isAlly = true;
 
 @onready var screenSize = get_viewport().get_visible_rect().size
 var target = position

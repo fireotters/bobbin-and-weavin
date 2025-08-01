@@ -1,20 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bywj01bfk33xe"]
+[gd_scene load_steps=7 format=3 uid="uid://bywj01bfk33xe"]
 
-[ext_resource type="Script" uid="uid://b603gc8wyw7ff" path="res://scenes/entities/npcs/npc_enemy.gd" id="1_8nw0q"]
-[ext_resource type="Texture2D" uid="uid://naconlwh5s47" path="res://assets/art/npc/npc_enemy.png" id="2_8nw0q"]
-[ext_resource type="Texture2D" uid="uid://by8i2uietxw68" path="res://assets/art/npc/rope.png" id="3_8nw0q"]
+[ext_resource type="Script" uid="uid://b603gc8wyw7ff" path="res://scenes/entities/npcs/npc_pompom.gd" id="1_8nw0q"]
+[ext_resource type="Texture2D" uid="uid://cee3wetuwrpjb" path="res://assets/art/npc/npc_pompom_0.PNG" id="2_pmbet"]
+[ext_resource type="Texture2D" uid="uid://dlxgd5kbe1uxb" path="res://assets/art/npc/rope_0.PNG" id="3_8nw0q"]
+[ext_resource type="Texture2D" uid="uid://bixl6vuyar81x" path="res://assets/art/npc/rope_1.PNG" id="4_pmbet"]
+[ext_resource type="Texture2D" uid="uid://du3f35u5aps3o" path="res://assets/art/npc/rope_2.PNG" id="5_n0tqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dng74"]
 size = Vector2(50, 49)
 
-[node name="npc_enemy" type="CharacterBody2D" node_paths=PackedStringArray("rope_sprites")]
+[node name="npc_pompom" type="CharacterBody2D" node_paths=PackedStringArray("rope_sprites")]
 collision_mask = 0
 script = ExtResource("1_8nw0q")
 rope_sprites = [NodePath("Sprite2D/ropes/rope1"), NodePath("Sprite2D/ropes/rope2"), NodePath("Sprite2D/ropes/rope3")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_8nw0q")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_pmbet")
 
 [node name="ropes" type="Node2D" parent="Sprite2D"]
 
@@ -25,15 +27,13 @@ texture = ExtResource("3_8nw0q")
 
 [node name="rope2" type="Sprite2D" parent="Sprite2D/ropes"]
 visible = false
-rotation = 0.703427
 scale = Vector2(1.06667, 1)
-texture = ExtResource("3_8nw0q")
+texture = ExtResource("4_pmbet")
 
 [node name="rope3" type="Sprite2D" parent="Sprite2D/ropes"]
 visible = false
-rotation = -0.664012
 scale = Vector2(1.06667, 1)
-texture = ExtResource("3_8nw0q")
+texture = ExtResource("5_n0tqn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dng74")
