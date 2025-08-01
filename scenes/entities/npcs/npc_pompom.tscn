@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bywj01bfk33xe"]
+[gd_scene load_steps=9 format=3 uid="uid://bywj01bfk33xe"]
 
 [ext_resource type="Script" uid="uid://b603gc8wyw7ff" path="res://scenes/entities/npcs/npc_pompom.gd" id="1_8nw0q"]
 [ext_resource type="Texture2D" uid="uid://cee3wetuwrpjb" path="res://assets/art/npc/npc_pompom_0.PNG" id="2_pmbet"]
 [ext_resource type="Texture2D" uid="uid://dlxgd5kbe1uxb" path="res://assets/art/npc/rope_0.PNG" id="3_8nw0q"]
 [ext_resource type="Texture2D" uid="uid://bixl6vuyar81x" path="res://assets/art/npc/rope_1.PNG" id="4_pmbet"]
 [ext_resource type="Texture2D" uid="uid://du3f35u5aps3o" path="res://assets/art/npc/rope_2.PNG" id="5_n0tqn"]
+[ext_resource type="PackedScene" uid="uid://dmog5acf0kbl3" path="res://scenes/entities/lasso_connector/Rope.tscn" id="6_khmeb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u81jd"]
 font_size = 24
@@ -63,6 +64,9 @@ wait_time = 3.0
 
 [node name="timer_movement" type="Timer" parent="."]
 autostart = true
+
+[node name="Rope" parent="." instance=ExtResource("6_khmeb")]
+top_level = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="timer_rope_remove" to="." method="_on_timer_rope_remove_timeout"]

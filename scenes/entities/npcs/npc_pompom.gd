@@ -27,7 +27,9 @@ func _physics_process(_delta: float) -> void:
 		if position.distance_to(target) > 10:
 			move_and_slide()
 	else:
-		if Input.is_action_just_released("pointer_interaction"): being_pulled = false
+		if Input.is_action_just_released("pointer_interaction"): 
+			$Rope.detach_target()
+			being_pulled = false
 		
 		velocity += global_position.direction_to(get_global_mouse_position()) * pull_force * (distance_influence * global_position.distance_to(get_global_mouse_position()))
 		move_and_slide()
@@ -81,6 +83,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				# TODO: Handle the capturing game mechanic. For now, clicking a tied-up pompom will capture them
 				SignalBus.pompom_capture.emit(100)
 				being_pulled = true
+				$Rope.attach_target(self)
 				#print(name + ": *was Thanos snapped*")
 				#queue_free()
 			else:
