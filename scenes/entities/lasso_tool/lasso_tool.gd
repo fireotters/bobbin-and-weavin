@@ -6,8 +6,10 @@ extends Node2D
 @onready var line2d: Line2D = $line2d_path
 
 
+
 # This should not be here but whatever
 @export var area: PackedScene
+@export var particle: PackedScene
 
 var intersection_index_a: int
 var intersection_index_b: int
@@ -54,6 +56,25 @@ func handle_line_completion():
 	build_area_geometry(vertices)
 	detect_collisions(vertices)
 	init_new_line()
+
+func detect_collision_with_path() -> bool:
+	var shape := SegmentShape2D.new()
+	var space_state := get_world_2d().direct_space_state
+	var params := PhysicsShapeQueryParameters2D.new()
+	params.shape = shape
+	var _transform := Transform2D()
+	params.transform = _transform
+	params.collision_mask = (1 << 32) - 1 # detect everything for now
+	params.collide_with_areas = true
+	params.collide_with_bodies = true
+	
+	for i in range(line2d.get_point_count() - 1):
+		shape.a = line2d.get_point_position(i)
+		shape.b = line2d.get_point_position(i + 1)
+		var result := space_state.intersect_shape(params)
+		if result.size() > 0: return true
+		
+	return false
 
 func detect_collisions(vertices: PackedVector2Array):
 	var shape := ConvexPolygonShape2D.new()
@@ -107,6 +128,22 @@ func init_new_line():
 	line2d.clear_points()
 	line2d.add_point(get_global_mouse_position()) # This might not work for mobile
 
+func handle_path_break(): 
+	# I will copy pokemon ranger here too because why not, I love adding quick juice
+	# When the line breaks, well spawn point particles that go up
+	if line2d.get_point_count() > 3:
+		particles_from_path()
+
+	line2d.clear_points()
+	# Here we should raise an event to play a sound to reflect the collision
+
+
+func particles_from_path():
+	for i in range(line2d.get_point_count()):
+		var new_particle: Sprite2D = particle.instantiate()
+		new_particle.global_position = line2d.get_point_position(i)
+		add_child(new_particle)
+
 func handle_line_creation():
 	var current_pos = get_global_mouse_position()
 	var last_pos = get_last_pos()
@@ -124,8 +161,11 @@ func handle_line_creation():
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pointer_interaction"):
 		init_new_line()
-	elif Input.is_action_pressed("pointer_interaction"):
-		handle_line_creation()
-		if(has_self_intersection()): handle_line_completion()
+	elif Input.is_action_pressed("pointer_interaction") and line2d.get_point_count() > 0:
+		if detect_collision_with_path(): handle_path_break()
+		else:
+			handle_line_creation()
+			if(has_self_intersection()): handle_line_completion()
 	elif Input.is_action_just_released("pointer_interaction"):
 		line2d.clear_points()
+		

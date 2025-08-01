@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://qjjqdlw10sxb"]
+
+[ext_resource type="Texture2D" uid="uid://c6rq2ca8q705y" path="res://scenes/entities/lasso_tool/break_particle/break_particle.png" id="1_v0kp3"]
+[ext_resource type="Script" uid="uid://dvamel8bpnetg" path="res://scenes/entities/lasso_tool/break_particle/break_particle.gd" id="2_7y6hm"]
+
+[node name="BreakParticle" type="Sprite2D"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_v0kp3")
+script = ExtResource("2_7y6hm")

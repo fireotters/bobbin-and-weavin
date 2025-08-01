@@ -1,12 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv3re4nykmk1w"]
+[gd_scene load_steps=6 format=3 uid="uid://cv3re4nykmk1w"]
 
 [ext_resource type="Script" uid="uid://bqkgxte31cypn" path="res://scenes/entities/lasso_tool/lasso_tool.gd" id="1_fv313"]
 [ext_resource type="PackedScene" uid="uid://dx20eak6b43c" path="res://scenes/entities/capture_area/capture_area.tscn" id="2_bulau"]
+[ext_resource type="PackedScene" uid="uid://qjjqdlw10sxb" path="res://scenes/entities/lasso_tool/break_particle/break_particle.tscn" id="3_kiokl"]
+[ext_resource type="Texture2D" uid="uid://c6rq2ca8q705y" path="res://scenes/entities/lasso_tool/break_particle/break_particle.png" id="4_yt2a4"]
+
+[sub_resource type="Curve" id="Curve_yt2a4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.50411, 0.471092), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="LassoTool" type="Node2D"]
 script = ExtResource("1_fv313")
 max_line_distance = 1200.0
 subdivisions = 50
 area = ExtResource("2_bulau")
+particle = ExtResource("3_kiokl")
 
 [node name="line2d_path" type="Line2D" parent="."]
+width = 15.0
+width_curve = SubResource("Curve_yt2a4")
+texture = ExtResource("4_yt2a4")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 1
+antialiased = true
