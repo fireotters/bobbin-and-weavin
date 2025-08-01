@@ -16,7 +16,7 @@ func _ready() -> void:
 # Movement
 # Helped by Godot docs: https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html#click-and-move
 # And Godot forums: https://forum.godotengine.org/t/how-to-make-an-area2d-apears-on-random-position-in-the-screen/20456/2
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var health_modifier = 1.0 - 0.25 * health_state
 	velocity = position.direction_to(target) * speed * health_modifier
 	if position.distance_to(target) > 10:

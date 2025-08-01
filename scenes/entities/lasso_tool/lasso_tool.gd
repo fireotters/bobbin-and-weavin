@@ -57,12 +57,12 @@ func handle_line_completion():
 
 func detect_collisions(vertices: PackedVector2Array):
 	var shape := ConvexPolygonShape2D.new()
-	shape.set_points(vertices)
+	shape.set_point_cloud(vertices)
 	var space_state := get_world_2d().direct_space_state
 	var params := PhysicsShapeQueryParameters2D.new()
 	params.shape = shape
-	var transform := Transform2D()
-	params.transform = transform
+	var _transform := Transform2D()
+	params.transform = _transform
 	params.collision_mask = 1 # only detect enemies
 	params.collide_with_areas = true
 	params.collide_with_bodies = true
@@ -87,7 +87,6 @@ func calculate_pollygon_centroid(polygon: PackedVector2Array) -> Vector2:
 	return Vector2(x_acc, y_acc) / polygon.size()
 
 func create_pollygon_from_intersection() -> PackedVector2Array:
-	var polygon_vertex_count:int = abs(intersection_index_b - intersection_index_a) + 1
 	var vertices : PackedVector2Array
 	
 	vertices.append(intersection_point)

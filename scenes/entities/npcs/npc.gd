@@ -13,5 +13,4 @@ func _choose_new_destination():
 	target = Vector2(rndX, rndY)
 
 func _choose_from_array(array):
-	array.shuffle()
-	return array.front()
+	return array.pick_random()
