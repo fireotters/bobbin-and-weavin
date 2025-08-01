@@ -13,18 +13,20 @@ const speed = 30
 var being_pulled := false
 @export var on_release_inertia_multiplier := 40
 
+@export var collision_repulse_force_multiplier := 1200
+
 func _ready() -> void:
 	isAlly = true;
 
 # Movement
 # Helped by Godot docs: https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html#click-and-move
 # And Godot forums: https://forum.godotengine.org/t/how-to-make-an-area2d-apears-on-random-position-in-the-screen/20456/2
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if !being_pulled:
 		var health_modifier = 1.0 - 0.25 * rope_state
 		velocity = velocity.lerp(position.direction_to(target) * speed * health_modifier, .08)
 		if position.distance_to(target) > 10:
-			move_and_slide()
+			do_movement(delta)
 	else:
 		if !$Rope.is_attached():
 			being_pulled = false
@@ -35,15 +37,27 @@ func _physics_process(_delta: float) -> void:
 			$Rope.detach_target()
 			being_pulled = false
 		else:
-			velocity = global_position.direction_to(rope_last) * global_position.distance_to(rope_last) * on_release_inertia_multiplier
-			global_position = rope_last
+			# This is like doing global_position = rope_last but with physics
+			var delta_pos = rope_last - global_position
+			velocity = delta_pos / delta
+			do_movement(delta)
 
+func do_movement(delta: float):
+	var collision := move_and_collide(velocity * delta)
+	if collision != null:
+		var entity := collision.get_collider()
+		if entity is NPC && "isAlly" in entity && !entity.isAlly:
+			handle_collision_with_enemy(collision)
+
+func handle_collision_with_enemy(collision: KinematicCollision2D):
+	$Rope.detach_target()
+	being_pulled = false
+	velocity += collision.get_normal() * collision_repulse_force_multiplier
+	move_and_slide()
 
 func _on_timer_movement_timeout() -> void:
 	_choose_new_destination()
 	$timer_movement.wait_time = _choose_from_array(movement_wait_times)
-
-
 
 # Rope States
 func rope_add():

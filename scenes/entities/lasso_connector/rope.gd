@@ -7,7 +7,7 @@ extends Line2D
 
 @export_flags_2d_physics var path_collision_layermask := (1 << 1)
 @export var particle: PackedScene
-
+@export var rope_collision_enabled := true
 var entity: Node2D # Kept as legacy as a toggle for when the rope is enabled
 
 var prev_points := []
@@ -40,7 +40,7 @@ func _physics_process(_delta: float) -> void:
 	if entity == null:
 		return
 	
-	if detect_collision_with_path(): 
+	if detect_collision_with_path() && rope_collision_enabled: 
 		particles_from_path()
 		detach_target()
 		return
