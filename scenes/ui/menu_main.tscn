@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dp2fkk0d0cvqn" path="res://scenes/ui/menu_main.gd" id="1_5ucki"]
 [ext_resource type="PackedScene" uid="uid://npw4l30hf0k5" path="res://scenes/ui/panel_settings.tscn" id="2_4mdgu"]
-[ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/change_scene_button.gd" id="2_ivjyr"]
+[ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_ivjyr"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dytaj53wqmm44"]
 
-[ext_resource type="PackedScene" uid="uid://b5wrmqx7ct3c3" path="res://scenes/game/game_ui/hud.tscn" id="1_dtmi3"]
+[ext_resource type="PackedScene" uid="uid://b5wrmqx7ct3c3" path="res://scenes/ui/game_ui/hud.tscn" id="1_dtmi3"]
 [ext_resource type="PackedScene" uid="uid://cv3re4nykmk1w" path="res://scenes/entities/lasso_tool/lasso_tool.tscn" id="1_khnyk"]
 [ext_resource type="Script" uid="uid://dqipu7a6um5s3" path="res://scenes/game/level.gd" id="1_rhpan"]
 [ext_resource type="PackedScene" uid="uid://bfleouafk1yjg" path="res://scenes/entities/capture_handler/capture_handler.tscn" id="2_65r54"]

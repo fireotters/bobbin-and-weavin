@@ -1,0 +1,106 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5wrmqx7ct3c3"]
+
+[ext_resource type="Script" uid="uid://dbagv74345kwv" path="res://scenes/ui/game_ui/hud.gd" id="1_qaxfr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_237h2"]
+bg_color = Color(0.309804, 0.490196, 0.6, 1)
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qaxfr")
+
+[node name="btn_pause" type="Button" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 77.0
+offset_bottom = 77.0
+text = "pause"
+
+[node name="label_score" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 94.0
+offset_top = 25.0
+offset_right = 239.0
+offset_bottom = 50.0
+text = "Score: "
+
+[node name="label_level" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 94.0
+offset_top = 49.0
+offset_right = 239.0
+offset_bottom = 74.0
+text = "Level: "
+
+[node name="panel_pause" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="panel_pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0588235, 0.0588235, 0.458824)
+
+[node name="panel" type="Panel" parent="panel_pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -152.0
+offset_right = 228.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_237h2")
+
+[node name="subpanel_selector" type="VBoxContainer" parent="panel_pause/panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 91.0
+offset_top = 94.0
+offset_right = -91.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="btn_resume" type="Button" parent="panel_pause/panel/subpanel_selector"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Resume"
+
+[node name="btn_restart" type="Button" parent="panel_pause/panel/subpanel_selector"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart"
+
+[node name="btn_exit" type="Button" parent="panel_pause/panel/subpanel_selector"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exit to Main Menu"
+
+[connection signal="pressed" from="btn_pause" to="." method="_on_btn_pause_pressed"]
+[connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_resume" to="panel_pause" method="_on_btn_audio_pressed"]
+[connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_restart" to="panel_pause" method="_on_btn_video_pressed"]
+[connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_exit" to="panel_pause" method="_on_btn_game_pressed"]

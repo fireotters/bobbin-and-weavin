@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://npw4l30hf0k5"]
+[gd_scene load_steps=4 format=3 uid="uid://npw4l30hf0k5"]
 
-[ext_resource type="Script" uid="uid://dohmmorlfpwbm" path="res://scenes/ui/volume_slider.gd" id="1_eevsp"]
+[ext_resource type="Script" uid="uid://dohmmorlfpwbm" path="res://scenes/ui/components/volume_slider.gd" id="1_eevsp"]
 [ext_resource type="Script" uid="uid://c1nyptul1x6kv" path="res://scenes/ui/panel_settings.gd" id="1_uyryx"]
-[ext_resource type="Theme" uid="uid://dhfwef3ix4t7g" path="res://scenes/ui/panel_theme.tres" id="2_1ebox"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_237h2"]
 bg_color = Color(0.309804, 0.490196, 0.6, 1)
@@ -38,7 +37,6 @@ offset_right = 275.0
 offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_1ebox")
 theme_override_styles/panel = SubResource("StyleBoxFlat_237h2")
 
 [node name="left_half" type="Control" parent="panel"]

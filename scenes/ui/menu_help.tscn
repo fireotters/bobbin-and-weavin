@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://gjfhte4qvwx3"]
 
 [ext_resource type="Script" uid="uid://s6j2y77g74c6" path="res://scenes/ui/menu_help.gd" id="1_t5gox"]
-[ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/change_scene_button.gd" id="2_17g36"]
+[ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_17g36"]
 [ext_resource type="Texture2D" uid="uid://bn6gjnmlwk03q" path="res://assets/art/ui/fire_otters_logo.png" id="2_x3nge"]
 
 [node name="MenuHelp" type="Control"]
