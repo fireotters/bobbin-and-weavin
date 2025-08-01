@@ -8,3 +8,4 @@ func _ready() -> void:
 func _on_button_pressed():
 	if scene_path != "":
 		get_tree().change_scene_to_file(scene_path)
+		Engine.time_scale = 1

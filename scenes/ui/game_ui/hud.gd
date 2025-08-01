@@ -2,7 +2,7 @@ extends Control
 
 @onready var label_score: RichTextLabel = %label_score
 @onready var label_level: RichTextLabel = %label_level
-@onready var panel_pause: Control = $panel_pause
+@onready var panel_pause: CanvasLayer = $panel_pause
 
 func _ready() -> void:
 	SignalBus.update_ui.connect(_update_hud)
@@ -14,6 +14,7 @@ func _update_hud():
 	label_level.text = "Level: " + str(PlayerVariables.level)
 
 # Pause dialog
+# TODO: consider another way to pause the game, Rioni says this way caused misc problems
 func pause():
 	Engine.time_scale = 0
 	panel_pause.visible = true
@@ -30,3 +31,5 @@ func _input(event):
 		else:
 			pause()
 			
+func _on_btn_resume_pressed() -> void:
+	resume()
