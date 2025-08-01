@@ -5,7 +5,10 @@ extends Node2D
 @onready var point_distance: float = max_line_distance / subdivisions
 @onready var line2d: Line2D = $line2d_path
 
-
+@export_flags_2d_physics var path_collision_layermask := (1 << 32) - 1
+@export_flags_2d_physics var capture_layermask
+signal capture_success(results: Array[Dictionary])
+signal capture_fail
 
 # This should not be here but whatever
 @export var area: PackedScene
@@ -64,7 +67,7 @@ func detect_collision_with_path() -> bool:
 	params.shape = shape
 	var _transform := Transform2D()
 	params.transform = _transform
-	params.collision_mask = (1 << 32) - 1 # detect everything for now
+	params.collision_mask = path_collision_layermask
 	params.collide_with_areas = true
 	params.collide_with_bodies = true
 	
@@ -84,16 +87,14 @@ func detect_collisions(vertices: PackedVector2Array):
 	params.shape = shape
 	var _transform := Transform2D()
 	params.transform = _transform
-	params.collision_mask = 1 # only detect enemies
+	params.collision_mask = capture_layermask
 	params.collide_with_areas = true
 	params.collide_with_bodies = true
 	var result := space_state.intersect_shape(params)
 	if result.size() > 0:
-		for i in range(result.size()):
-			result[i].collider.damage()
-			print("Collided with ", result[i].collider)
+		capture_success.emit(result)
 	else:
-		print("No collisions")
+		capture_fail.emit()
 	
 
 # https://en.wikipedia.org/wiki/Centroid
