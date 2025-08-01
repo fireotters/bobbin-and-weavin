@@ -79,6 +79,20 @@ func detect_collision_with_path() -> bool:
 		
 	return false
 
+func detect_click_collision() -> bool:
+	var shape := CircleShape2D.new()
+	shape.radius = 1
+	var space_state := get_world_2d().direct_space_state
+	var params := PhysicsShapeQueryParameters2D.new()
+	params.shape = shape
+	var _transform := Transform2D(0, get_global_mouse_position())
+	params.transform = _transform
+	params.collision_mask = capture_layermask
+	params.collide_with_areas = true
+	params.collide_with_bodies = true
+	var result := space_state.intersect_shape(params)
+	return result.size() > 0
+
 func detect_collisions(vertices: PackedVector2Array):
 	var shape := ConvexPolygonShape2D.new()
 	shape.set_point_cloud(vertices)
@@ -160,7 +174,7 @@ func handle_line_creation():
 		last_pos = get_last_pos()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pointer_interaction"):
+	if Input.is_action_just_pressed("pointer_interaction") and not detect_click_collision():
 		init_new_line()
 	elif Input.is_action_pressed("pointer_interaction") and line2d.get_point_count() > 0:
 		if detect_collision_with_path(): handle_path_break()
