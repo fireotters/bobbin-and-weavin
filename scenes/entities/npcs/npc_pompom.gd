@@ -57,4 +57,24 @@ func _update_ropes():
 		rope_sprites[rope_state].visible = true
 
 func _on_timer_rope_remove_timeout() -> void:
-	rope_remove()
+	if not is_immobilised:
+		rope_remove()
+
+
+# Pickup & Rescue
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	# TODO: Ensure this actually works for touchscreen!
+	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) or event is InputEventScreenTouch:
+		if event.pressed:
+			if rope_state == 2:
+				is_immobilised = true
+				# TODO: Handle the capturing game mechanic. For now, clicking a tied-up pompom will capture them
+				SignalBus.pompom_capture.emit(100)
+				print(name + ": *was Thanos snapped*")
+				queue_free()
+			else:
+				print(name + ": Hehe, you can't capture me yet!")
+				$Sprite2D/temp_capturefailgiggle.visible = true
+				await get_tree().create_timer(1).timeout
+				$Sprite2D/temp_capturefailgiggle.visible = false
+			
