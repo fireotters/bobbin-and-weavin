@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dng74"]
 size = Vector2(50, 49)
 
-[node name="npc_enemy" type="StaticBody2D" node_paths=PackedStringArray("rope_sprites")]
+[node name="npc_enemy" type="CharacterBody2D" node_paths=PackedStringArray("rope_sprites")]
 collision_mask = 0
 script = ExtResource("1_8nw0q")
 rope_sprites = [NodePath("Sprite2D/ropes/rope1"), NodePath("Sprite2D/ropes/rope2"), NodePath("Sprite2D/ropes/rope3")]
@@ -43,4 +43,8 @@ shape = SubResource("RectangleShape2D_dng74")
 unique_name_in_owner = true
 wait_time = 2.0
 
+[node name="timer_movement" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="timer_recovery" to="." method="_on_timer_recovery_timeout"]
+[connection signal="timeout" from="timer_movement" to="." method="_on_timer_movement_timeout"]
