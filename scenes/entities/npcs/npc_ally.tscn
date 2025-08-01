@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch6t6jp1ldkam"]
+
+[ext_resource type="Script" uid="uid://c26q5chvdxaf" path="res://scenes/entities/npcs/npc_ally.gd" id="1_vrjgn"]
+[ext_resource type="Texture2D" uid="uid://f4o7d384n1ts" path="res://assets/art/npc/npc_ally.png" id="2_vrjgn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dng74"]
+size = Vector2(50, 49)
+
+[node name="npc_ally" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_vrjgn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_vrjgn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dng74")

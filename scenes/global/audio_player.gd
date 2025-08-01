@@ -21,10 +21,10 @@ func play_music__mainmenu():
 func play_music__level():
 	_play_music(level_music)
 
-func play_FX(stream: AudioStream, name:String = "FX_UNNAMED", volume_modifier:float = 1.0):
+func play_FX(fx_stream: AudioStream, fx_name:String = "FX_UNNAMED", volume_modifier:float = 1.0):
 	var fx_player = AudioStreamPlayer.new()
-	fx_player.stream = stream
-	fx_player.name = name
+	fx_player.stream = fx_stream
+	fx_player.name = fx_name
 	fx_player.bus = "sfx"
 	fx_player.volume_linear *= volume_modifier # if a sfx needs to be played quieter or louder
 	add_child(fx_player)

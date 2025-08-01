@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://6pjfvwxdm6im"]
 
 [ext_resource type="PackedScene" uid="uid://cv3re4nykmk1w" path="res://scenes/entities/lasso_tool/lasso_tool.tscn" id="1_akt8r"]
-[ext_resource type="PackedScene" uid="uid://bywj01bfk33xe" path="res://scenes/entities/npcs/npc.tscn" id="2_swjn2"]
+[ext_resource type="PackedScene" uid="uid://bywj01bfk33xe" path="res://scenes/entities/npcs/npc_enemy.tscn" id="2_swjn2"]
 
 [node name="TestLasso" type="Node2D"]
 

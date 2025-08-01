@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dytaj53wqmm44"]
+[gd_scene load_steps=6 format=3 uid="uid://dytaj53wqmm44"]
 
 [ext_resource type="PackedScene" uid="uid://b5wrmqx7ct3c3" path="res://scenes/game/game_ui/hud.tscn" id="1_dtmi3"]
 [ext_resource type="PackedScene" uid="uid://cv3re4nykmk1w" path="res://scenes/entities/lasso_tool/lasso_tool.tscn" id="1_khnyk"]
 [ext_resource type="Script" uid="uid://dqipu7a6um5s3" path="res://scenes/game/level.gd" id="1_rhpan"]
-[ext_resource type="PackedScene" uid="uid://bywj01bfk33xe" path="res://scenes/entities/npcs/npc.tscn" id="2_dtmi3"]
+[ext_resource type="PackedScene" uid="uid://bywj01bfk33xe" path="res://scenes/entities/npcs/npc_enemy.tscn" id="2_dtmi3"]
+[ext_resource type="PackedScene" uid="uid://ch6t6jp1ldkam" path="res://scenes/entities/npcs/npc_ally.tscn" id="4_ji7po"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_rhpan")
@@ -12,4 +13,14 @@ script = ExtResource("1_rhpan")
 
 [node name="LassoTool" parent="." instance=ExtResource("1_khnyk")]
 
-[node name="EntityTest" parent="." instance=ExtResource("2_dtmi3")]
+[node name="npc_ally" parent="." instance=ExtResource("4_ji7po")]
+position = Vector2(363, 191)
+
+[node name="npc_enemy" parent="." instance=ExtResource("2_dtmi3")]
+position = Vector2(159, 132)
+
+[node name="npc_enemy2" parent="." instance=ExtResource("2_dtmi3")]
+position = Vector2(241, 431)
+
+[node name="npc_enemy3" parent="." instance=ExtResource("2_dtmi3")]
+position = Vector2(585, 305)

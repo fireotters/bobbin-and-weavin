@@ -63,14 +63,14 @@ func detect_collisions(vertices: PackedVector2Array):
 	params.shape = shape
 	var transform := Transform2D()
 	params.transform = transform
-	params.collision_mask = (1 << 32) - 1
+	params.collision_mask = 1 # only detect enemies
 	params.collide_with_areas = true
 	params.collide_with_bodies = true
 	var result := space_state.intersect_shape(params)
 	if result.size() > 0:
 		for i in range(result.size()):
+			result[i].collider.damage()
 			print("Collided with ", result[i].collider)
-			SignalBus.enemy_died.emit("testEnemy", 10)
 	else:
 		print("No collisions")
 	
