@@ -11,8 +11,7 @@ const movement_wait_times = [3.0, 5.0, 7.0]
 const speed = 30
 
 var being_pulled := false
-@export var pull_force := .4
-@export var distance_influence := .4
+@export var on_release_inertia_multiplier := 40
 
 func _ready() -> void:
 	isAlly = true;
@@ -27,12 +26,14 @@ func _physics_process(_delta: float) -> void:
 		if position.distance_to(target) > 10:
 			move_and_slide()
 	else:
+		var rope_last = $Rope.last_point_position()
 		if Input.is_action_just_released("pointer_interaction"): 
 			$Rope.detach_target()
 			being_pulled = false
-		
-		velocity += global_position.direction_to(get_global_mouse_position()) * pull_force * (distance_influence * global_position.distance_to(get_global_mouse_position()))
-		move_and_slide()
+		else:
+			velocity = global_position.direction_to(rope_last) * global_position.distance_to(rope_last) * on_release_inertia_multiplier
+			global_position = rope_last
+
 
 func _on_timer_movement_timeout() -> void:
 	_choose_new_destination()

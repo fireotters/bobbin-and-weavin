@@ -1,14 +1,16 @@
 extends Line2D
 
 @export var rope_points := 40
-@export var damping := 0.95
-@export var tension := 0.5
+@export var damping := 0.963
+@export var tension := 0.741
 @export var constraint_iterations := 5
 
-var entity: Node2D
+var entity: Node2D # Kept as legacy as a toggle for when the rope is enabled
 
 var prev_points := []
 var segment_length := 0.0
+
+func last_point_position() -> Vector2: return get_point_position(get_point_count() - 1)
 
 func attach_target(target: Node2D):
 	entity = target
@@ -36,18 +38,16 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var start_pos := get_global_mouse_position()
-	var end_pos := entity.global_position
 	
 	# Verlet integration
-	for i in range(1, rope_points - 1):
+	for i in range(1, rope_points):
 		var velocity = (get_point_position(i) - prev_points[i]) * damping
 		prev_points[i] = get_point_position(i)
 		points[i] += velocity
 	
-	# Given the entity and the mouse are fixed position we fix it her
-	# I'm not sure if this is the correct way to handle that but eh, it works
+	# First point is a fixed anchor. 
+	# Ideally I should make anchors optinal but well, game jam momento xD
 	points[0] = start_pos
-	points[rope_points - 1] = end_pos
 	
 	# Distance contraint
 	for _iter in range(constraint_iterations):
@@ -60,9 +60,8 @@ func _physics_process(delta: float) -> void:
 			# Ignoring extremes again.
 			if i > 0:
 				points[i] += correction * 0.5
-			if i < rope_points - 2:
-				points[i + 1] -= correction * 0.5
-	
+			
+			points[i + 1] -= correction * 0.5
 
 func detach_target():
 	entity = null
