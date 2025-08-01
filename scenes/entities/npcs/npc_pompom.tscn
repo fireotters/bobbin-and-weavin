@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://bywj01bfk33xe"]
+
+[ext_resource type="Script" uid="uid://b603gc8wyw7ff" path="res://scenes/entities/npcs/npc_pompom.gd" id="1_8nw0q"]
+[ext_resource type="Texture2D" uid="uid://cee3wetuwrpjb" path="res://assets/art/npc/npc_pompom_0.PNG" id="2_pmbet"]
+[ext_resource type="Texture2D" uid="uid://dlxgd5kbe1uxb" path="res://assets/art/npc/rope_0.PNG" id="3_8nw0q"]
+[ext_resource type="Texture2D" uid="uid://bixl6vuyar81x" path="res://assets/art/npc/rope_1.PNG" id="4_pmbet"]
+[ext_resource type="Texture2D" uid="uid://du3f35u5aps3o" path="res://assets/art/npc/rope_2.PNG" id="5_n0tqn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u81jd"]
+font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dng74"]
+size = Vector2(50, 49)
+
+[node name="npc_pompom" type="CharacterBody2D" node_paths=PackedStringArray("rope_sprites")]
+collision_mask = 0
+input_pickable = true
+script = ExtResource("1_8nw0q")
+rope_sprites = [NodePath("Sprite2D/ropes/rope1"), NodePath("Sprite2D/ropes/rope2"), NodePath("Sprite2D/ropes/rope3")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_pmbet")
+
+[node name="temp_capturefailgiggle" type="Label" parent="Sprite2D"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.06667, 1)
+text = "hehehe, can't catch me yet..."
+label_settings = SubResource("LabelSettings_u81jd")
+
+[node name="ropes" type="Node2D" parent="Sprite2D"]
+
+[node name="rope1" type="Sprite2D" parent="Sprite2D/ropes"]
+visible = false
+scale = Vector2(1.06667, 1)
+texture = ExtResource("3_8nw0q")
+
+[node name="rope2" type="Sprite2D" parent="Sprite2D/ropes"]
+visible = false
+scale = Vector2(1.06667, 1)
+texture = ExtResource("4_pmbet")
+
+[node name="rope3" type="Sprite2D" parent="Sprite2D/ropes"]
+visible = false
+scale = Vector2(1.06667, 1)
+texture = ExtResource("5_n0tqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dng74")
+
+[node name="timer_rope_remove" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="timer_movement" type="Timer" parent="."]
+autostart = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="timer_rope_remove" to="." method="_on_timer_rope_remove_timeout"]
+[connection signal="timeout" from="timer_movement" to="." method="_on_timer_movement_timeout"]
