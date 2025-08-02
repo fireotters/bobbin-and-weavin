@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqyviux4uogxj"
+path="res://.godot/imported/Cartoon, Animal, Cat, Meow, Human Mimic SND15123.wav-1789744cb260d8a8849a340b869f3ff2.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Cartoon, Animal, Cat, Meow, Human Mimic SND15123.wav"
+dest_files=["res://.godot/imported/Cartoon, Animal, Cat, Meow, Human Mimic SND15123.wav-1789744cb260d8a8849a340b869f3ff2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

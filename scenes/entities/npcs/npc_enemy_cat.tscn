@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://wef3eugstisc"]
+
+[ext_resource type="Script" uid="uid://dh3i0e7qi66rl" path="res://scenes/entities/npcs/npc_enemy_cat.gd" id="1_cteew"]
+[ext_resource type="Texture2D" uid="uid://c861srlfx43y6" path="res://assets/art/npc/cat/cat0.PNG" id="2_cteew"]
+[ext_resource type="Texture2D" uid="uid://dgv0urdeof235" path="res://assets/art/npc/cat/cat1.PNG" id="3_c4vp0"]
+[ext_resource type="Texture2D" uid="uid://c5xnwnmcw17wm" path="res://assets/art/fx/Circle.png" id="4_bqkwi"]
+[ext_resource type="AudioStream" uid="uid://dqyviux4uogxj" path="res://assets/sfx/Cartoon, Animal, Cat, Meow, Human Mimic SND15123.wav" id="4_c4vp0"]
+[ext_resource type="Texture2D" uid="uid://e72lfb36pkif" path="res://assets/art/fx/Circle_fill.png" id="5_2g8bl"]
+[ext_resource type="AudioStream" uid="uid://d3tw12wbeaq6b" path="res://assets/sfx/cat_pursue.mp3" id="5_rvq8x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvq8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cteew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c4vp0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqkwi"]
+radius = 25.7099
+
+[node name="npc_enemy_cat" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_cteew")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 6)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_rvq8x")
+frame_progress = 0.0805837
+
+[node name="Circle" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(1, 0.22, 0.22, 0.0941176)
+z_index = -10
+position = Vector2(-36.6667, -26.6667)
+scale = Vector2(4.123, 4.123)
+texture = ExtResource("4_bqkwi")
+
+[node name="Circle2" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(1, 0.22, 0.22, 0.803922)
+z_index = -10
+position = Vector2(-36.6667, -26.6667)
+scale = Vector2(4.123, 4.123)
+texture = ExtResource("5_2g8bl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, 2)
+rotation = -1.51156
+shape = SubResource("CircleShape2D_bqkwi")
+
+[node name="timer_movement" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="target_adquired" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c4vp0")
+
+[node name="target_lost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rvq8x")
+
+[connection signal="timeout" from="timer_movement" to="." method="_on_timer_movement_timeout"]

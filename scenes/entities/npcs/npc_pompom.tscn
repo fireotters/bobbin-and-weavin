@@ -213,7 +213,7 @@ _data = {
 &"tied": SubResource("Animation_rfh5q")
 }
 
-[node name="npc_pompom" type="CharacterBody2D" node_paths=PackedStringArray("rope_sprites")]
+[node name="npc_pompom" type="CharacterBody2D" node_paths=PackedStringArray("rope_sprites") groups=["pompoms"]]
 collision_mask = 10
 input_pickable = true
 script = ExtResource("1_8nw0q")
@@ -228,7 +228,7 @@ autoplay = "default"
 sprite_frames = SubResource("SpriteFrames_3f3hi")
 autoplay = "default"
 
-[node name="capturefailgiggle" type="Label" parent="Sprite2D" groups=["pompoms"]]
+[node name="capturefailgiggle" type="Label" parent="Sprite2D"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dytaj53wqmm44"]
+[gd_scene load_steps=13 format=3 uid="uid://dytaj53wqmm44"]
 
 [ext_resource type="PackedScene" uid="uid://b5wrmqx7ct3c3" path="res://scenes/ui/game_ui/hud.tscn" id="1_dtmi3"]
 [ext_resource type="PackedScene" uid="uid://cv3re4nykmk1w" path="res://scenes/entities/lasso_tool/lasso_tool.tscn" id="1_khnyk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="4_eyudv"]
 [ext_resource type="PackedScene" uid="uid://ch6t6jp1ldkam" path="res://scenes/entities/npcs/npc_enemy_scissors.tscn" id="6_65r54"]
 [ext_resource type="Script" uid="uid://da37tr3rc2iu" path="res://scenes/game/box.gd" id="7_mxnjv"]
+[ext_resource type="PackedScene" uid="uid://wef3eugstisc" path="res://scenes/entities/npcs/npc_enemy_cat.tscn" id="7_p2ltr"]
 [ext_resource type="Texture2D" uid="uid://bsfe0c8hvhjll" path="res://assets/art/bg/gamescene_box.png" id="9_p2ltr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65r54"]
@@ -19,10 +20,12 @@ size = Vector2(190, 795)
 script = ExtResource("1_rhpan")
 npc_pompom = ExtResource("2_dtmi3")
 npc_enemy_scissors = ExtResource("6_65r54")
+npc_enemy_cat = ExtResource("7_p2ltr")
 
 [node name="bg & borders" type="Node2D" parent="."]
 
 [node name="table" type="Sprite2D" parent="bg & borders"]
+z_index = -1000
 position = Vector2(510, 327)
 scale = Vector2(0.612897, 0.613426)
 texture = ExtResource("4_eyudv")

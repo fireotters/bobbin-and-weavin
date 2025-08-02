@@ -2,8 +2,10 @@ extends Node2D
 
 @export var npc_pompom: PackedScene
 @export var npc_enemy_scissors: PackedScene
+@export var npc_enemy_cat: PackedScene
 var max_num_of_pompoms = 12
 var max_num_of_enemies = 8
+var max_num_of_cats = 3
 
 func _ready() -> void:
 	PlayerVariables.reset_game()
@@ -23,14 +25,19 @@ func prepare_level():
 	var num_of_enemies = PlayerVariables.level * 2
 	if num_of_enemies > max_num_of_enemies:
 		num_of_enemies = max_num_of_enemies
+	var num_of_cats = clamp(1,max_num_of_cats, PlayerVariables.level)
 	SignalBus.update_ui.emit()
 		
 	# Spawn NPCs
-	for i in range(0, num_of_enemies):
+	for i in range(0, num_of_cats):
 		var o = npc_enemy_scissors.instantiate()
 		o.global_position = PlayerVariables.random_onscreen_coord()
 		o.rotation = randf_range(0, 360)
 		add_child(o)
+		
+		var cat = npc_enemy_cat.instantiate()
+		cat.global_position = PlayerVariables.random_onscreen_coord()
+		add_child(cat)
 		
 	for i in range(0, num_of_pompoms):
 		var p = npc_pompom.instantiate()
