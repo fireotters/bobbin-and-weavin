@@ -2,8 +2,9 @@
 extends AudioStreamPlayer
 
 # music tracks. Set OGG import settings to 'Loop'
-const mainmenu_music = preload("res://assets/music/ultimategamemusiccollection_title_piano_loop.ogg")
-const level_music = preload("res://assets/music/ultimategamemusiccollection_jungle_2_loop.ogg")
+const mainmenu_music = preload("res://assets/music/incompetech__menumusic__mischief_maker.ogg")
+const tutorial_music = preload("res://assets/music/incompetech__tutorialmusic__derp_nugget.ogg")
+const level_music = preload("res://assets/music/incompetech__levelmusic__march_of_the_spoons.ogg")
 
 # -------------------------------------
 # Music

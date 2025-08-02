@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://naconlwh5s47"
-path="res://.godot/imported/npc_obstacle.png-187751655a1f667d6006fe87e3d7183f.ctex"
+uid="uid://du3f35u5aps3o"
+path="res://.godot/imported/rope_2.PNG-619347a1f509f4721d3f5548676f849a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/npc/npc_obstacle.png"
-dest_files=["res://.godot/imported/npc_obstacle.png-187751655a1f667d6006fe87e3d7183f.ctex"]
+source_file="res://assets/art/npc/pom_pom/rope_2.PNG"
+dest_files=["res://.godot/imported/rope_2.PNG-619347a1f509f4721d3f5548676f849a.ctex"]
 
 [params]
 

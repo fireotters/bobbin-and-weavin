@@ -62,17 +62,17 @@ text = "Play"
 script = ExtResource("2_ivjyr")
 scene_path = "uid://dytaj53wqmm44"
 
+[node name="CreditsButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "How to Play"
+script = ExtResource("2_ivjyr")
+scene_path = "uid://gjfhte4qvwx3"
+
 [node name="SettingsButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Settings"
-
-[node name="CreditsButton" type="Button" parent="ButtonContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Help"
-script = ExtResource("2_ivjyr")
-scene_path = "uid://gjfhte4qvwx3"
 
 [node name="ExitButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2

@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://dqipu7a6um5s3" path="res://scenes/game/level.gd" id="1_rhpan"]
 [ext_resource type="PackedScene" uid="uid://bfleouafk1yjg" path="res://scenes/entities/capture_handler/capture_handler.tscn" id="2_65r54"]
 [ext_resource type="PackedScene" uid="uid://bywj01bfk33xe" path="res://scenes/entities/npcs/npc_pompom.tscn" id="2_dtmi3"]
+[ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="4_eyudv"]
 [ext_resource type="PackedScene" uid="uid://ch6t6jp1ldkam" path="res://scenes/entities/npcs/npc_enemy_scissors.tscn" id="6_65r54"]
-[ext_resource type="Texture2D" uid="uid://b13b2yrxrbag3" path="res://assets/art/bg/gamescene_table.png" id="7_eyudv"]
 [ext_resource type="Script" uid="uid://da37tr3rc2iu" path="res://scenes/game/box.gd" id="7_mxnjv"]
 [ext_resource type="Texture2D" uid="uid://bsfe0c8hvhjll" path="res://assets/art/bg/gamescene_box.png" id="9_p2ltr"]
 
@@ -23,9 +23,9 @@ npc_enemy_scissors = ExtResource("6_65r54")
 [node name="bg & borders" type="Node2D" parent="."]
 
 [node name="table" type="Sprite2D" parent="bg & borders"]
-position = Vector2(529.5, 322.5)
-scale = Vector2(1.32125, 1.075)
-texture = ExtResource("7_eyudv")
+position = Vector2(510, 327)
+scale = Vector2(0.612897, 0.613426)
+texture = ExtResource("4_eyudv")
 
 [node name="Box" type="StaticBody2D" parent="bg & borders"]
 collision_layer = 4

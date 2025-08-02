@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b13b2yrxrbag3"
-path="res://.godot/imported/gamescene_table.png-9a755afef62b146a256adee2bc0777fa.ctex"
+uid="uid://d0n7qqwh2p4rt"
+path="res://.godot/imported/cat_0.PNG-91f04bff44bf735aeabcd8145b76a5f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/bg/gamescene_table.png"
-dest_files=["res://.godot/imported/gamescene_table.png-9a755afef62b146a256adee2bc0777fa.ctex"]
+source_file="res://assets/art/npc/obstacles/cat_0.PNG"
+dest_files=["res://.godot/imported/cat_0.PNG-91f04bff44bf735aeabcd8145b76a5f4.ctex"]
 
 [params]
 

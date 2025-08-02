@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwcyf3p0tfcuf"
-path="res://.godot/imported/scissor_0.png-54c1601328ed4a41113b624a32fcb6c2.ctex"
+uid="uid://oq10qfcrutfa"
+path="res://.godot/imported/scissor_1.png-8471f727437b526cd5144aab30ca90d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/npc/scissor_0.png"
-dest_files=["res://.godot/imported/scissor_0.png-54c1601328ed4a41113b624a32fcb6c2.ctex"]
+source_file="res://assets/art/npc/obstacles/scissor_1.png"
+dest_files=["res://.godot/imported/scissor_1.png-8471f727437b526cd5144aab30ca90d0.ctex"]
 
 [params]
 

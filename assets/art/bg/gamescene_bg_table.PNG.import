@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ld8chph863y"
-path="res://.godot/imported/npc_pompom_3.PNG-72cd2dee7f167808653385d9ff382adc.ctex"
+uid="uid://c27qtypgj5h8b"
+path="res://.godot/imported/gamescene_bg_table.PNG-c9ad41395811d6a9da4aa36d09e1c725.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/npc/npc_pompom_3.PNG"
-dest_files=["res://.godot/imported/npc_pompom_3.PNG-72cd2dee7f167808653385d9ff382adc.ctex"]
+source_file="res://assets/art/bg/gamescene_bg_table.PNG"
+dest_files=["res://.godot/imported/gamescene_bg_table.PNG-c9ad41395811d6a9da4aa36d09e1c725.ctex"]
 
 [params]
 

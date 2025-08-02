@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch6t6jp1ldkam"]
 
-[ext_resource type="Script" path="res://scenes/entities/npcs/npc_enemy_scissors.gd" id="1_8bfvg"]
-[ext_resource type="Texture2D" uid="uid://oq10qfcrutfa" path="res://assets/art/npc/scissor_1.png" id="2_8bfvg"]
+[ext_resource type="Script" uid="uid://c26q5chvdxaf" path="res://scenes/entities/npcs/npc_enemy_scissors.gd" id="1_8bfvg"]
+[ext_resource type="Texture2D" uid="uid://oq10qfcrutfa" path="res://assets/art/npc/obstacles/scissor_1.png" id="2_8bfvg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xelr0"]
 radius = 18.8306

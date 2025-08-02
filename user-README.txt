@@ -24,4 +24,20 @@ Linux - The game may not run as an executable.
 ------------------
 Attributions
 ------------------
-Developed using Godot.
+Developed using the Godot Engine.
+
+Music:
+"Derp Nugget" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+"Mischief Maker" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+"March of the Spoons" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+SFX:
+Undecided.

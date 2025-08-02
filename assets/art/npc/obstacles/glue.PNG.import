@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cee3wetuwrpjb"
-path="res://.godot/imported/npc_pompom_0.PNG-4cfda717b9a5caadeb18f2da7c692394.ctex"
+uid="uid://bjadxd7sdjfqb"
+path="res://.godot/imported/glue.PNG-90fe8598bbfed386f0b34c17b470e802.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/npc/npc_pompom_0.PNG"
-dest_files=["res://.godot/imported/npc_pompom_0.PNG-4cfda717b9a5caadeb18f2da7c692394.ctex"]
+source_file="res://assets/art/npc/obstacles/glue.PNG"
+dest_files=["res://.godot/imported/glue.PNG-90fe8598bbfed386f0b34c17b470e802.ctex"]
 
 [params]
 
