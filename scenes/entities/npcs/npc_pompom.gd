@@ -65,8 +65,10 @@ func _physics_process(delta: float) -> void:
 				target = global_position + dir_escape * randf_range(40, 100)
 				break
 		
+		var is_on_screen: bool = $VisibleOnScreenNotifier2D.is_on_screen()
+		var visible_modifier := 1.0 if is_on_screen else 15.0
 		var health_modifier = 1.0 - 0.25 * rope_state
-		velocity = velocity.lerp(position.direction_to(target) * speed * health_modifier, .08)
+		velocity = velocity.lerp(position.direction_to(target) * speed * health_modifier * visible_modifier, .08)
 		if position.distance_to(target) > 10:
 			do_movement(delta)
 	else:
@@ -190,3 +192,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			
 func _on_timer_capturefail_timeout() -> void:
 	_capturefailgiggle.visible = false
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	pick_new_random_direction()

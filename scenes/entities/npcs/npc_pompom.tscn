@@ -214,7 +214,7 @@ _data = {
 }
 
 [node name="npc_pompom" type="CharacterBody2D" node_paths=PackedStringArray("rope_sprites")]
-collision_mask = 2
+collision_mask = 10
 input_pickable = true
 script = ExtResource("1_8nw0q")
 rope_sprites = [NodePath("Sprite2D/ropes/rope1"), NodePath("Sprite2D/ropes/rope2"), NodePath("Sprite2D/ropes/rope3")]
@@ -284,7 +284,12 @@ libraries = {
 }
 autoplay = "default"
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1, -0.5)
+scale = Vector2(1.7, 2.15)
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="timer_rope_remove" to="." method="_on_timer_rope_remove_timeout"]
 [connection signal="timeout" from="timer_movement" to="." method="_on_timer_movement_timeout"]
 [connection signal="timeout" from="timer_capturefail" to="." method="_on_timer_capturefail_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

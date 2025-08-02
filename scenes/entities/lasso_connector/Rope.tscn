@@ -12,6 +12,7 @@ point_count = 3
 
 [node name="Rope" type="Line2D"]
 modulate = Color(0, 0.84, 0.378, 1)
+points = PackedVector2Array(790, 188)
 width = 15.0
 width_curve = SubResource("Curve_1bcx2")
 texture = ExtResource("1_trmhm")

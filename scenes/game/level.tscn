@@ -46,7 +46,7 @@ editor_description = "One-way borders. Prevents rope or PomPoms from being place
 
 [node name="world_bor_S" type="StaticBody2D" parent="bg & borders/world_borders"]
 position = Vector2(516, 705)
-collision_layer = 2
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_S"]
@@ -55,7 +55,7 @@ shape = SubResource("WorldBoundaryShape2D_eyudv")
 [node name="world_bor_N" type="StaticBody2D" parent="bg & borders/world_borders"]
 position = Vector2(536, -58)
 rotation = -3.14159
-collision_layer = 2
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_N"]
@@ -64,7 +64,7 @@ shape = SubResource("WorldBoundaryShape2D_eyudv")
 [node name="world_bor_W" type="StaticBody2D" parent="bg & borders/world_borders"]
 position = Vector2(-62, 326)
 rotation = 1.5708
-collision_layer = 2
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_W"]
@@ -73,7 +73,7 @@ shape = SubResource("WorldBoundaryShape2D_eyudv")
 [node name="world_bor_E" type="StaticBody2D" parent="bg & borders/world_borders"]
 position = Vector2(1222, 324)
 rotation = -1.5708
-collision_layer = 2
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_E"]
