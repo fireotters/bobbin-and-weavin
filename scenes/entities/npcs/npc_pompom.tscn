@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dmog5acf0kbl3" path="res://scenes/entities/lasso_connector/Rope.tscn" id="6_khmeb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u81jd"]
-font_size = 24
+line_spacing = -12.0
+font_size = 45
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_khmeb"]
 radius = 22.0227
@@ -23,20 +24,22 @@ rope_sprites = [NodePath("Sprite2D/ropes/rope1"), NodePath("Sprite2D/ropes/rope2
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_pmbet")
 
-[node name="temp_capturefailgiggle" type="Label" parent="Sprite2D"]
+[node name="capturefailgiggle" type="Label" parent="Sprite2D"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = -128.0
-offset_bottom = -128.0
+offset_left = -200.0
+offset_top = -212.0
+offset_right = -46.0
+offset_bottom = -332.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.06667, 1)
-text = "hehehe, can't catch me yet..."
+text = "Hehe, you can't
+catch me!"
 label_settings = SubResource("LabelSettings_u81jd")
+horizontal_alignment = 1
 
 [node name="ropes" type="Node2D" parent="Sprite2D"]
 
@@ -65,9 +68,13 @@ wait_time = 3.5
 [node name="timer_movement" type="Timer" parent="."]
 autostart = true
 
+[node name="timer_capturefail" type="Timer" parent="."]
+wait_time = 1.5
+
 [node name="Rope" parent="." instance=ExtResource("6_khmeb")]
 top_level = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="timer_rope_remove" to="." method="_on_timer_rope_remove_timeout"]
 [connection signal="timeout" from="timer_movement" to="." method="_on_timer_movement_timeout"]
+[connection signal="timeout" from="timer_capturefail" to="." method="_on_timer_capturefail_timeout"]

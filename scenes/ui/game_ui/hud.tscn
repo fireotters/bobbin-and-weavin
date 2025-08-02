@@ -23,23 +23,45 @@ offset_right = 1131.0
 offset_bottom = 69.0
 text = "pause"
 
-[node name="label_score" type="RichTextLabel" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1059.0
-offset_top = 73.0
-offset_right = 1145.0
-offset_bottom = 98.0
-text = "Score: "
-
 [node name="label_level" type="RichTextLabel" parent="."]
-unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1059.0
-offset_top = 97.0
+offset_top = 72.0
 offset_right = 1145.0
-offset_bottom = 122.0
-text = "Level: "
+offset_bottom = 97.0
+text = "Level:"
+horizontal_alignment = 1
+
+[node name="label_level_value" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1066.0
+offset_top = 97.0
+offset_right = 1138.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+
+[node name="label_score" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1059.0
+offset_top = 138.0
+offset_right = 1145.0
+offset_bottom = 163.0
+text = "Rescued:"
+horizontal_alignment = 1
+
+[node name="label_score_value" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1066.0
+offset_top = 158.0
+offset_right = 1138.0
+offset_bottom = 204.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
 
 [node name="panel_pause" type="CanvasLayer" parent="."]
 visible = false
@@ -95,6 +117,8 @@ size_flags_vertical = 3
 text = "Exit to Main Menu"
 script = ExtResource("2_wdn0o")
 scene_path = "uid://olxmp2tfg8yc"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="pressed" from="btn_pause" to="." method="_on_btn_pause_pressed"]
 [connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_resume" to="." method="_on_btn_resume_pressed"]

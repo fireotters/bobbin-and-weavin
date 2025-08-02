@@ -1,7 +1,8 @@
 extends Control
 
-@onready var label_score: RichTextLabel = %label_score
-@onready var label_level: RichTextLabel = %label_level
+@onready var label_level_value: Label = %label_level_value
+@onready var label_score_value: Label = %label_score_value
+
 @onready var panel_pause: CanvasLayer = $panel_pause
 
 func _ready() -> void:
@@ -10,8 +11,8 @@ func _ready() -> void:
 
 func _update_hud():
 	print("HUD updated, signal told us to")
-	label_score.text = "Score: " + str(PlayerVariables.score)
-	label_level.text = "Level: " + str(PlayerVariables.level)
+	label_level_value.text = str(PlayerVariables.level)
+	label_score_value.text = str(PlayerVariables.score)
 
 # Pause dialog
 # TODO: consider another way to pause the game, Rioni says this way caused misc problems

@@ -4,7 +4,7 @@ extends Node
 signal update_ui() # only call this from PlayerVariables global script
 
 @warning_ignore("unused_signal")
-signal pompom_lasso(points:int)
+signal pompom_lasso()
 
 @warning_ignore("unused_signal")
-signal pompom_capture(points:int)
+signal pompom_capture()

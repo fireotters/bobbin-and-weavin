@@ -3,6 +3,10 @@ extends NPC
 # Child Nodes
 @export var rope_sprites: Array[Sprite2D] = []
 @onready var _timer_rope_remove: Timer = %timer_rope_remove
+@onready var _capturefailgiggle: Label = $Sprite2D/capturefailgiggle
+@onready var _timer_capturefail: Timer = $timer_capturefail
+
+
 # Health
 var rope_state = -1 # -1 = no ropes attached. 0/1 = partly tied up. 2 = fully tied up
 # Movement
@@ -69,7 +73,7 @@ func do_movement(delta: float):
 
 func handle_collision_with_box(_collision: KinematicCollision2D):
 	print("I have been freed, Yippee!")
-	SignalBus.pompom_capture.emit(100)
+	SignalBus.pompom_capture.emit()
 	queue_free()
 
 func handle_collision_with_enemy(collision: KinematicCollision2D):
@@ -96,12 +100,12 @@ func rope_add():
 		rope_state += 1
 		print(name + ": I have been tied up! State: " + str(rope_state))
 		_update_ropes()
-		SignalBus.pompom_lasso.emit(5)
+		SignalBus.pompom_lasso.emit()
 
 func rope_remove():
 	if rope_state > -1:
-		print(name + ": I recovered health")
 		rope_state -= 1
+		print(name + ": I've removed a rope! State: " + str(rope_state))
 		_update_ropes()
 	if rope_state == -1:
 		_timer_rope_remove.stop()
@@ -130,7 +134,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				$Rope.attach_target(self)
 			else:
 				print(name + ": Hehe, you can't capture me yet!")
-				$Sprite2D/temp_capturefailgiggle.visible = true
-				await get_tree().create_timer(1).timeout
-				$Sprite2D/temp_capturefailgiggle.visible = false
+				_capturefailgiggle.visible = true
+				_timer_capturefail.start()
 			
+func _on_timer_capturefail_timeout() -> void:
+	_capturefailgiggle.visible = false

@@ -21,10 +21,9 @@ func go_to_next_level():
 	level += 1
 
 # Signals for in-game events
-func _on_pompom_lasso(points):
-	print("PlayerVariables: Lasso success. Grant '" + str(points) + "' points.")
-	_grant_points(points)
-func _on_pompom_capture(points):
-	print("PlayerVariables: Capture success. Grant '" + str(points) + "' points.")
-	_grant_points(points)
+func _on_pompom_lasso():
+	print("PlayerVariables: Lasso success")
+func _on_pompom_capture():
+	print("PlayerVariables: Capture success. Grant 1 rescue point.")
+	_grant_points(1)
 	
