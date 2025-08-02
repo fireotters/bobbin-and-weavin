@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://npw4l30hf0k5"]
 
-[ext_resource type="Script" uid="uid://dohmmorlfpwbm" path="res://scenes/ui/components/volume_slider.gd" id="1_eevsp"]
+[ext_resource type="Script" uid="uid://dohmmorlfpwbm" path="res://scenes/ui/components/sfx_test_volume_slider.gd" id="1_eevsp"]
 [ext_resource type="Script" uid="uid://c1nyptul1x6kv" path="res://scenes/ui/panel_settings.gd" id="1_uyryx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_237h2"]
@@ -43,7 +43,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_237h2")
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
 offset_right = 150.0
+offset_bottom = -8.0
 grow_vertical = 2
 
 [node name="subpanel_selector" type="VBoxContainer" parent="panel/left_half"]
@@ -58,15 +61,16 @@ grow_vertical = 2
 
 [node name="btn_audio" type="Button" parent="panel/left_half/subpanel_selector"]
 layout_mode = 2
-text = "🔉 Audio"
+text = "Audio"
 
 [node name="btn_video" type="Button" parent="panel/left_half/subpanel_selector"]
 layout_mode = 2
-text = "🖥️ Graphics"
+text = "Graphics"
 
 [node name="btn_game" type="Button" parent="panel/left_half/subpanel_selector"]
+visible = false
 layout_mode = 2
-text = "🎮 Gameplay"
+text = "Gameplay"
 
 [node name="btn_back" type="Button" parent="panel/left_half"]
 layout_mode = 1
@@ -128,31 +132,30 @@ layout_mode = 2
 text = "Master Volume"
 
 [node name="slider_master" type="HSlider" parent="panel/right_half/subpanel_audio/sliders"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
-step = 0.001
-script = ExtResource("1_eevsp")
-bus_name = "Master"
+step = 0.01
 
 [node name="Music" type="Label" parent="panel/right_half/subpanel_audio/sliders"]
 layout_mode = 2
 text = "Music"
 
 [node name="slider_music" type="HSlider" parent="panel/right_half/subpanel_audio/sliders"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
-step = 0.001
-script = ExtResource("1_eevsp")
-bus_name = "music"
+step = 0.01
 
 [node name="SFX" type="Label" parent="panel/right_half/subpanel_audio/sliders"]
 layout_mode = 2
 text = "SFX"
 
 [node name="slider_sfx" type="HSlider" parent="panel/right_half/subpanel_audio/sliders"]
+unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
-step = 0.001
+step = 0.01
 script = ExtResource("1_eevsp")
 bus_name = "sfx"
 
@@ -178,6 +181,23 @@ grow_horizontal = 2
 text = "Graphics Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="options" type="VBoxContainer" parent="panel/right_half/subpanel_video"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 53.0
+offset_right = -20.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cbox_fullscreen" type="CheckBox" parent="panel/right_half/subpanel_video/options"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fullscreen"
 
 [node name="subpanel_game" type="Control" parent="panel/right_half"]
 unique_name_in_owner = true
@@ -206,3 +226,8 @@ vertical_alignment = 1
 [connection signal="pressed" from="panel/left_half/subpanel_selector/btn_video" to="." method="_on_btn_video_pressed"]
 [connection signal="pressed" from="panel/left_half/subpanel_selector/btn_game" to="." method="_on_btn_game_pressed"]
 [connection signal="pressed" from="panel/left_half/btn_back" to="." method="_on_btn_back_pressed"]
+[connection signal="value_changed" from="panel/right_half/subpanel_audio/sliders/slider_master" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="panel/right_half/subpanel_audio/sliders/slider_music" to="." method="_on_slider_music_value_changed"]
+[connection signal="value_changed" from="panel/right_half/subpanel_audio/sliders/slider_sfx" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="value_changed" from="panel/right_half/subpanel_audio/sliders/slider_sfx" to="panel/right_half/subpanel_audio/sliders/slider_sfx" method="_on_value_changed"]
+[connection signal="toggled" from="panel/right_half/subpanel_video/options/cbox_fullscreen" to="." method="_on_cbox_fullscreen_toggled"]

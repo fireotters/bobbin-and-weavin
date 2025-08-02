@@ -37,6 +37,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 AudioPlayer="*res://scenes/global/audio_player.tscn"
 PlayerVariables="*res://scenes/global/player_variables.gd"
 SignalBus="*res://scenes/global/signal_bus.gd"
+ConfigfileHandler="*res://scenes/global/configfile_handler.gd"
 
 [display]
 
