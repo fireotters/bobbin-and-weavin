@@ -17,6 +17,8 @@ size = Vector2(190, 795)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_rhpan")
+npc_pompom = ExtResource("2_dtmi3")
+npc_enemy_scissors = ExtResource("6_65r54")
 
 [node name="bg & borders" type="Node2D" parent="."]
 
@@ -82,23 +84,5 @@ shape = SubResource("WorldBoundaryShape2D_eyudv")
 [node name="Hud" parent="." instance=ExtResource("1_dtmi3")]
 
 [node name="LassoTool" parent="." instance=ExtResource("1_khnyk")]
-
-[node name="npc_pompom" parent="." instance=ExtResource("2_dtmi3")]
-position = Vector2(64, 94)
-
-[node name="npc_pompom2" parent="." instance=ExtResource("2_dtmi3")]
-position = Vector2(204, 378)
-
-[node name="npc_pompom3" parent="." instance=ExtResource("2_dtmi3")]
-position = Vector2(463, 247)
-
-[node name="npc_pompom4" parent="." instance=ExtResource("2_dtmi3")]
-position = Vector2(755, 175)
-
-[node name="npc_enemy_scissors" parent="." instance=ExtResource("6_65r54")]
-position = Vector2(250, 185)
-
-[node name="npc_enemy_scissors2" parent="." instance=ExtResource("6_65r54")]
-position = Vector2(682, 382)
 
 [connection signal="capture_success" from="LassoTool" to="CaptureHandler" method="_on_lasso_tool_capture_success"]

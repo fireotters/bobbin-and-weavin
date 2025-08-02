@@ -12,7 +12,7 @@ func _ready() -> void:
 func _update_hud():
 	print("HUD updated, signal told us to")
 	label_level_value.text = str(PlayerVariables.level)
-	label_score_value.text = str(PlayerVariables.score)
+	label_score_value.text = str(PlayerVariables.pom_rescues)
 
 # Pause dialog
 # TODO: consider another way to pause the game, Rioni says this way caused misc problems

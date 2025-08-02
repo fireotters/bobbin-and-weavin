@@ -30,7 +30,10 @@ func _ready() -> void:
 	isAlly = true;
 	collision_mask = enemy_layermask
 
-# Movement
+
+# -------------------------------------
+# Movement (random movement & while being pulled)
+# -------------------------------------
 # Helped by Godot docs: https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html#click-and-move
 # And Godot forums: https://forum.godotengine.org/t/how-to-make-an-area2d-apears-on-random-position-in-the-screen/20456/2
 func _physics_process(delta: float) -> void:
@@ -71,6 +74,9 @@ func do_movement(delta: float):
 		if entity is PompomBox:
 			handle_collision_with_box(collision)
 
+# -------------------------------------
+# Collisions
+# -------------------------------------
 func handle_collision_with_box(_collision: KinematicCollision2D):
 	print("I have been freed, Yippee!")
 	SignalBus.pompom_capture.emit()
@@ -90,10 +96,12 @@ func handle_collision_with_enemy(collision: KinematicCollision2D):
 	move_and_slide()
 
 func _on_timer_movement_timeout() -> void:
-	_choose_new_destination()
+	target = PlayerVariables.random_onscreen_coord()
 	$timer_movement.wait_time = _choose_from_array(movement_wait_times)
 
+# -------------------------------------
 # Rope States
+# -------------------------------------
 func rope_add():
 	_timer_rope_remove.start()
 	if rope_state < 2:
@@ -122,7 +130,9 @@ func _on_timer_rope_remove_timeout() -> void:
 		rope_remove()
 
 
+# -------------------------------------
 # Pickup & Rescue
+# -------------------------------------
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	# TODO: Ensure this actually works for touchscreen!
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) or event is InputEventScreenTouch:
