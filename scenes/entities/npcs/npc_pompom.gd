@@ -91,6 +91,7 @@ func handle_collision_with_box(_collision: KinematicCollision2D):
 func handle_collision_with_enemy(collision: KinematicCollision2D):
 	life_points -= 1
 	$AnimationPlayer.current_animation = "damaged"
+	target = PlayerVariables.random_onscreen_coord()
 	
 	print("Collided, I have now " ,life_points)
 	if life_points <= 0:
