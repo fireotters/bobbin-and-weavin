@@ -55,16 +55,17 @@ theme_override_font_sizes/font_size = 30
 text = "0"
 horizontal_alignment = 1
 
-[node name="label_score" type="RichTextLabel" parent="game_hud/panel"]
+[node name="label_remaining" type="RichTextLabel" parent="game_hud/panel"]
 layout_mode = 0
-offset_left = 173.0
+offset_left = 163.0
 offset_top = 9.0
-offset_right = 259.0
+offset_right = 269.0
 offset_bottom = 34.0
-text = "Rescued:"
+text = "Remaining:"
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="label_score_value" type="Label" parent="game_hud/panel"]
+[node name="label_remaining_value" type="Label" parent="game_hud/panel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 180.0
@@ -75,16 +76,16 @@ theme_override_font_sizes/font_size = 30
 text = "0"
 horizontal_alignment = 1
 
-[node name="label_death" type="RichTextLabel" parent="game_hud/panel"]
+[node name="label_rescued" type="RichTextLabel" parent="game_hud/panel"]
 layout_mode = 0
 offset_left = 265.0
 offset_top = 9.0
 offset_right = 351.0
 offset_bottom = 34.0
-text = "Lost:"
+text = "Rescued:"
 horizontal_alignment = 1
 
-[node name="label_death_value" type="Label" parent="game_hud/panel"]
+[node name="label_rescued_value" type="Label" parent="game_hud/panel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 272.0
@@ -92,7 +93,7 @@ offset_top = 26.0
 offset_right = 344.0
 offset_bottom = 72.0
 theme_override_font_sizes/font_size = 30
-text = "0"
+text = "0/0"
 horizontal_alignment = 1
 
 [node name="panel_pause" type="CanvasLayer" parent="."]
@@ -148,10 +149,120 @@ scene_path = "uid://dytaj53wqmm44"
 [node name="btn_exit" type="Button" parent="panel_pause/panel/subpanel_selector"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Exit to Main Menu"
+text = "Exit to Menu"
+script = ExtResource("2_wdn0o")
+scene_path = "uid://olxmp2tfg8yc"
+
+[node name="panel_gameover" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="bg" type="ColorRect" parent="panel_gameover"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0588235, 0.0588235, 0.458824)
+
+[node name="panel" type="Panel" parent="panel_gameover"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -152.0
+offset_right = 228.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_237h2")
+
+[node name="label_gameover" type="RichTextLabel" parent="panel_gameover/panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -133.0
+offset_right = 128.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=40px]Game Over![/font_size]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label_gameover2" type="RichTextLabel" parent="panel_gameover/panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -85.0
+offset_right = 180.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Too many Pom-Poms have perished!"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label_gameover3" type="RichTextLabel" parent="panel_gameover/panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -44.0
+offset_right = 180.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Total Saved: 0"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="subpanel_selector" type="VBoxContainer" parent="panel_gameover/panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 91.0
+offset_top = 162.0
+offset_right = -91.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="btn_restart" type="Button" parent="panel_gameover/panel/subpanel_selector"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Start Over"
+script = ExtResource("2_wdn0o")
+scene_path = "uid://dytaj53wqmm44"
+
+[node name="btn_exit" type="Button" parent="panel_gameover/panel/subpanel_selector"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Exit to Menu"
 script = ExtResource("2_wdn0o")
 scene_path = "uid://olxmp2tfg8yc"
 
 [connection signal="pressed" from="game_hud/panel/btn_pause" to="." method="_on_btn_pause_pressed"]
 [connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_resume" to="." method="_on_btn_resume_pressed"]
 [connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_restart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="panel_gameover/panel/subpanel_selector/btn_restart" to="." method="_on_btn_restart_pressed"]

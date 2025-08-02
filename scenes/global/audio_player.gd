@@ -16,7 +16,8 @@ func _ready():
 	bus = "music"
 	
 func _play_music(music: AudioStream):
-	if stream == music:
+	# If the track is the same, and track is not STOPPED, then do not restart the track
+	if stream == music and playing:
 		return
 	stream = music
 	play()

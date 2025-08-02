@@ -80,7 +80,7 @@ offset_bottom = -60.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
-text = "➡️"
+text = "Credits >"
 
 [node name="page_2" type="Control" parent="."]
 unique_name_in_owner = true
@@ -325,7 +325,7 @@ offset_top = 545.0
 offset_right = 937.0
 offset_bottom = 585.0
 size_flags_horizontal = 3
-text = "↩️"
+text = "Exit To Menu"
 script = ExtResource("2_17g36")
 scene_path = "uid://olxmp2tfg8yc"
 

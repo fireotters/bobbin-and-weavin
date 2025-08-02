@@ -19,10 +19,11 @@ func prepare_level():
 	if num_of_pompoms > max_num_of_pompoms:
 		num_of_pompoms = max_num_of_pompoms
 	PlayerVariables.num_of_poms = num_of_pompoms
-	PlayerVariables.allowed_max_deaths = floor(num_of_pompoms * 0.25)
+	PlayerVariables.allowed_max_deaths = int(floor(num_of_pompoms * 0.34))
 	var num_of_enemies = PlayerVariables.level * 2
 	if num_of_enemies > max_num_of_enemies:
 		num_of_enemies = max_num_of_enemies
+	SignalBus.update_ui.emit()
 		
 	# Spawn NPCs
 	for i in range(0, num_of_enemies):
