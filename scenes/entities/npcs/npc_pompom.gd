@@ -13,6 +13,9 @@ var rope_state = -1 # -1 = no ropes attached. 0/1 = partly tied up. 2 = fully ti
 const movement_wait_times = [3.0, 5.0, 7.0]
 const speed = 30
 
+var can_avoid_enemy := true
+
+@export var probability_to_avoid := 30.0
 @export_flags_2d_physics var enemy_layermask := (1 << 1)
 @export_flags_2d_physics var box_layermask := (1 << 2)
 # Extra time that the entity will be able to collide with the
@@ -36,8 +39,31 @@ func _ready() -> void:
 # -------------------------------------
 # Helped by Godot docs: https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html#click-and-move
 # And Godot forums: https://forum.godotengine.org/t/how-to-make-an-area2d-apears-on-random-position-in-the-screen/20456/2
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	if !being_pulled:
+		var enemies := get_tree().get_nodes_in_group("enemies")
+		for enemy in enemies:
+			var dir_to_enemy = global_position.direction_to(enemy.global_position)
+			var similarity = velocity.normalized().dot(dir_to_enemy)
+			
+			# So, if the pompom is going towards the enemy (or kinda, I left some threshold) then it will change direction
+			# because otherwise this is stupidly unfair
+			if similarity > 0.7 and global_position.distance_to(enemy.global_position) < 70 and can_avoid_enemy:
+				# There is a change they won't avoid the scissor
+				if randf() * 100 < probability_to_avoid: 
+					get_tree().create_timer(0.5).timeout.connect(func(): can_avoid_enemy = true)
+					break
+				
+				print("I'm scared!")
+				can_avoid_enemy = false
+				get_tree().create_timer(0.2).timeout.connect(func(): can_avoid_enemy = true)
+						
+				var dir_away = dir_to_enemy * -1
+				var random_offset = Vector2(randf_range(-0.5, 0.5), randf_range(-0.5, 0.5)).normalized() * 0.5
+				var dir_escape = (dir_away + random_offset).normalized()
+				target = global_position + dir_escape * randf_range(40, 100)
+				break
+		
 		var health_modifier = 1.0 - 0.25 * rope_state
 		velocity = velocity.lerp(position.direction_to(target) * speed * health_modifier, .08)
 		if position.distance_to(target) > 10:
@@ -91,7 +117,7 @@ func handle_collision_with_box(_collision: KinematicCollision2D):
 func handle_collision_with_enemy(collision: KinematicCollision2D):
 	life_points -= 1
 	$AnimationPlayer.current_animation = "damaged"
-	target = PlayerVariables.random_onscreen_coord()
+	pick_new_random_direction()
 	
 	print("Collided, I have now " ,life_points)
 	if life_points <= 0:
@@ -104,8 +130,11 @@ func handle_collision_with_enemy(collision: KinematicCollision2D):
 	move_and_slide()
 
 func _on_timer_movement_timeout() -> void:
-	target = PlayerVariables.random_onscreen_coord()
+	pick_new_random_direction()
 	$timer_movement.wait_time = _choose_from_array(movement_wait_times)
+
+func pick_new_random_direction():
+	target = PlayerVariables.random_onscreen_coord()
 
 # -------------------------------------
 # Rope States
