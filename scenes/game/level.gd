@@ -29,12 +29,13 @@ func prepare_level():
 	SignalBus.update_ui.emit()
 		
 	# Spawn NPCs
-	for i in range(0, num_of_cats):
+	for i in range(0, num_of_enemies):
 		var o = npc_enemy_scissors.instantiate()
 		o.global_position = PlayerVariables.random_onscreen_coord()
 		o.rotation = randf_range(0, 360)
 		add_child(o)
-		
+	
+	for i in range(0, num_of_cats):
 		var cat = npc_enemy_cat.instantiate()
 		cat.global_position = PlayerVariables.random_onscreen_coord()
 		add_child(cat)
