@@ -8,12 +8,15 @@ var max_num_of_enemies = 8
 func _ready() -> void:
 	PlayerVariables.reset_game()
 	prepare_next_level()
+	SignalBus.level_passed.connect(prepare_next_level)
 	
 func prepare_next_level():
 	# Decide NPC count, based on level number
 	var num_of_pompoms = PlayerVariables.level * 3
 	if num_of_pompoms > max_num_of_pompoms:
 		num_of_pompoms = max_num_of_pompoms
+	PlayerVariables.num_of_poms = num_of_pompoms
+	PlayerVariables.allowed_max_deaths = floor(num_of_pompoms * 0.25)
 	var num_of_enemies = PlayerVariables.level * 2
 	if num_of_enemies > max_num_of_enemies:
 		num_of_enemies = max_num_of_enemies

@@ -87,6 +87,7 @@ func handle_collision_with_enemy(collision: KinematicCollision2D):
 	
 	print("Collided, I have now " ,life_points)
 	if life_points <= 0:
+		SignalBus.pompom_died.emit()
 		queue_free()
 		return
 	
