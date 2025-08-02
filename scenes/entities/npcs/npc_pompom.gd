@@ -32,6 +32,7 @@ var being_pulled := false
 func _ready() -> void:
 	isAlly = true;
 	collision_mask = enemy_layermask
+	pick_new_random_direction()
 
 
 # -------------------------------------

@@ -55,8 +55,8 @@ func _on_pompom_death():
 	check_level_progress()
 	
 # Useful functions
+@onready var rng := RandomNumberGenerator.new()
 func random_onscreen_coord():
-	var rng = RandomNumberGenerator.new()
 	var rndX = rng.randi_range(PlayerVariables.npc_spawnlimit_left, PlayerVariables.npc_spawnlimit_right)
 	var rndY = rng.randi_range(PlayerVariables.npc_spawnlimit_up, PlayerVariables.npc_spawnlimit_down)
 	return Vector2(rndX, rndY)
