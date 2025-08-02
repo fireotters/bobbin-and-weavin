@@ -21,9 +21,11 @@ func _update_hud():
 func pause():
 	Engine.time_scale = 0
 	panel_pause.visible = true
+	AudioPlayer.pause_music()
 func resume():
 	Engine.time_scale = 1
 	panel_pause.visible = false
+	AudioPlayer.resume_music()
 
 func _on_btn_pause_pressed() -> void:
 	pause()
@@ -36,3 +38,5 @@ func _input(_event):
 			
 func _on_btn_resume_pressed() -> void:
 	resume()
+func _on_btn_restart_pressed() -> void:
+	PlayerVariables.reset_game()

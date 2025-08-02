@@ -7,10 +7,13 @@ var max_num_of_enemies = 8
 
 func _ready() -> void:
 	PlayerVariables.reset_game()
-	prepare_next_level()
-	SignalBus.level_passed.connect(prepare_next_level)
+	prepare_level()
+	SignalBus.level_passed.connect(prepare_level)
 	
-func prepare_next_level():
+func prepare_level():
+	# Delete contents of old level
+	clear_old_level()
+	
 	# Decide NPC count, based on level number
 	var num_of_pompoms = PlayerVariables.level * 3
 	if num_of_pompoms > max_num_of_pompoms:
@@ -30,3 +33,12 @@ func prepare_next_level():
 		var p = npc_pompom.instantiate()
 		p.global_position = PlayerVariables.random_onscreen_coord()
 		add_child(p)
+
+func clear_old_level():
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for e in enemies:
+		e.queue_free()
+	# PomPoms should all be gone by the time level is reset, however this is a failsafe
+	var pompoms = get_tree().get_nodes_in_group("pompoms")
+	for p in pompoms:
+		p.queue_free()

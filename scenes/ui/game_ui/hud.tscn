@@ -141,7 +141,9 @@ text = "Resume"
 [node name="btn_restart" type="Button" parent="panel_pause/panel/subpanel_selector"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Restart (doesn't function yet)"
+text = "Start Over"
+script = ExtResource("2_wdn0o")
+scene_path = "uid://dytaj53wqmm44"
 
 [node name="btn_exit" type="Button" parent="panel_pause/panel/subpanel_selector"]
 layout_mode = 2
@@ -152,4 +154,4 @@ scene_path = "uid://olxmp2tfg8yc"
 
 [connection signal="pressed" from="game_hud/panel/btn_pause" to="." method="_on_btn_pause_pressed"]
 [connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_resume" to="." method="_on_btn_resume_pressed"]
-[connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_restart" to="panel_pause" method="_on_btn_video_pressed"]
+[connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_restart" to="." method="_on_btn_restart_pressed"]

@@ -24,7 +24,7 @@ rope_sprites = [NodePath("Sprite2D/ropes/rope1"), NodePath("Sprite2D/ropes/rope2
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_pmbet")
 
-[node name="capturefailgiggle" type="Label" parent="Sprite2D"]
+[node name="capturefailgiggle" type="Label" parent="Sprite2D" groups=["pompoms"]]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0

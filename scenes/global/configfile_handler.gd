@@ -45,4 +45,4 @@ func apply_audio_settings():
 	
 func apply_video_settings():
 	var video_settings = load_video_settings()
-	print("Not implemented")
+	print("Video settings - not implemented")

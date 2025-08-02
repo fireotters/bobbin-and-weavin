@@ -1,5 +1,6 @@
 extends Node
 
+# Level stats
 var level = 1
 var pom_rescues = 0
 var pom_deaths = 0
@@ -25,8 +26,11 @@ func reset_game():
 	num_of_poms = 0
 	allowed_max_deaths = 0
 	AudioPlayer.play_music__level()
+	SignalBus.level_passed.emit()
 
 func check_level_progress():
+	print("LEVEL PROGRESS CHECK: deaths (" + str(pom_deaths) + "), max deaths allowed (" + str(allowed_max_deaths) + ")")
+	print("LEVEL PROGRESS CHECK: rescues (" + str(pom_rescues) + "), total poms spawned (" + str(num_of_poms) + ")")
 	if pom_deaths > allowed_max_deaths:
 		SignalBus.level_death.emit()
 	elif pom_rescues + pom_deaths >= num_of_poms:

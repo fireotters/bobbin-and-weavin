@@ -5,7 +5,9 @@ extends AudioStreamPlayer
 const mainmenu_music = preload("res://assets/music/ultimategamemusiccollection_title_piano_loop.ogg")
 const level_music = preload("res://assets/music/ultimategamemusiccollection_jungle_2_loop.ogg")
 
-# sound play functions
+# -------------------------------------
+# Music
+# -------------------------------------
 func _ready():
 	bus = "music"
 	
@@ -16,11 +18,22 @@ func _play_music(music: AudioStream):
 	play()
 	
 func play_music__mainmenu():
+	stream_paused = false
 	_play_music(mainmenu_music)
 	
 func play_music__level():
+	stream_paused = false
 	_play_music(level_music)
 
+func pause_music():
+	stream_paused = true
+func resume_music():
+	stream_paused = false
+	
+
+# -------------------------------------
+# SFX Summoning
+# -------------------------------------
 func play_FX(fx_stream: AudioStream, fx_name:String = "FX_UNNAMED", volume_modifier:float = 1.0):
 	var fx_player = AudioStreamPlayer.new()
 	fx_player.stream = fx_stream
