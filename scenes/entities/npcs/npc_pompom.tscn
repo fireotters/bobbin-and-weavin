@@ -60,7 +60,7 @@ shape = SubResource("CircleShape2D_khmeb")
 
 [node name="timer_rope_remove" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 3.5
 
 [node name="timer_movement" type="Timer" parent="."]
 autostart = true

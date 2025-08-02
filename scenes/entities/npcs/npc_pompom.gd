@@ -5,7 +5,6 @@ extends NPC
 @onready var _timer_rope_remove: Timer = %timer_rope_remove
 # Health
 var rope_state = -1 # -1 = no ropes attached. 0/1 = partly tied up. 2 = fully tied up
-var is_immobilised = false
 # Movement
 const movement_wait_times = [3.0, 5.0, 7.0]
 const speed = 30
@@ -54,8 +53,9 @@ func _physics_process(delta: float) -> void:
 func stop_pulling():
 	$Rope.detach_target()
 	being_pulled = false
+	_timer_rope_remove.start() # resume struggle-free mechanic
 	
-	# Start timer to restore layermask
+	# Start timer to restore box layermask
 	get_tree().create_timer(inertia_time).timeout.connect(func(): if !being_pulled: collision_mask = enemy_layermask)
 
 func do_movement(delta: float):
@@ -69,6 +69,7 @@ func do_movement(delta: float):
 
 func handle_collision_with_box(_collision: KinematicCollision2D):
 	print("I have been freed, Yippee!")
+	SignalBus.pompom_capture.emit(100)
 	queue_free()
 
 func handle_collision_with_enemy(collision: KinematicCollision2D):
@@ -92,18 +93,14 @@ func _on_timer_movement_timeout() -> void:
 func rope_add():
 	_timer_rope_remove.start()
 	if rope_state < 2:
-		print(name + ": I took damage")
 		rope_state += 1
+		print(name + ": I have been tied up! State: " + str(rope_state))
 		_update_ropes()
-	if rope_state == 3:
-		print(name + ": I am now stuck")
-		is_immobilised = true
-	SignalBus.pompom_lasso.emit(5)
+		SignalBus.pompom_lasso.emit(5)
 
 func rope_remove():
 	if rope_state > -1:
 		print(name + ": I recovered health")
-		is_immobilised = false
 		rope_state -= 1
 		_update_ropes()
 	if rope_state == -1:
@@ -117,7 +114,7 @@ func _update_ropes():
 		rope_sprites[rope_state].visible = true
 
 func _on_timer_rope_remove_timeout() -> void:
-	if not is_immobilised:
+	if not being_pulled:
 		rope_remove()
 
 
@@ -127,14 +124,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) or event is InputEventScreenTouch:
 		if event.pressed:
 			if rope_state == 2:
-				is_immobilised = true
-				# TODO: Handle the capturing game mechanic. For now, clicking a tied-up pompom will capture them
-				SignalBus.pompom_capture.emit(100)
 				being_pulled = true
+				_timer_rope_remove.stop() # pompom will not struggle free while being pulled
 				collision_mask |= box_layermask
 				$Rope.attach_target(self)
-				#print(name + ": *was Thanos snapped*")
-				#queue_free()
 			else:
 				print(name + ": Hehe, you can't capture me yet!")
 				$Sprite2D/temp_capturefailgiggle.visible = true
