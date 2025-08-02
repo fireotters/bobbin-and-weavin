@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dytaj53wqmm44"]
+[gd_scene load_steps=11 format=3 uid="uid://dytaj53wqmm44"]
 
 [ext_resource type="PackedScene" uid="uid://b5wrmqx7ct3c3" path="res://scenes/ui/game_ui/hud.tscn" id="1_dtmi3"]
 [ext_resource type="PackedScene" uid="uid://cv3re4nykmk1w" path="res://scenes/entities/lasso_tool/lasso_tool.tscn" id="1_khnyk"]
@@ -6,13 +6,36 @@
 [ext_resource type="PackedScene" uid="uid://bfleouafk1yjg" path="res://scenes/entities/capture_handler/capture_handler.tscn" id="2_65r54"]
 [ext_resource type="PackedScene" uid="uid://bywj01bfk33xe" path="res://scenes/entities/npcs/npc_pompom.tscn" id="2_dtmi3"]
 [ext_resource type="PackedScene" uid="uid://ch6t6jp1ldkam" path="res://scenes/entities/npcs/npc_enemy_scissors.tscn" id="6_65r54"]
+[ext_resource type="Texture2D" uid="uid://b13b2yrxrbag3" path="res://assets/art/bg/gamescene_table.png" id="7_eyudv"]
 [ext_resource type="Script" uid="uid://da37tr3rc2iu" path="res://scenes/game/box.gd" id="7_mxnjv"]
+[ext_resource type="Texture2D" uid="uid://bsfe0c8hvhjll" path="res://assets/art/bg/gamescene_box.png" id="9_p2ltr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65r54"]
-size = Vector2(112, 663.5)
+size = Vector2(190, 795)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_rhpan")
+
+[node name="bg" type="Node2D" parent="."]
+
+[node name="table" type="Sprite2D" parent="bg"]
+position = Vector2(529.5, 322.5)
+scale = Vector2(1.32125, 1.075)
+texture = ExtResource("7_eyudv")
+
+[node name="Box" type="StaticBody2D" parent="bg"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("7_mxnjv")
+
+[node name="Sprite2D" type="Sprite2D" parent="bg/Box"]
+position = Vector2(1104.5, 325.5)
+scale = Vector2(1.21505, 1.07833)
+texture = ExtResource("9_p2ltr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Box"]
+position = Vector2(1145, 336.5)
+shape = SubResource("RectangleShape2D_65r54")
 
 [node name="CaptureHandler" parent="." instance=ExtResource("2_65r54")]
 
@@ -37,14 +60,5 @@ position = Vector2(250, 185)
 
 [node name="npc_enemy_scissors2" parent="." instance=ExtResource("6_65r54")]
 position = Vector2(682, 382)
-
-[node name="Box" type="StaticBody2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("7_mxnjv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
-position = Vector2(1152, 322.25)
-shape = SubResource("RectangleShape2D_65r54")
 
 [connection signal="capture_success" from="LassoTool" to="CaptureHandler" method="_on_lasso_tool_capture_success"]
