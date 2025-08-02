@@ -41,10 +41,6 @@ func _on_btn_back_pressed() -> void:
 
 
 # Settings functionality
-func _on_cbox_fullscreen_toggled(toggled_on: bool) -> void:
-	ConfigfileHandler.save_video_setting("fullscreen", toggled_on)
-	ConfigfileHandler.apply_video_settings()
-
 func _on_slider_master_value_changed(value: float) -> void:
 	ConfigfileHandler.save_audio_setting("master_volume", value)
 	ConfigfileHandler.apply_audio_settings()
@@ -56,3 +52,17 @@ func _on_slider_music_value_changed(value: float) -> void:
 func _on_slider_sfx_value_changed(value: float) -> void:
 	ConfigfileHandler.save_audio_setting("sfx_volume", slider_sfx.value)
 	ConfigfileHandler.apply_audio_settings()
+	
+func _on_cbox_fullscreen_toggled(toggled_on: bool) -> void:
+	ConfigfileHandler.save_video_setting("fullscreen", toggled_on)
+	ConfigfileHandler.apply_video_settings()
+
+func _on_reset_score_pressed() -> void:
+	ConfigfileHandler.reset_high_score()
+	get_tree().change_scene_to_file("res://scenes/ui/menu_main.tscn")
+
+func _on_reset_all_prefs_pressed() -> void:
+	ConfigfileHandler.reset_to_default_configs()
+	ConfigfileHandler.apply_audio_settings()
+	AudioPlayer.stop()
+	get_tree().change_scene_to_file("res://scenes/ui/menu_main.tscn")

@@ -1,11 +1,22 @@
 extends Control
 
 @export var panel_settings: PackedScene
+@onready var high_score_text: RichTextLabel = %HighScoreText
+
 
 func _ready() -> void:
 	# Set version in menu
 	var version_text: RichTextLabel = get_node('VersionText')
 	version_text.text += ProjectSettings.get_setting('application/config/version', 'none')
+	
+	# Set high score in menu
+	var high_score = ConfigfileHandler.load_high_score_settings()
+	if high_score["score"] > 0:
+		high_score_text.visible = true
+		var entry = "High Score: " + str(high_score["score"])
+		if high_score["nickname"] != "":
+			entry += "\n(by '" + high_score["nickname"] + "')"
+		high_score_text.text = entry
 	
 	# Check if exit button should be present
 	var exit_button: Button = get_node('ButtonContainer/ExitButton')

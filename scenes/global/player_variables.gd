@@ -7,6 +7,9 @@ var pom_deaths = 0
 var num_of_poms = 0
 var allowed_max_deaths = 0
 
+# Per-game stats
+var total_rescued_this_game = 0
+
 # Bounds for the npc spawning & random wandering
 const npc_spawnlimit_left = 40
 const npc_spawnlimit_right = 1000
@@ -25,6 +28,7 @@ func reset_game():
 	pom_deaths = 0
 	num_of_poms = 0
 	allowed_max_deaths = 0
+	total_rescued_this_game = 0
 	AudioPlayer.play_music__level()
 	SignalBus.level_passed.emit()
 
@@ -48,6 +52,7 @@ func _on_pompom_lasso():
 func _on_pompom_capture():
 	print("PlayerVariables: Capture success. Grant 1 rescue point.")
 	pom_rescues += 1
+	total_rescued_this_game += 1
 	AudioPlayer.play_sound_pompom_saved()
 	check_level_progress()
 func _on_pompom_death():

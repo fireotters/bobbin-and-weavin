@@ -195,3 +195,9 @@ func _process(_delta: float) -> void:
 		$CapturingSound.stop()
 		line2d.clear_points()
 		
+func _ready():
+	SignalBus.level_death.connect(_game_over)
+	
+func _game_over():
+	# Prevent player from drawing lasso's after game is over, by deleting the lasso
+	queue_free()

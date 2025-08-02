@@ -216,7 +216,8 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="label_gameover3" type="RichTextLabel" parent="panel_gameover/panel"]
+[node name="label_gameover_score" type="RichTextLabel" parent="panel_gameover/panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -224,13 +225,33 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -180.0
-offset_top = -44.0
+offset_top = -53.0
 offset_right = 180.0
-offset_bottom = -13.0
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
 text = "Total Saved: 0"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="label_gameover_bestscore" type="RichTextLabel" parent="panel_gameover/panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -30.0
+offset_right = 180.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Your Best Score: 0"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -240,13 +261,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 91.0
-offset_top = 162.0
-offset_right = -91.0
-offset_bottom = -58.0
+offset_left = 79.0
+offset_top = 160.0
+offset_right = -79.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
+
+[node name="lineedit_highscorename" type="LineEdit" parent="panel_gameover/panel/subpanel_selector"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+placeholder_text = "Congrats! Type a name here."
+max_length = 24
 
 [node name="btn_restart" type="Button" parent="panel_gameover/panel/subpanel_selector"]
 layout_mode = 2
@@ -266,3 +294,4 @@ scene_path = "uid://olxmp2tfg8yc"
 [connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_resume" to="." method="_on_btn_resume_pressed"]
 [connection signal="pressed" from="panel_pause/panel/subpanel_selector/btn_restart" to="." method="_on_btn_restart_pressed"]
 [connection signal="pressed" from="panel_gameover/panel/subpanel_selector/btn_restart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="panel_gameover/panel/subpanel_selector/btn_exit" to="." method="_on_btn_exit_pressed"]
