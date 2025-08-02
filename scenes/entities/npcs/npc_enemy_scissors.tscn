@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch6t6jp1ldkam"]
 
 [ext_resource type="Script" path="res://scenes/entities/npcs/npc_enemy_scissors.gd" id="1_8bfvg"]
-[ext_resource type="Texture2D" uid="uid://naconlwh5s47" path="res://assets/art/npc/npc_obstacle.png" id="2_xelr0"]
+[ext_resource type="Texture2D" uid="uid://oq10qfcrutfa" path="res://assets/art/npc/scissor_1.png" id="2_8bfvg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8bfvg"]
-radius = 23.0217
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xelr0"]
+radius = 18.8306
+height = 115.704
 
 [node name="npc_enemy_scissors" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -12,8 +13,11 @@ collision_mask = 0
 script = ExtResource("1_8bfvg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-35.4, 7.60001)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_xelr0")
+texture = ExtResource("2_8bfvg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8bfvg")
+position = Vector2(0.600002, -1.39999)
+rotation = -1.51156
+shape = SubResource("CapsuleShape2D_xelr0")

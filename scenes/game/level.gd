@@ -28,10 +28,19 @@ func prepare_level():
 	for i in range(0, num_of_enemies):
 		var o = npc_enemy_scissors.instantiate()
 		o.global_position = PlayerVariables.random_onscreen_coord()
+		o.rotation = randf_range(0, 360)
 		add_child(o)
+		
 	for i in range(0, num_of_pompoms):
 		var p = npc_pompom.instantiate()
 		p.global_position = PlayerVariables.random_onscreen_coord()
+		
+		# While the pompom collides with an enemy, we'll keep trying to pick a new on_screen coordinate
+		var enemies := get_tree().get_nodes_in_group("enemies")
+		for enemy in enemies:
+			while enemy.global_position.distance_to(p.global_position) < 100:
+				p.global_position = PlayerVariables.random_onscreen_coord()
+				
 		add_child(p)
 
 func clear_old_level():

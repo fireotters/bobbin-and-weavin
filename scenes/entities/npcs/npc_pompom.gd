@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 			
 			# So, if the pompom is going towards the enemy (or kinda, I left some threshold) then it will change direction
 			# because otherwise this is stupidly unfair
-			if similarity > 0.7 and global_position.distance_to(enemy.global_position) < 70 and can_avoid_enemy:
+			if similarity > 0.7 and global_position.distance_to(enemy.global_position) < 110 and can_avoid_enemy:
 				# There is a change they won't avoid the scissor
 				if randf() * 100 < probability_to_avoid: 
 					get_tree().create_timer(0.5).timeout.connect(func(): can_avoid_enemy = true)
