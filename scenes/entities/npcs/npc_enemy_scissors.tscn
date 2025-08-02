@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://oq10qfcrutfa" path="res://assets/art/npc/obstacles/scissor_1.png" id="2_8bfvg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xelr0"]
-radius = 18.8306
-height = 115.704
+radius = 21.1408
+height = 128.249
 
 [node name="npc_enemy_scissors" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -18,6 +18,6 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_8bfvg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.600002, -1.39999)
+position = Vector2(11, 2)
 rotation = -1.51156
 shape = SubResource("CapsuleShape2D_xelr0")

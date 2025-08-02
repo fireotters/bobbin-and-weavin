@@ -50,9 +50,10 @@ func load_video_settings():
 	return video_settings
 func load_high_score_settings():
 	var high_score_settings = {}
-	for key in config.get_section_keys("high_score"):
-		high_score_settings[key] = config.get_value("high_score", key)
-	return high_score_settings
+	if config.has_section("high_score"):
+		for key in config.get_section_keys("high_score"):
+			high_score_settings[key] = config.get_value("high_score", key)
+		return high_score_settings
 
 func apply_audio_settings():
 	var audio_settings = load_audio_settings()
@@ -60,8 +61,8 @@ func apply_audio_settings():
 	AudioServer.set_bus_volume_db(1, linear_to_db(audio_settings.music_volume))
 	AudioServer.set_bus_volume_db(2, linear_to_db(audio_settings.sfx_volume))
 func apply_video_settings():
-	var video_settings = load_video_settings()
+	#var video_settings = load_video_settings()
 	print("Video settings - not implemented")
 func apply_high_score_settings():
-	var high_score_settings = load_high_score_settings()
+	#var high_score_settings = load_high_score_settings()
 	print("High Score settings - not implemented")

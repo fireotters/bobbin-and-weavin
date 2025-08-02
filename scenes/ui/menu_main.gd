@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	# Set high score in menu
 	var high_score = ConfigfileHandler.load_high_score_settings()
-	if high_score["score"] > 0:
+	if "score" in high_score and high_score["score"] > 0:
 		high_score_text.visible = true
 		var entry = "High Score: " + str(high_score["score"])
 		if high_score["nickname"] != "":

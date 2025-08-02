@@ -81,7 +81,7 @@ func _game_over():
 	game_is_over = true
 	Engine.time_scale = 0
 	panel_gameover.visible = true
-	var best_score = ConfigfileHandler.load_high_score_settings()["score"]
+	var best_score = ConfigfileHandler.load_high_score_settings().get("score", 0)
 	if PlayerVariables.total_rescued_this_game > best_score:
 		label_gameover_score.text = "Total Saved: " + str(PlayerVariables.total_rescued_this_game)
 		label_gameover_bestscore.text = "New Best Score!"
