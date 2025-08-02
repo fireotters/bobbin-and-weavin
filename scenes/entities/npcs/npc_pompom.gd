@@ -60,7 +60,13 @@ func _physics_process(delta: float) -> void:
 func stop_pulling():
 	$Rope.detach_target()
 	being_pulled = false
+	$Sprite2D/ropes.visible = true
 	_timer_rope_remove.start() # resume struggle-free mechanic
+	
+	if life_points < 2:
+		$AnimationPlayer.current_animation = "damaged"
+	else:
+		$AnimationPlayer.current_animation = "default"
 	
 	# Start timer to restore box layermask
 	get_tree().create_timer(inertia_time).timeout.connect(func(): if !being_pulled: collision_mask = enemy_layermask)
@@ -84,6 +90,7 @@ func handle_collision_with_box(_collision: KinematicCollision2D):
 
 func handle_collision_with_enemy(collision: KinematicCollision2D):
 	life_points -= 1
+	$AnimationPlayer.current_animation = "damaged"
 	
 	print("Collided, I have now " ,life_points)
 	if life_points <= 0:
@@ -91,8 +98,7 @@ func handle_collision_with_enemy(collision: KinematicCollision2D):
 		queue_free()
 		return
 	
-	$Rope.detach_target()
-	being_pulled = false
+	stop_pulling()
 	velocity = collision.get_normal() * collision_repulse_force_multiplier
 	move_and_slide()
 
@@ -140,6 +146,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		if event.pressed:
 			if rope_state == 2:
 				being_pulled = true
+				$AnimationPlayer.current_animation = "tied"
+				$Sprite2D/ropes.visible = false
 				_timer_rope_remove.stop() # pompom will not struggle free while being pulled
 				collision_mask |= box_layermask
 				$Rope.attach_target(self)
