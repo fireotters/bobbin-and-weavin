@@ -5,6 +5,9 @@ extends AudioStreamPlayer
 const mainmenu_music = preload("res://assets/music/incompetech__menumusic__mischief_maker.ogg")
 const tutorial_music = preload("res://assets/music/incompetech__tutorialmusic__derp_nugget.ogg")
 const level_music = preload("res://assets/music/incompetech__levelmusic__march_of_the_spoons.ogg")
+const saved_pompom_sound := preload("res://assets/sfx/Coin 6.wav")
+const dead_sound_pompom := preload("res://assets/sfx/hit-2.wav")
+const collision_sound_pompom := preload("res://assets/sfx/hit-2.wav")
 
 # -------------------------------------
 # Music
@@ -21,7 +24,7 @@ func _play_music(music: AudioStream):
 func play_music__mainmenu():
 	stream_paused = false
 	_play_music(mainmenu_music)
-	
+
 func play_music__level():
 	stream_paused = false
 	_play_music(level_music)
@@ -47,3 +50,14 @@ func play_FX(fx_stream: AudioStream, fx_name:String = "FX_UNNAMED", volume_modif
 	# delete when done
 	await fx_player.finished
 	fx_player.queue_free()
+	
+func play_sound_pompom_saved():
+	play_FX(saved_pompom_sound, "saved_pompom_sound")
+
+func play_sound_pompom_dead():
+	play_FX(dead_sound_pompom, "dead_sound_pompom")
+	pass
+
+func play_sound_pompom_collision():
+	play_FX(collision_sound_pompom, "collision_sound_pompom")
+	pass

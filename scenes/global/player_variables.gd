@@ -48,11 +48,13 @@ func _on_pompom_lasso():
 func _on_pompom_capture():
 	print("PlayerVariables: Capture success. Grant 1 rescue point.")
 	pom_rescues += 1
+	AudioPlayer.play_sound_pompom_saved()
 	check_level_progress()
 func _on_pompom_death():
 	print("PlayerVariables: Death happened. Grant 1 death point.")
 	pom_deaths += 1
 	check_level_progress()
+	AudioPlayer.play_sound_pompom_dead()
 	
 # Useful functions
 @onready var rng := RandomNumberGenerator.new()

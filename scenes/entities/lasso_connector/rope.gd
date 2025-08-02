@@ -16,6 +16,7 @@ var segment_length := 0.0
 func last_point_position() -> Vector2: return get_point_position(get_point_count() - 1)
 
 func attach_target(target: Node2D):
+	$CapturingSound.play()
 	entity = target
 	points = []
 	prev_points = []
@@ -41,11 +42,17 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	if detect_collision_with_path() && rope_collision_enabled: 
+		$RopeBreakSFX.play()
 		particles_from_path()
 		detach_target()
 		return
 	
 	var start_pos := get_global_mouse_position()
+	var last_pos := get_point_position(0)
+	
+	var clamped_distance := clampf(last_pos.distance_to(start_pos), 0, 50)
+	var normalized_distance := inverse_lerp(0, 150, clamped_distance)
+	$CapturingSound.pitch_scale = move_toward($CapturingSound.pitch_scale, 0.7 + lerpf(0, 6, normalized_distance), 0.04)
 	
 	# Verlet integration
 	for i in range(1, rope_points):
@@ -94,6 +101,7 @@ func detect_collision_with_path() -> bool:
 func is_attached() -> bool: return entity != null
 
 func detach_target():
+	$CapturingSound.stop()
 	entity = null
 	points = []
 	prev_points = []

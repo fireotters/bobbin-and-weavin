@@ -126,6 +126,7 @@ func handle_collision_with_enemy(collision: KinematicCollision2D):
 		queue_free()
 		return
 	
+	AudioPlayer.play_sound_pompom_collision()
 	stop_pulling()
 	velocity = collision.get_normal() * collision_repulse_force_multiplier
 	move_and_slide()

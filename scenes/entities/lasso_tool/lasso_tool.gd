@@ -56,6 +56,7 @@ func has_self_intersection() -> bool:
 
 func handle_line_completion():
 	var vertices := create_pollygon_from_intersection()
+	$CapturingSound.stop()
 	build_area_geometry(vertices)
 	detect_collisions(vertices)
 	init_new_line()
@@ -106,8 +107,10 @@ func detect_collisions(vertices: PackedVector2Array):
 	params.collide_with_bodies = true
 	var result := space_state.intersect_shape(params)
 	if result.size() > 0:
+		$SucessCapture.play()
 		capture_success.emit(result)
 	else:
+		$FailedCapture.play()
 		capture_fail.emit()
 	
 
@@ -140,6 +143,7 @@ func build_area_geometry(vertices: PackedVector2Array):
 	pass
 
 func init_new_line():
+	$CapturingSound.play()
 	line2d.clear_points()
 	line2d.add_point(get_global_mouse_position()) # This might not work for mobile
 
@@ -149,6 +153,8 @@ func handle_path_break():
 	if line2d.get_point_count() > 3:
 		particles_from_path()
 
+	$RopeBreakSFX.play()
+	$CapturingSound.stop()
 	line2d.clear_points()
 	# Here we should raise an event to play a sound to reflect the collision
 
@@ -162,6 +168,10 @@ func particles_from_path():
 func handle_line_creation():
 	var current_pos = get_global_mouse_position()
 	var last_pos = get_last_pos()
+
+	var clamped_distance := clampf(last_pos.distance_to(current_pos), 0, 50)
+	var normalized_distance := inverse_lerp(0, 150, clamped_distance)
+	$CapturingSound.pitch_scale = move_toward($CapturingSound.pitch_scale, 0.7 + lerpf(0, 6, normalized_distance), 0.04)
 
 	while last_pos.distance_to(current_pos) >= point_distance:
 		line2d.add_point(last_pos + last_pos.direction_to(current_pos) * point_distance)
@@ -182,5 +192,6 @@ func _process(_delta: float) -> void:
 			handle_line_creation()
 			if(has_self_intersection()): handle_line_completion()
 	elif Input.is_action_just_released("pointer_interaction"):
+		$CapturingSound.stop()
 		line2d.clear_points()
 		
