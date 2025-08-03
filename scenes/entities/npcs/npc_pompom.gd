@@ -86,7 +86,10 @@ func _physics_process(delta: float) -> void:
 			return
 		
 		var rope_last = $Rope.last_point_position()
-		if Input.is_action_just_released("pointer_interaction"): 
+		if Engine.time_scale == 0:
+			$Rope.detach_target()
+			stop_pulling()
+		elif Input.is_action_just_released("pointer_interaction"): 
 			$Rope.detach_target()
 			stop_pulling()
 		else:
