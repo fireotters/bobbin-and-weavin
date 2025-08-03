@@ -99,7 +99,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:animation")
+tracks/0/path = NodePath("body_sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -111,7 +111,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("body_sprite/eyes_sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -127,7 +127,7 @@ length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:animation")
+tracks/0/path = NodePath("body_sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -139,7 +139,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("body_sprite/eyes_sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -155,7 +155,7 @@ length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:animation")
+tracks/0/path = NodePath("body_sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -167,7 +167,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("body_sprite/eyes_sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -183,7 +183,7 @@ length = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:animation")
+tracks/0/path = NodePath("body_sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -195,7 +195,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/AnimatedSprite2D:animation")
+tracks/1/path = NodePath("body_sprite/eyes_sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -217,20 +217,22 @@ _data = {
 collision_mask = 10
 input_pickable = true
 script = ExtResource("1_8nw0q")
-rope_sprites = [NodePath("Sprite2D/ropes/rope1"), NodePath("Sprite2D/ropes/rope2"), NodePath("Sprite2D/ropes/rope3")]
+rope_sprites = [NodePath("body_sprite/ropes/rope1"), NodePath("body_sprite/ropes/rope2"), NodePath("body_sprite/ropes/rope3")]
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="body_sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 0.94902, 0.0392157, 1)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_f0tbg")
 autoplay = "default"
 frame_progress = 0.16672
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="eyes_sprite" type="AnimatedSprite2D" parent="body_sprite"]
 sprite_frames = SubResource("SpriteFrames_3f3hi")
 autoplay = "default"
-frame_progress = 0.312883
+frame_progress = 0.0471576
 
-[node name="capturefailgiggle" type="Label" parent="Sprite2D"]
+[node name="capturefailgiggle" type="Label" parent="body_sprite"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -247,19 +249,19 @@ catch me!"
 label_settings = SubResource("LabelSettings_u81jd")
 horizontal_alignment = 1
 
-[node name="ropes" type="Node2D" parent="Sprite2D"]
+[node name="ropes" type="Node2D" parent="body_sprite"]
 
-[node name="rope1" type="Sprite2D" parent="Sprite2D/ropes"]
+[node name="rope1" type="Sprite2D" parent="body_sprite/ropes"]
 visible = false
 scale = Vector2(1.06667, 1)
 texture = ExtResource("3_8nw0q")
 
-[node name="rope2" type="Sprite2D" parent="Sprite2D/ropes"]
+[node name="rope2" type="Sprite2D" parent="body_sprite/ropes"]
 visible = false
 scale = Vector2(1.06667, 1)
 texture = ExtResource("4_pmbet")
 
-[node name="rope3" type="Sprite2D" parent="Sprite2D/ropes"]
+[node name="rope3" type="Sprite2D" parent="body_sprite/ropes"]
 visible = false
 scale = Vector2(1.06667, 1)
 texture = ExtResource("5_n0tqn")

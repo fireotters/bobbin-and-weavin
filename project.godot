@@ -42,7 +42,6 @@ ConfigfileHandler="*res://scenes/global/configfile_handler.gd"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="ignore"
 
 [editor_plugins]
 

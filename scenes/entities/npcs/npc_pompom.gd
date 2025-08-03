@@ -3,18 +3,27 @@ extends NPC
 # Child Nodes
 @export var rope_sprites: Array[Sprite2D] = []
 @onready var _timer_rope_remove: Timer = %timer_rope_remove
-@onready var _capturefailgiggle: Label = $Sprite2D/capturefailgiggle
+@onready var _capturefailgiggle: Label = %body_sprite/capturefailgiggle
 @onready var _timer_capturefail: Timer = $timer_capturefail
-
+@onready var body_sprite: AnimatedSprite2D = %body_sprite
 
 # Health
 var rope_state = -1 # -1 = no ropes attached. 0/1 = partly tied up. 2 = fully tied up
+@export var life_points := 2 # 2 hits & the Pom-Pom dies
+
+# Alternate Colours. Use HTML Hex values
+var color_choices = [
+	"3bffff", # blue
+	"fff20a", # orange
+	"ffffff"  # base sprite color; purple
+	]
+
 # Movement
 const movement_wait_times = [3.0, 5.0, 7.0]
 const speed = 30
-
 var can_avoid_enemy := true
 
+# Avoidance & Collisions
 @export var probability_to_avoid := 30.0
 @export_flags_2d_physics var enemy_layermask := (1 << 1)
 @export_flags_2d_physics var box_layermask := (1 << 2)
@@ -22,17 +31,17 @@ var can_avoid_enemy := true
 # bpx after being released from the pull
 @export var inertia_time:= 1.0
 
-@export var life_points := 2
-
+# Rope pull/swing
 var being_pulled := false
 @export var on_release_inertia_multiplier := 40
-
 @export var collision_repulse_force_multiplier := 900
 
 func _ready() -> void:
 	isAlly = true;
 	collision_mask = enemy_layermask
 	pick_new_random_direction()
+	# Pick random colour
+	body_sprite.self_modulate = Color.html(color_choices.pick_random())
 
 
 # -------------------------------------
@@ -89,7 +98,7 @@ func _physics_process(delta: float) -> void:
 func stop_pulling():
 	$Rope.detach_target()
 	being_pulled = false
-	$Sprite2D/ropes.visible = true
+	%body_sprite/ropes.visible = true
 	_timer_rope_remove.start() # resume struggle-free mechanic
 	
 	if life_points < 2:
@@ -181,7 +190,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			if rope_state == 2:
 				being_pulled = true
 				$AnimationPlayer.current_animation = "tied"
-				$Sprite2D/ropes.visible = false
+				%body_sprite/ropes.visible = false
 				_timer_rope_remove.stop() # pompom will not struggle free while being pulled
 				collision_mask |= box_layermask
 				$Rope.attach_target(self)
