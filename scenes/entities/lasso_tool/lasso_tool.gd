@@ -156,7 +156,7 @@ func handle_path_break():
 	$RopeBreakSFX.play()
 	$CapturingSound.stop()
 	line2d.clear_points()
-	# Here we should raise an event to play a sound to reflect the collision
+	# TODO: Here we should raise an event to play a sound to reflect the collision
 
 
 func particles_from_path():
@@ -184,16 +184,20 @@ func handle_line_creation():
 		last_pos = get_last_pos()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pointer_interaction") and not detect_click_collision():
-		init_new_line()
-	elif Input.is_action_pressed("pointer_interaction") and line2d.get_point_count() > 0:
-		if detect_collision_with_path(): handle_path_break()
-		else:
-			handle_line_creation()
-			if(has_self_intersection()): handle_line_completion()
-	elif Input.is_action_just_released("pointer_interaction"):
-		$CapturingSound.stop()
+	if Engine.time_scale == 1:
+		if Input.is_action_just_pressed("pointer_interaction") and not detect_click_collision():
+			init_new_line()
+		elif Input.is_action_pressed("pointer_interaction") and line2d.get_point_count() > 0:
+			if detect_collision_with_path(): handle_path_break()
+			else:
+				handle_line_creation()
+				if(has_self_intersection()): handle_line_completion()
+		elif Input.is_action_just_released("pointer_interaction"):
+			$CapturingSound.stop()
+			line2d.clear_points()
+	if Engine.time_scale == 0:
 		line2d.clear_points()
+		$CapturingSound.stop()
 		
 func _ready():
 	SignalBus.level_death.connect(_game_over)
