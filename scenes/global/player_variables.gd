@@ -12,7 +12,7 @@ var total_rescued_this_game = 0
 
 # Bounds for the npc spawning & random wandering
 const npc_spawnlimit_left = 40
-const npc_spawnlimit_right = 1000
+const npc_spawnlimit_right = 950
 const npc_spawnlimit_up = 40
 const npc_spawnlimit_down = 600
 

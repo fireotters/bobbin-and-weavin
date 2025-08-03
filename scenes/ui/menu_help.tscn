@@ -325,7 +325,7 @@ offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
-text = "[color=cyan][url=\"https://www.example.com/\"]?[/url][/color]"
+text = "[color=cyan][url=\"https://acornypun.carrd.co/\"]acornypun.carrd.co[/url][/color]"
 horizontal_alignment = 1
 
 [node name="crossfirecam" type="Control" parent="page_3/devs"]

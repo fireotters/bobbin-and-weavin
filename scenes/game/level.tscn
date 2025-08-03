@@ -7,12 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bywj01bfk33xe" path="res://scenes/entities/npcs/npc_pompom.tscn" id="2_dtmi3"]
 [ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="4_eyudv"]
 [ext_resource type="PackedScene" uid="uid://ch6t6jp1ldkam" path="res://scenes/entities/npcs/npc_enemy_scissors.tscn" id="6_65r54"]
+[ext_resource type="Texture2D" uid="uid://dmix33bb44n7k" path="res://assets/art/bg/gamescene_bg_box.png" id="7_aakys"]
 [ext_resource type="Script" uid="uid://da37tr3rc2iu" path="res://scenes/game/box.gd" id="7_mxnjv"]
 [ext_resource type="PackedScene" uid="uid://wef3eugstisc" path="res://scenes/entities/npcs/npc_enemy_cat.tscn" id="7_p2ltr"]
-[ext_resource type="Texture2D" uid="uid://bsfe0c8hvhjll" path="res://assets/art/bg/gamescene_box.png" id="9_p2ltr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65r54"]
-size = Vector2(190, 795)
+size = Vector2(193, 795)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eyudv"]
 
@@ -36,12 +36,12 @@ collision_mask = 0
 script = ExtResource("7_mxnjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="bg & borders/Box"]
-position = Vector2(1104.5, 325.5)
-scale = Vector2(1.21505, 1.07833)
-texture = ExtResource("9_p2ltr")
+position = Vector2(1136.5, 325.5)
+scale = Vector2(0.681818, 0.605099)
+texture = ExtResource("7_aakys")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/Box"]
-position = Vector2(1145, 336.5)
+position = Vector2(1153.5, 337)
 shape = SubResource("RectangleShape2D_65r54")
 
 [node name="world_borders" type="Node2D" parent="bg & borders"]

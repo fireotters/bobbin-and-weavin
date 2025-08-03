@@ -19,7 +19,7 @@ func _ready() -> void:
 		high_score_text.text = entry
 	
 	# Check if exit button should be present
-	var exit_button: Button = get_node('ButtonContainer/ExitButton')
+	var exit_button: Button = get_node('ButtonContainer/row_bottom/ExitButton')
 	if OS.has_feature('web'):
 		exit_button.hide()
 		

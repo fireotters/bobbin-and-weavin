@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://olxmp2tfg8yc"]
+[gd_scene load_steps=6 format=3 uid="uid://olxmp2tfg8yc"]
 
 [ext_resource type="Script" uid="uid://dp2fkk0d0cvqn" path="res://scenes/ui/menu_main.gd" id="1_5ucki"]
 [ext_resource type="PackedScene" uid="uid://npw4l30hf0k5" path="res://scenes/ui/panel_settings.tscn" id="2_4mdgu"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_ivjyr"]
-[ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="3_5soqu"]
+[ext_resource type="Texture2D" uid="uid://rg71c1evveia" path="res://assets/art/ui/menu_bg_0.PNG" id="3_5soqu"]
+[ext_resource type="Theme" uid="uid://f048kaj3ys0f" path="res://assets/art/ui/button_theme.tres" id="4_4m3xn"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3
@@ -16,10 +17,11 @@ script = ExtResource("1_5ucki")
 panel_settings = ExtResource("2_4mdgu")
 
 [node name="bg" type="TextureRect" parent="."]
-modulate = Color(0.393086, 0.393086, 0.393085, 1)
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -25.0
+offset_top = -14.0
+offset_right = 1978.0
+offset_bottom = 1113.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_5soqu")
 
@@ -36,8 +38,9 @@ offset_right = 166.0
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[font_size=30]UNNAMED GAME ABOUT WOOL[/font_size]"
+text = "[font_size=30]BOBBIN' & WEAVIN'[/font_size]"
 horizontal_alignment = 1
 
 [node name="VersionText" type="RichTextLabel" parent="."]
@@ -72,49 +75,61 @@ text = "Best Score:"
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="ButtonContainer" type="HBoxContainer" parent="."]
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -297.0
-offset_top = -284.0
-offset_right = 296.0
-offset_bottom = -218.0
+offset_left = -266.0
+offset_top = -271.0
+offset_right = 265.0
+offset_bottom = -154.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="ButtonContainer"]
+[node name="row_top" type="HBoxContainer" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="ButtonContainer/row_top"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("4_4m3xn")
 theme_override_font_sizes/font_size = 20
 text = "Play"
 script = ExtResource("2_ivjyr")
 scene_path = "uid://dytaj53wqmm44"
 
-[node name="CreditsButton" type="Button" parent="ButtonContainer"]
+[node name="CreditsButton" type="Button" parent="ButtonContainer/row_top"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("4_4m3xn")
 theme_override_font_sizes/font_size = 20
 text = "How to Play"
 script = ExtResource("2_ivjyr")
 scene_path = "uid://gjfhte4qvwx3"
 
-[node name="SettingsButton" type="Button" parent="ButtonContainer"]
+[node name="row_bottom" type="HBoxContainer" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SettingsButton" type="Button" parent="ButtonContainer/row_bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("4_4m3xn")
 theme_override_font_sizes/font_size = 20
 text = "Settings"
 
-[node name="ExitButton" type="Button" parent="ButtonContainer"]
+[node name="ExitButton" type="Button" parent="ButtonContainer/row_bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("4_4m3xn")
 theme_override_font_sizes/font_size = 20
 text = "Exit"
 
-[connection signal="pressed" from="ButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/row_bottom/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/row_bottom/ExitButton" to="." method="_on_exit_button_pressed"]
