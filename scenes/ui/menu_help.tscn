@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://gjfhte4qvwx3"]
+[gd_scene load_steps=7 format=3 uid="uid://gjfhte4qvwx3"]
 
 [ext_resource type="Script" uid="uid://s6j2y77g74c6" path="res://scenes/ui/menu_help.gd" id="1_t5gox"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_17g36"]
-[ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="2_wlrkc"]
+[ext_resource type="Texture2D" uid="uid://bntoo2nxkjdck" path="res://assets/art/ui/menu_bg_1.PNG" id="2_wlrkc"]
 [ext_resource type="Texture2D" uid="uid://bn6gjnmlwk03q" path="res://assets/art/ui/fire_otters_logo.png" id="2_x3nge"]
-[ext_resource type="VideoStream" uid="uid://w2nwaknrxodn" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
+[ext_resource type="VideoStream" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
+[ext_resource type="Theme" uid="uid://f048kaj3ys0f" path="res://assets/art/ui/button_theme.tres" id="3_o86hk"]
 
 [node name="MenuHelp" type="Control"]
 layout_mode = 3
@@ -17,10 +18,20 @@ script = ExtResource("1_t5gox")
 
 [node name="bg" type="TextureRect" parent="."]
 modulate = Color(0.393086, 0.393086, 0.393085, 1)
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-scale = Vector2(0.6, 0.6)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.883363, 0.803363)
+pivot_offset = Vector2(960, 540)
 texture = ExtResource("2_wlrkc")
 
 [node name="page_1" type="Control" parent="."]
@@ -40,9 +51,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -125.0
-offset_top = -261.0
+offset_top = -269.0
 offset_right = 125.0
-offset_bottom = -219.0
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -60,9 +71,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -396.0
-offset_top = -191.0
+offset_top = -204.0
 offset_right = 404.0
-offset_bottom = 191.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -72,23 +83,6 @@ You must gather them up as best you can, before too many wander into danger! Use
 fit_content = true
 scroll_active = false
 
-[node name="btn_to_page2" type="Button" parent="page_1"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -68.0
-offset_right = -27.0
-offset_bottom = -28.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
-text = "Tips & Tricks   ▶"
-
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="page_1"]
 layout_mode = 1
 anchors_preset = 7
@@ -97,14 +91,32 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -240.0
-offset_top = -304.0
+offset_top = -346.0
 offset_right = 240.0
-offset_bottom = -34.0
+offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 0
 stream = ExtResource("3_45270")
 autoplay = true
 loop = true
+
+[node name="btn_to_page2" type="Button" parent="page_1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -73.0
+offset_right = -140.0
+offset_bottom = -33.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme = ExtResource("3_o86hk")
+theme_override_font_sizes/font_size = 20
+text = "Tips & Tricks   ▶"
 
 [node name="page_2" type="Control" parent="."]
 unique_name_in_owner = true
@@ -124,9 +136,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -125.0
-offset_top = -261.0
+offset_top = -269.0
 offset_right = 125.0
-offset_bottom = -219.0
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -144,9 +156,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -396.0
-offset_top = -191.0
+offset_top = -204.0
 offset_right = 404.0
-offset_bottom = 191.0
+offset_bottom = 178.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -172,13 +184,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -68.0
-offset_right = -27.0
-offset_bottom = -28.0
+offset_left = -340.0
+offset_top = -73.0
+offset_right = -140.0
+offset_bottom = -33.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
+theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
 text = "Credits   ▶"
 
@@ -264,9 +277,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -379.0
-offset_top = -87.0
+offset_top = -96.0
 offset_right = 379.0
-offset_bottom = 23.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
@@ -366,9 +379,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -427.0
-offset_top = 13.0
+offset_top = -5.0
 offset_right = 428.0
-offset_bottom = 62.0
+offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -384,9 +397,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -427.0
-offset_top = 73.0
+offset_top = 55.0
 offset_right = 428.0
-offset_bottom = 270.0
+offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -410,13 +423,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -68.0
-offset_right = -27.0
-offset_bottom = -28.0
+offset_left = -340.0
+offset_top = -73.0
+offset_right = -140.0
+offset_bottom = -33.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
+theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
 text = "Exit to Menu"
 script = ExtResource("2_17g36")
