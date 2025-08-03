@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_17g36"]
 [ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="2_wlrkc"]
 [ext_resource type="Texture2D" uid="uid://bn6gjnmlwk03q" path="res://assets/art/ui/fire_otters_logo.png" id="2_x3nge"]
-[ext_resource type="VideoStream" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
+[ext_resource type="VideoStream" uid="uid://w2nwaknrxodn" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
 
 [node name="MenuHelp" type="Control"]
 layout_mode = 3

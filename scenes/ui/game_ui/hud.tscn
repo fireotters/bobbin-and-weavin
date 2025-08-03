@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5wrmqx7ct3c3"]
+[gd_scene load_steps=6 format=3 uid="uid://b5wrmqx7ct3c3"]
 
 [ext_resource type="Script" uid="uid://dbagv74345kwv" path="res://scenes/ui/game_ui/hud.gd" id="1_qaxfr"]
+[ext_resource type="Texture2D" uid="uid://cwk81hpxpapln" path="res://assets/art/ui/pause_icon.png" id="2_ggkff"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_wdn0o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdn0o"]
@@ -34,7 +35,15 @@ offset_left = 10.0
 offset_top = 9.0
 offset_right = 67.0
 offset_bottom = 66.0
-text = "||"
+
+[node name="TextureRect" type="TextureRect" parent="game_hud/panel/btn_pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ggkff")
 
 [node name="label_level" type="RichTextLabel" parent="game_hud/panel"]
 layout_mode = 0
