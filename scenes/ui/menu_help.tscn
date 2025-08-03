@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://gjfhte4qvwx3"]
+[gd_scene load_steps=11 format=3 uid="uid://gjfhte4qvwx3"]
 
 [ext_resource type="Script" uid="uid://s6j2y77g74c6" path="res://scenes/ui/menu_help.gd" id="1_t5gox"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_17g36"]
 [ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="2_wlrkc"]
 [ext_resource type="Texture2D" uid="uid://bn6gjnmlwk03q" path="res://assets/art/ui/fire_otters_logo.png" id="2_x3nge"]
 [ext_resource type="VideoStream" uid="uid://w2nwaknrxodn" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
+[ext_resource type="VideoStream" uid="uid://c7fao5128373t" path="res://assets/video/auchithurts.ogv" id="4_jeu61"]
+[ext_resource type="VideoStream" uid="uid://c66subejhejsu" path="res://assets/video/catbehaviour.ogv" id="5_woax8"]
+[ext_resource type="VideoStream" uid="uid://ihmgbcx4q7w4" path="res://assets/video/pulling2pompom.ogv" id="6_f0dol"]
+
+[sub_resource type="Gradient" id="Gradient_jeu61"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_woax8"]
+gradient = SubResource("Gradient_jeu61")
 
 [node name="MenuHelp" type="Control"]
 layout_mode = 3
@@ -60,9 +68,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -396.0
-offset_top = -191.0
+offset_top = -203.0
 offset_right = 404.0
-offset_bottom = 191.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -71,6 +79,25 @@ text = "[font_size=20]There once were a gang of crafty Pom-Poms. They are very c
 You must gather them up as best you can, before too many wander into danger! Use your mouse or finger to draw circles around a Pom-Pom. Once immobilised, the PomPom can be dragged back into the box where they came from.[/font_size]"
 fit_content = true
 scroll_active = false
+
+[node name="btn_exit" type="Button" parent="page_1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = -183.0
+offset_right = -27.0
+offset_bottom = -143.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Exit to Menu"
+script = ExtResource("2_17g36")
+scene_path = "uid://olxmp2tfg8yc"
 
 [node name="btn_to_page2" type="Button" parent="page_1"]
 layout_mode = 1
@@ -89,6 +116,23 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Tips & Tricks   ▶"
 
+[node name="btn_to_credits" type="Button" parent="page_1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = -124.0
+offset_right = -27.0
+offset_bottom = -84.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Credits"
+
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="page_1"]
 layout_mode = 1
 anchors_preset = 7
@@ -97,9 +141,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -240.0
-offset_top = -304.0
+offset_top = -316.0
 offset_right = 240.0
-offset_bottom = -34.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 0
 stream = ExtResource("3_45270")
@@ -115,6 +159,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RescuingPomPom" type="VideoStreamPlayer" parent="page_2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -329.0
+offset_right = 240.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+stream = ExtResource("6_f0dol")
+autoplay = true
+loop = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="page_2/RescuingPomPom"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_woax8")
 
 [node name="title" type="RichTextLabel" parent="page_2"]
 layout_mode = 1
@@ -144,26 +217,21 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -396.0
-offset_top = -191.0
+offset_top = -182.0
 offset_right = 404.0
-offset_bottom = 191.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
 text = "[font_size=20][i]Rescuing Pom-Poms[/i]
-• Circle a Pom-Pom 3 times, then click 'em to begin pulling. Place them in the Box
-• Try to use momentum to fling a Pom-Pom toward the Box
-• If you are precise enough, it's possible to pick up multiple Pom-Poms at once
 
-[i]Avoiding Damage[/i]
-• The blades on Scissors will cut your Rope & damage Pom-Poms!
-• Cats will also cut Rope & damage Pom-Poms!
-
-[i]Cat Behaviour[/i]
-• Cats won't pursue a Pom-Pom unless they see you moving one with Rope
-• If you drop their newfound plaything, the Cat will lose interest[/font_size]"
+Circle a Pom-Pom 3 times, then click 'em to begin pulling. Place them in the Box
+Try to use momentum to fling a Pom-Pom toward the Box
+If you are precise enough, it's possible to pick up multiple Pom-Poms at once
+"
 fit_content = true
 scroll_active = false
+horizontal_alignment = 1
 
 [node name="btn_to_page3" type="Button" parent="page_2"]
 layout_mode = 1
@@ -180,7 +248,7 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
-text = "Credits   ▶"
+text = "Tips & Tricks 2  ▶"
 
 [node name="page_3" type="Control" parent="."]
 unique_name_in_owner = true
@@ -192,7 +260,146 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="title" type="Control" parent="page_3"]
+[node name="title" type="RichTextLabel" parent="page_3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -261.0
+offset_right = 125.0
+offset_bottom = -219.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=30]Tips & Tricks[/font_size]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_to_page4" type="Button" parent="page_3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = -68.0
+offset_right = -27.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Credits   ▶"
+
+[node name="txt_story" type="RichTextLabel" parent="page_3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.0
+offset_top = -182.0
+offset_right = -31.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[i]Avoiding Damage[/i]
+
+The blades on Scissors will cut your Rope & damage Pom-Poms!
+Cats will also cut Rope & damage Pom-Poms!"
+fit_content = true
+scroll_active = false
+
+[node name="txt_storycat" type="RichTextLabel" parent="page_3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = 112.0
+offset_right = 499.0
+offset_bottom = 261.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[i]Cat Behaviour[/i]
+
+Cats won't pursue a Pom-Pom unless they see you moving one with Rope
+If you drop their newfound plaything, the Cat will lose interest"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="AvoidingDamageVideo" type="VideoStreamPlayer" parent="page_3"]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 299.0
+offset_right = 552.0
+offset_bottom = 570.0
+grow_horizontal = 2
+grow_vertical = 0
+stream = ExtResource("4_jeu61")
+autoplay = true
+loop = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="page_3/AvoidingDamageVideo"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_woax8")
+
+[node name="CatBehaviourVideo" type="VideoStreamPlayer" parent="page_3"]
+layout_mode = 2
+offset_left = 597.0
+offset_top = 133.0
+offset_right = 1077.0
+offset_bottom = 404.0
+grow_horizontal = 2
+grow_vertical = 0
+stream = ExtResource("5_woax8")
+autoplay = true
+loop = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="page_3/CatBehaviourVideo"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_woax8")
+expand_mode = 2
+
+[node name="page_4" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Control" parent="page_4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -206,7 +413,7 @@ offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="logo" type="TextureRect" parent="page_3/title"]
+[node name="logo" type="TextureRect" parent="page_4/title"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -218,7 +425,7 @@ grow_vertical = 2
 scale = Vector2(0.36, 0.36)
 texture = ExtResource("2_x3nge")
 
-[node name="titletext" type="RichTextLabel" parent="page_3/title"]
+[node name="titletext" type="RichTextLabel" parent="page_4/title"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -237,7 +444,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="draft" type="RichTextLabel" parent="page_3/title"]
+[node name="draft" type="RichTextLabel" parent="page_4/title"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -256,7 +463,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="devs" type="GridContainer" parent="page_3"]
+[node name="devs" type="GridContainer" parent="page_4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -271,11 +478,11 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="rioni" type="Control" parent="page_3/devs"]
+[node name="rioni" type="Control" parent="page_4/devs"]
 custom_minimum_size = Vector2(250, 110)
 layout_mode = 2
 
-[node name="name_n_role" type="RichTextLabel" parent="page_3/devs/rioni"]
+[node name="name_n_role" type="RichTextLabel" parent="page_4/devs/rioni"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -286,7 +493,7 @@ text = "Rioni
 (Programmer)"
 horizontal_alignment = 1
 
-[node name="site" type="RichTextLabel" parent="page_3/devs/rioni"]
+[node name="site" type="RichTextLabel" parent="page_4/devs/rioni"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -300,11 +507,11 @@ bbcode_enabled = true
 text = "[color=cyan][url=https://github.com/Nrosa01]github.com/Nrosa01[/url][/color]"
 horizontal_alignment = 1
 
-[node name="acorn" type="Control" parent="page_3/devs"]
+[node name="acorn" type="Control" parent="page_4/devs"]
 custom_minimum_size = Vector2(250, 110)
 layout_mode = 2
 
-[node name="name_n_role" type="RichTextLabel" parent="page_3/devs/acorn"]
+[node name="name_n_role" type="RichTextLabel" parent="page_4/devs/acorn"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -315,7 +522,7 @@ text = "Acorn
 (Artist)"
 horizontal_alignment = 1
 
-[node name="site" type="RichTextLabel" parent="page_3/devs/acorn"]
+[node name="site" type="RichTextLabel" parent="page_4/devs/acorn"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -329,11 +536,11 @@ bbcode_enabled = true
 text = "[color=cyan][url=\"https://acornypun.carrd.co/\"]acornypun.carrd.co[/url][/color]"
 horizontal_alignment = 1
 
-[node name="crossfirecam" type="Control" parent="page_3/devs"]
+[node name="crossfirecam" type="Control" parent="page_4/devs"]
 custom_minimum_size = Vector2(250, 110)
 layout_mode = 2
 
-[node name="name_n_role" type="RichTextLabel" parent="page_3/devs/crossfirecam"]
+[node name="name_n_role" type="RichTextLabel" parent="page_4/devs/crossfirecam"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -344,7 +551,7 @@ text = "CrossfireCam
 (Programmer)"
 horizontal_alignment = 1
 
-[node name="site" type="RichTextLabel" parent="page_3/devs/crossfirecam"]
+[node name="site" type="RichTextLabel" parent="page_4/devs/crossfirecam"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -358,7 +565,7 @@ bbcode_enabled = true
 text = "[color=cyan][url=https://crossfirecam.itch.io]crossfirecam.itch.io[/url][/color]"
 horizontal_alignment = 1
 
-[node name="specialthx" type="RichTextLabel" parent="page_3"]
+[node name="specialthx" type="RichTextLabel" parent="page_4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -376,7 +583,7 @@ text = "Special Thanks to our team-mate 'benchi99', for helping out with the dev
 [color=cyan][url=https://about.rubenbermejoromero.com/]about.rubenbermejoromero.com[/url][/color]"
 horizontal_alignment = 1
 
-[node name="attribs" type="RichTextLabel" parent="page_3"]
+[node name="attribs" type="RichTextLabel" parent="page_4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -403,7 +610,7 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="btn_exit" type="Button" parent="page_3"]
+[node name="btn_exit" type="Button" parent="page_4"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -423,9 +630,11 @@ script = ExtResource("2_17g36")
 scene_path = "uid://olxmp2tfg8yc"
 
 [connection signal="pressed" from="page_1/btn_to_page2" to="." method="_on_btn_to_page_2_pressed"]
+[connection signal="pressed" from="page_1/btn_to_credits" to="." method="_on_btn_to_page_4_pressed"]
 [connection signal="pressed" from="page_2/btn_to_page3" to="." method="_on_btn_to_page_3_pressed"]
-[connection signal="meta_clicked" from="page_3/devs/rioni/site" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_3/devs/acorn/site" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_3/devs/crossfirecam/site" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_3/specialthx" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_3/attribs" to="." method="_on_site_label_clicked"]
+[connection signal="pressed" from="page_3/btn_to_page4" to="." method="_on_btn_to_page_4_pressed"]
+[connection signal="meta_clicked" from="page_4/devs/rioni/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_4/devs/acorn/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_4/devs/crossfirecam/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_4/specialthx" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_4/attribs" to="." method="_on_site_label_clicked"]
