@@ -80,6 +80,7 @@ func _save_highscore():
 # Game Over
 # -------------------------------------
 func _game_over():
+	Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
 	game_is_over = true
 	Engine.time_scale = 0
 	panel_gameover.visible = true
