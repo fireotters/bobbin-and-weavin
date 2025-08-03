@@ -5,7 +5,7 @@ extends Node2D
 @export var npc_enemy_cat: PackedScene
 var max_num_of_pompoms = 12
 var max_num_of_enemies = 8
-var max_num_of_cats = 3
+var max_num_of_cats = 5
 
 func _ready() -> void:
 	PlayerVariables.reset_game()
