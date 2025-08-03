@@ -18,6 +18,12 @@ func _exit_tree() -> void:
 	# Well, given it's static, we have to manually clear elements to avoid memory leaks
 	if pompom_target != null: targetted_pompoms.erase(pompom_target)
 
+func stop_targetting():
+	targetted_pompoms.erase(pompom_target)
+	pompom_target = null
+	animated_sprite_2d.animation = "default"
+	$target_lost.play()
+
 func avoid_group(group: String, target_min : float, target_max: float):
 	var enemies := get_tree().get_nodes_in_group(group)
 	for enemy in enemies:
@@ -47,11 +53,11 @@ func _physics_process(_delta: float) -> void:
 	
 	# Check when to stop targetting
 	if pompom_target != null and !pompom_target.being_pulled:
-		targetted_pompoms.erase(pompom_target)
-		pompom_target = null
-		animated_sprite_2d.animation = "default"
-		$target_lost.play()
-		
+		stop_targetting()
+	
+	if pompom_target == null && animated_sprite_2d.animation == "chase":
+		print("Pompom is not in scene")
+		stop_targetting()
 	
 	# Find new target
 	if pompom_target == null:
@@ -63,15 +69,7 @@ func _physics_process(_delta: float) -> void:
 				targetted_pompoms.append(pompom)
 				$target_adquired.play()
 				animated_sprite_2d.animation = "chase"
-				print("What")
 				break
-		# If PomPom is null, but targeted_pompoms still has an entry, and a new one is not found immediately,
-		# Then that means that a single PomPom has died while cat is targeting it
-		# Perform 'stop targeting' behaviour
-		if len(targetted_pompoms) > 0 and pompom_target == null:
-			targetted_pompoms.clear()
-			animated_sprite_2d.animation = "default"
-			$target_lost.play()
 			
 	if pompom_target != null:
 		velocity = velocity.lerp( global_position.direction_to(pompom_target.global_position) * pursue_velocity, 0.08)
@@ -79,6 +77,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = velocity.lerp(position.direction_to(target) * non_target_speed, .08)
 				
 	move_and_slide()
+			
 		
 
 func pick_new_random_direction():
