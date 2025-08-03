@@ -3,7 +3,7 @@ extends HSlider
 @export var bus_name: String
 var bus_index: int
 
-const testsound_sfx = preload("res://assets/sfx/universalsoundfx_8bit_retro_jump_glide_up_classic.wav")
+const testsound_sfx = preload("res://assets/sfx/Action Misc 4.wav")
 var sfxtest_timer = 0
 var sfxtest_lastplay = 0
  
