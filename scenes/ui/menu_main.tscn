@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://olxmp2tfg8yc"]
+[gd_scene load_steps=7 format=3 uid="uid://olxmp2tfg8yc"]
 
 [ext_resource type="Script" uid="uid://dp2fkk0d0cvqn" path="res://scenes/ui/menu_main.gd" id="1_5ucki"]
 [ext_resource type="PackedScene" uid="uid://npw4l30hf0k5" path="res://scenes/ui/panel_settings.tscn" id="2_4mdgu"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_ivjyr"]
 [ext_resource type="Texture2D" uid="uid://rg71c1evveia" path="res://assets/art/ui/menu_bg_0.PNG" id="3_5soqu"]
 [ext_resource type="Theme" uid="uid://f048kaj3ys0f" path="res://assets/art/ui/button_theme.tres" id="4_4m3xn"]
+[ext_resource type="Texture2D" uid="uid://krg7uotq6yjt" path="res://assets/art/ui/game_logo.PNG" id="4_uioy2"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3
@@ -25,23 +26,17 @@ offset_bottom = 1113.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_5soqu")
 
-[node name="Title_Logo" type="RichTextLabel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="bg"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -164.0
-offset_top = -111.0
-offset_right = 166.0
-offset_bottom = -21.0
+offset_left = -263.167
+offset_top = 243.333
+offset_right = 256.833
+offset_bottom = 643.333
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
-text = "[font_size=30]BOBBIN' & WEAVIN'[/font_size]"
-horizontal_alignment = 1
+texture = ExtResource("4_uioy2")
 
 [node name="VersionText" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -83,9 +78,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -266.0
-offset_top = -271.0
+offset_top = -262.0
 offset_right = 265.0
-offset_bottom = -154.0
+offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 12

@@ -3,7 +3,6 @@ extends AudioStreamPlayer
 
 # music tracks. Set OGG import settings to 'Loop'
 const mainmenu_music = preload("res://assets/music/incompetech__menumusic__mischief_maker.ogg")
-const tutorial_music = preload("res://assets/music/incompetech__tutorialmusic__derp_nugget.ogg")
 const level_music = preload("res://assets/music/incompetech__levelmusic__march_of_the_spoons.ogg")
 const saved_pompom_sound := preload("res://assets/sfx/Coin 6.wav")
 const dead_sound_pompom := preload("res://assets/sfx/hit-2.wav")

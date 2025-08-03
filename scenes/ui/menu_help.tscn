@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_17g36"]
 [ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="2_wlrkc"]
 [ext_resource type="Texture2D" uid="uid://bn6gjnmlwk03q" path="res://assets/art/ui/fire_otters_logo.png" id="2_x3nge"]
-[ext_resource type="VideoStream" uid="uid://w2nwaknrxodn" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
+[ext_resource type="VideoStream" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
 
 [node name="MenuHelp" type="Control"]
 layout_mode = 3
@@ -153,6 +153,7 @@ bbcode_enabled = true
 text = "[font_size=20][i]Rescuing Pom-Poms[/i]
 • Circle a Pom-Pom 3 times, then click 'em to begin pulling. Place them in the Box
 • Try to use momentum to fling a Pom-Pom toward the Box
+• If you are precise enough, it's possible to pick up multiple Pom-Poms at once
 
 [i]Avoiding Damage[/i]
 • The blades on Scissors will cut your Rope & damage Pom-Poms!
