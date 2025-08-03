@@ -26,6 +26,9 @@ func _ready() -> void:
 		cbox_fullscreen.button_pressed = video_settings.fullscreen
 	else:
 		ConfigfileHandler.save_video_setting("fullscreen", false)
+	
+	if OS.has_feature('web'):
+		$panel/left_side/subpanel_selector/btn_video.hide()
 
 
 # Select which settings pane to open
