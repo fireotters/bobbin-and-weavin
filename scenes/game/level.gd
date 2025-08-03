@@ -8,6 +8,7 @@ var max_num_of_enemies = 8
 var max_num_of_cats = 5
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CONFINED
 	PlayerVariables.reset_game()
 	prepare_level()
 	SignalBus.level_passed.connect(prepare_level)

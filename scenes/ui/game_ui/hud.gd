@@ -31,11 +31,13 @@ func _update_hud():
 # Pause dialog
 # -------------------------------------
 func pause():
+	Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
 	if not game_is_over:
 		Engine.time_scale = 0
 		panel_pause.visible = true
 		AudioPlayer.pause_music()
 func resume():
+	Input.mouse_mode = Input.MouseMode.MOUSE_MODE_CONFINED
 	if not game_is_over:
 		Engine.time_scale = 1
 		panel_pause.visible = false
