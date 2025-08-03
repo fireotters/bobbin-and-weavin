@@ -119,7 +119,7 @@ grow_vertical = 0
 size_flags_horizontal = 3
 theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
-text = "Tips & Tricks   ▶"
+text = "Tips & Tricks   >"
 
 [node name="btn_to_credits" type="Button" parent="page_1"]
 layout_mode = 1
@@ -137,7 +137,7 @@ grow_vertical = 0
 size_flags_horizontal = 3
 theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
-text = "Credits   ▶"
+text = "Credits   >"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="page_1"]
 layout_mode = 1
@@ -255,7 +255,7 @@ grow_vertical = 0
 size_flags_horizontal = 3
 theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
-text = "Tips & Tricks 2  ▶"
+text = "Tips & Tricks 2   >"
 
 [node name="page_3" type="Control" parent="."]
 unique_name_in_owner = true
@@ -394,7 +394,7 @@ grow_vertical = 0
 size_flags_horizontal = 3
 theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
-text = "Credits   ▶"
+text = "Credits   >"
 
 [node name="page_4" type="Control" parent="."]
 unique_name_in_owner = true
