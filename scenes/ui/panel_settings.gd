@@ -17,7 +17,14 @@ func _ready() -> void:
 	slider_music.value = audio_settings.music_volume
 	slider_sfx.value = audio_settings.sfx_volume
 	var video_settings = ConfigfileHandler.load_video_settings()
-	cbox_fullscreen.button_pressed = video_settings.fullscreen
+	
+	# User can revoke Fullscreen perm via keyboard, so don't force them back into Fullscreen when opening Settings
+	# TODO: On Windows, the game could keep re-opening in Fullscreen mode
+	#       if user revokes Fullscreen & does not visit Settings prior to closing the game
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		cbox_fullscreen.button_pressed = video_settings.fullscreen
+	else:
+		ConfigfileHandler.save_video_setting("fullscreen", false)
 
 
 # Select which settings pane to open

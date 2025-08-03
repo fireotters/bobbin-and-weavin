@@ -1,15 +1,15 @@
-⚠️UNDECIDED NAME⚠️ v1.0.0
+Bobbin & Weavin v1.0.0
 
-Developed by: Acorn, benchi99, CrossfireCam, Makako, Rioni
+Developed by: Rioni, Acorn, CrossfireCam
 Full credits are available in the game's Help section.
 
 ------------------
 How To Start Game
 ------------------
-Launch the '⚠️UNDECIDED NAME⚠️' executable (File ending in .exe, .x86_64).
-By default, the game starts in full-screen. To change this, click on Options (⚙️ icon). You'll also find volume options there, among other settings.
+Launch the 'Bobbin & Weavin' executable.
+By default, the game starts in windowed mode. To change display settings, visit 'Settings'. You'll also find volume options there, among other options.
 
-To uninstall this game, delete the entire '⚠️UNDECIDED NAME⚠️' folder.
+To uninstall this game, delete the entire 'Bobbin & Weavin' folder.
 
 ------------------
 OS Specific Instructions
@@ -19,18 +19,17 @@ Windows - Smartscreen may block the game from opening. Click 'More info' and 'Ru
 Linux - The game may not run as an executable.
 • For Ubuntu, go to the executable's 'Properties, Permissions' and check the box for 'Allow executing file as program'.
 • For other distros, you could run "chmod +x" on the executable to mark it as an executable.
-• If the game crashes, check "⚠️UNKNOWN LOG PATH⚠️" for an error log
+
+If the game crashes, please contact one of us via itch.io to report the issue.
 
 ------------------
 Attributions
 ------------------
 Developed using the Godot Engine.
 
-Music:
-"Derp Nugget" Kevin MacLeod (incompetech.com)
-Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/
+Special thanks to our team-mate 'benchi99' for help with the dev process & brainstorming.
 
+Music:
 "Mischief Maker" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
@@ -40,4 +39,8 @@ Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 
 SFX:
-Undecided.
+Cat SFX from 'Soundly Free Library'
+https://getsoundly.com
+
+Other SFX from 'Platformer SFX' by David Stearns
+https://outspacer.itch.io/platformer-sfx
