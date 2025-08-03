@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmix33bb44n7k"
-path="res://.godot/imported/gamescene_bg_box.png-31e767d323eb3cd63dd40ba2713c4a94.ctex"
+path="res://.godot/imported/gamescene_bg_box.PNG-2f4ccc82548a7de0dd49c0aeb972063d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/bg/gamescene_bg_box.png"
-dest_files=["res://.godot/imported/gamescene_bg_box.png-31e767d323eb3cd63dd40ba2713c4a94.ctex"]
+source_file="res://assets/art/bg/gamescene_bg_box.PNG"
+dest_files=["res://.godot/imported/gamescene_bg_box.PNG-2f4ccc82548a7de0dd49c0aeb972063d.ctex"]
 
 [params]
 

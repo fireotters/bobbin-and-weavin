@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://s6j2y77g74c6" path="res://scenes/ui/menu_help.gd" id="1_t5gox"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_17g36"]
-[ext_resource type="VideoStream" uid="uid://dwpvbmnj265qq" path="res://assets/video/output.ogv" id="2_45270"]
 [ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="2_wlrkc"]
 [ext_resource type="Texture2D" uid="uid://bn6gjnmlwk03q" path="res://assets/art/ui/fire_otters_logo.png" id="2_x3nge"]
+[ext_resource type="VideoStream" uid="uid://w2nwaknrxodn" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
 
 [node name="MenuHelp" type="Control"]
 layout_mode = 3
@@ -102,7 +102,7 @@ offset_right = 240.0
 offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 0
-stream = ExtResource("2_45270")
+stream = ExtResource("3_45270")
 autoplay = true
 loop = true
 
