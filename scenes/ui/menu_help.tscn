@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://gjfhte4qvwx3"]
+[gd_scene load_steps=12 format=3 uid="uid://gjfhte4qvwx3"]
 
 [ext_resource type="Script" uid="uid://s6j2y77g74c6" path="res://scenes/ui/menu_help.gd" id="1_t5gox"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_17g36"]
-[ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="2_wlrkc"]
+[ext_resource type="Texture2D" uid="uid://bntoo2nxkjdck" path="res://assets/art/ui/menu_bg_1.PNG" id="2_wlrkc"]
 [ext_resource type="Texture2D" uid="uid://bn6gjnmlwk03q" path="res://assets/art/ui/fire_otters_logo.png" id="2_x3nge"]
-[ext_resource type="VideoStream" uid="uid://w2nwaknrxodn" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
-[ext_resource type="VideoStream" uid="uid://c7fao5128373t" path="res://assets/video/auchithurts.ogv" id="4_jeu61"]
-[ext_resource type="VideoStream" uid="uid://c66subejhejsu" path="res://assets/video/catbehaviour.ogv" id="5_woax8"]
-[ext_resource type="VideoStream" uid="uid://ihmgbcx4q7w4" path="res://assets/video/pulling2pompom.ogv" id="6_f0dol"]
+[ext_resource type="VideoStream" path="res://assets/video/general_tutorial.ogv" id="3_45270"]
+[ext_resource type="Theme" uid="uid://f048kaj3ys0f" path="res://assets/art/ui/button_theme.tres" id="3_o86hk"]
+[ext_resource type="VideoStream" path="res://assets/video/auchithurts.ogv" id="4_jeu61"]
+[ext_resource type="VideoStream" path="res://assets/video/catbehaviour.ogv" id="5_woax8"]
+[ext_resource type="VideoStream" path="res://assets/video/pulling2pompom.ogv" id="6_f0dol"]
 
 [sub_resource type="Gradient" id="Gradient_jeu61"]
 
@@ -26,9 +27,11 @@ script = ExtResource("1_t5gox")
 [node name="bg" type="TextureRect" parent="."]
 modulate = Color(0.393086, 0.393086, 0.393085, 1)
 layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-scale = Vector2(0.6, 0.6)
+offset_left = -391.0
+offset_top = -106.0
+offset_right = 2157.0
+offset_bottom = 1327.0
+scale = Vector2(0.759999, 0.6)
 texture = ExtResource("2_wlrkc")
 
 [node name="page_1" type="Control" parent="."]
@@ -87,13 +90,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -183.0
-offset_right = -27.0
-offset_bottom = -143.0
+offset_left = -300.0
+offset_top = -200.0
+offset_right = -88.0
+offset_bottom = -160.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
+theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
 text = "Exit to Menu"
 script = ExtResource("2_17g36")
@@ -106,13 +110,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -68.0
-offset_right = -27.0
-offset_bottom = -28.0
+offset_left = -300.0
+offset_top = -85.0
+offset_right = -88.0
+offset_bottom = -45.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
+theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
 text = "Tips & Tricks   ▶"
 
@@ -123,15 +128,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -124.0
-offset_right = -27.0
-offset_bottom = -84.0
+offset_left = -300.0
+offset_top = -141.0
+offset_right = -88.0
+offset_bottom = -101.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
+theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
-text = "Credits"
+text = "Credits   ▶"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="page_1"]
 layout_mode = 1
@@ -240,13 +246,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -68.0
-offset_right = -27.0
-offset_bottom = -28.0
+offset_left = -300.0
+offset_top = -85.0
+offset_right = -88.0
+offset_bottom = -45.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
+theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
 text = "Tips & Tricks 2  ▶"
 
@@ -280,71 +287,32 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="btn_to_page4" type="Button" parent="page_3"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -68.0
-offset_right = -27.0
-offset_bottom = -28.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
-text = "Credits   ▶"
-
-[node name="txt_story" type="RichTextLabel" parent="page_3"]
+[node name="txt_avoidingdamage" type="RichTextLabel" parent="page_3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -504.0
-offset_top = -182.0
-offset_right = -31.0
-offset_bottom = -37.0
+offset_left = -490.0
+offset_top = -150.0
+offset_right = -17.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
 text = "[i]Avoiding Damage[/i]
 
-The blades on Scissors will cut your Rope & damage Pom-Poms!
-Cats will also cut Rope & damage Pom-Poms!"
+The blades on Scissors will cut your Rope & damage Pom-Poms! Cats will also cut Rope & damage Pom-Poms!"
 fit_content = true
 scroll_active = false
-
-[node name="txt_storycat" type="RichTextLabel" parent="page_3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -2.0
-offset_top = 112.0
-offset_right = 499.0
-offset_bottom = 261.0
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[i]Cat Behaviour[/i]
-
-Cats won't pursue a Pom-Pom unless they see you moving one with Rope
-If you drop their newfound plaything, the Cat will lose interest"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="AvoidingDamageVideo" type="VideoStreamPlayer" parent="page_3"]
 layout_mode = 2
-offset_left = 72.0
+offset_left = 94.0
 offset_top = 299.0
-offset_right = 552.0
+offset_right = 574.0
 offset_bottom = 570.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -364,11 +332,32 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_woax8")
 
+[node name="txt_catbehaviour" type="RichTextLabel" parent="page_3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = 102.0
+offset_right = 485.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[i]Cat Behaviour[/i]
+
+Cats won't pursue a Pom-Pom unless they see you moving one with Rope. If you drop their newfound plaything, the Cat will lose interest."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
 [node name="CatBehaviourVideo" type="VideoStreamPlayer" parent="page_3"]
 layout_mode = 2
-offset_left = 597.0
+offset_left = 583.0
 offset_top = 133.0
-offset_right = 1077.0
+offset_right = 1063.0
 offset_bottom = 404.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -388,6 +377,24 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_woax8")
 expand_mode = 2
+
+[node name="btn_to_page4" type="Button" parent="page_3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -85.0
+offset_right = -88.0
+offset_bottom = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme = ExtResource("3_o86hk")
+theme_override_font_sizes/font_size = 20
+text = "Credits   ▶"
 
 [node name="page_4" type="Control" parent="."]
 unique_name_in_owner = true
@@ -471,9 +478,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -379.0
-offset_top = -87.0
+offset_top = -103.0
 offset_right = 379.0
-offset_bottom = 23.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
@@ -573,9 +580,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -427.0
-offset_top = 13.0
+offset_top = -13.0
 offset_right = 428.0
-offset_bottom = 62.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -591,9 +598,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -427.0
-offset_top = 73.0
+offset_top = 42.0
 offset_right = 428.0
-offset_bottom = 270.0
+offset_bottom = 239.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -617,13 +624,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -68.0
-offset_right = -27.0
-offset_bottom = -28.0
+offset_left = -300.0
+offset_top = -85.0
+offset_right = -88.0
+offset_bottom = -45.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
+theme = ExtResource("3_o86hk")
 theme_override_font_sizes/font_size = 20
 text = "Exit to Menu"
 script = ExtResource("2_17g36")

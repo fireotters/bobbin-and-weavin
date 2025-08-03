@@ -22,6 +22,7 @@ func _ready() -> void:
 	# TODO: On Windows, the game could keep re-opening in Fullscreen mode
 	#       if user revokes Fullscreen & does not visit Settings prior to closing the game
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		ConfigfileHandler.save_video_setting("fullscreen", true)
 		cbox_fullscreen.button_pressed = video_settings.fullscreen
 	else:
 		ConfigfileHandler.save_video_setting("fullscreen", false)
@@ -63,6 +64,8 @@ func _on_slider_sfx_value_changed(value: float) -> void:
 func _on_cbox_fullscreen_toggled(toggled_on: bool) -> void:
 	ConfigfileHandler.save_video_setting("fullscreen", toggled_on)
 	ConfigfileHandler.apply_video_settings()
+	if OS.get_name() == "HTML5":
+		_on_btn_back_pressed()
 
 func _on_reset_score_pressed() -> void:
 	ConfigfileHandler.reset_high_score()
