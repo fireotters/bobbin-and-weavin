@@ -3,6 +3,7 @@ extends Control
 
 @onready var page_1: Control = %page_1
 @onready var page_2: Control = %page_2
+@onready var page_3: Control = %page_3
 @export var dev_urls: Array[RichTextLabel]
 
 func _ready():
@@ -15,6 +16,10 @@ func _ready():
 func _on_site_label_clicked(meta):
 	OS.shell_open(str(meta))
 
-func _on_next_button_pressed() -> void:
+func _on_btn_to_page_2_pressed() -> void:
 	page_1.visible = false
 	page_2.visible = true
+
+func _on_btn_to_page_3_pressed() -> void:
+	page_2.visible = false
+	page_3.visible = true

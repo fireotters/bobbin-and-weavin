@@ -24,7 +24,6 @@ texture = ExtResource("2_wlrkc")
 
 [node name="page_1" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,7 +71,7 @@ You must gather them up as best you can, before too many wander into danger! Use
 fit_content = true
 scroll_active = false
 
-[node name="NextButton" type="Button" parent="page_1"]
+[node name="btn_to_page2" type="Button" parent="page_1"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -87,7 +86,7 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
-text = "Continue to Credits..."
+text = "Tips & Tricks   ▶"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="page_1"]
 layout_mode = 1
@@ -108,6 +107,7 @@ loop = true
 
 [node name="page_2" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,7 +115,82 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="title" type="Control" parent="page_2"]
+[node name="title" type="RichTextLabel" parent="page_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -261.0
+offset_right = 125.0
+offset_bottom = -219.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=30]Tips & Tricks[/font_size]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="txt_story" type="RichTextLabel" parent="page_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.0
+offset_top = -191.0
+offset_right = 404.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font_size=20][i]Rescuing Pom-Poms[/i]
+• Circle a Pom-Pom 3 times, then click 'em to begin pulling. Place them in the Box
+• Try to use momentum to fling a Pom-Pom toward the Box
+
+[i]Avoiding Damage[/i]
+• The blades on Scissors will cut your Rope & damage Pom-Poms!
+• Cats will also cut Rope & damage Pom-Poms!
+
+[i]Cat Behaviour[/i]
+• Cats won't pursue a Pom-Pom unless they see you moving one with Rope
+• If you drop their newfound plaything, the Cat will lose interest[/font_size]"
+fit_content = true
+scroll_active = false
+
+[node name="btn_to_page3" type="Button" parent="page_2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = -68.0
+offset_right = -27.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Credits   ▶"
+
+[node name="page_3" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Control" parent="page_3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -129,7 +204,7 @@ offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="logo" type="TextureRect" parent="page_2/title"]
+[node name="logo" type="TextureRect" parent="page_3/title"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -141,7 +216,7 @@ grow_vertical = 2
 scale = Vector2(0.36, 0.36)
 texture = ExtResource("2_x3nge")
 
-[node name="titletext" type="RichTextLabel" parent="page_2/title"]
+[node name="titletext" type="RichTextLabel" parent="page_3/title"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -160,7 +235,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="draft" type="RichTextLabel" parent="page_2/title"]
+[node name="draft" type="RichTextLabel" parent="page_3/title"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -179,7 +254,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="devs" type="GridContainer" parent="page_2"]
+[node name="devs" type="GridContainer" parent="page_3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -194,11 +269,11 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="rioni" type="Control" parent="page_2/devs"]
+[node name="rioni" type="Control" parent="page_3/devs"]
 custom_minimum_size = Vector2(250, 110)
 layout_mode = 2
 
-[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/rioni"]
+[node name="name_n_role" type="RichTextLabel" parent="page_3/devs/rioni"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -209,25 +284,25 @@ text = "Rioni
 (Programmer)"
 horizontal_alignment = 1
 
-[node name="site" type="RichTextLabel" parent="page_2/devs/rioni"]
+[node name="site" type="RichTextLabel" parent="page_3/devs/rioni"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -53.0
-offset_bottom = -5.0
+offset_top = -59.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
 text = "[color=cyan][url=https://github.com/Nrosa01]github.com/Nrosa01[/url][/color]"
 horizontal_alignment = 1
 
-[node name="acorn" type="Control" parent="page_2/devs"]
+[node name="acorn" type="Control" parent="page_3/devs"]
 custom_minimum_size = Vector2(250, 110)
 layout_mode = 2
 
-[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/acorn"]
+[node name="name_n_role" type="RichTextLabel" parent="page_3/devs/acorn"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -238,25 +313,25 @@ text = "Acorn
 (Artist)"
 horizontal_alignment = 1
 
-[node name="site" type="RichTextLabel" parent="page_2/devs/acorn"]
+[node name="site" type="RichTextLabel" parent="page_3/devs/acorn"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -53.0
-offset_bottom = -5.0
+offset_top = -59.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
 text = "[color=cyan][url=\"https://www.example.com/\"]?[/url][/color]"
 horizontal_alignment = 1
 
-[node name="crossfirecam" type="Control" parent="page_2/devs"]
+[node name="crossfirecam" type="Control" parent="page_3/devs"]
 custom_minimum_size = Vector2(250, 110)
 layout_mode = 2
 
-[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/crossfirecam"]
+[node name="name_n_role" type="RichTextLabel" parent="page_3/devs/crossfirecam"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -267,21 +342,21 @@ text = "CrossfireCam
 (Programmer)"
 horizontal_alignment = 1
 
-[node name="site" type="RichTextLabel" parent="page_2/devs/crossfirecam"]
+[node name="site" type="RichTextLabel" parent="page_3/devs/crossfirecam"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -53.0
-offset_bottom = -5.0
+offset_top = -59.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
 text = "[color=cyan][url=https://crossfirecam.itch.io]crossfirecam.itch.io[/url][/color]"
 horizontal_alignment = 1
 
-[node name="specialthx" type="RichTextLabel" parent="page_2"]
+[node name="specialthx" type="RichTextLabel" parent="page_3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -299,7 +374,7 @@ text = "Special Thanks to our team-mate 'benchi99', for helping out with the dev
 [color=cyan][url=https://about.rubenbermejoromero.com/]about.rubenbermejoromero.com[/url][/color]"
 horizontal_alignment = 1
 
-[node name="attribs" type="RichTextLabel" parent="page_2"]
+[node name="attribs" type="RichTextLabel" parent="page_3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -321,10 +396,12 @@ Licensed under Creative Commons: By Attribution 4.0 License
 [color=cyan][url=http://creativecommons.org/licenses/by/4.0]http://creativecommons.org/licenses/by/4.0/[/url][/color]
 
 Cat SFX from 'Soundly Free Library' ([color=cyan][url=https://getsoundly.com]getsoundly.com[/url][/color])
-Other SFX from 'Platformer SFX' ([color=cyan][url=https://outspacer.itch.io/platformer-sfx]outspacer.itch.io/platformer-sfx[/url][/color])[/font_size]"
+Other SFX from 'Platformer SFX' by David Stearns ([color=cyan][url=https://outspacer.itch.io/platformer-sfx]outspacer.itch.io/platformer-sfx[/url][/color])[/font_size]"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="ExitButton" type="Button" parent="page_2"]
+[node name="btn_exit" type="Button" parent="page_3"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -343,9 +420,10 @@ text = "Exit to Menu"
 script = ExtResource("2_17g36")
 scene_path = "uid://olxmp2tfg8yc"
 
-[connection signal="pressed" from="page_1/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="meta_clicked" from="page_2/devs/rioni/site" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_2/devs/acorn/site" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_2/devs/crossfirecam/site" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_2/specialthx" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_2/attribs" to="." method="_on_site_label_clicked"]
+[connection signal="pressed" from="page_1/btn_to_page2" to="." method="_on_btn_to_page_2_pressed"]
+[connection signal="pressed" from="page_2/btn_to_page3" to="." method="_on_btn_to_page_3_pressed"]
+[connection signal="meta_clicked" from="page_3/devs/rioni/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_3/devs/acorn/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_3/devs/crossfirecam/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_3/specialthx" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_3/attribs" to="." method="_on_site_label_clicked"]

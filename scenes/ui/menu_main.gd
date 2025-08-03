@@ -13,7 +13,7 @@ func _ready() -> void:
 	var high_score = ConfigfileHandler.load_high_score_settings()
 	if "score" in high_score and high_score["score"] > 0:
 		high_score_text.visible = true
-		var entry = "High Score: " + str(high_score["score"])
+		var entry = "Best Score: " + str(high_score["score"])
 		if high_score["nickname"] != "":
 			entry += "\n(by '" + high_score["nickname"] + "')"
 		high_score_text.text = entry
