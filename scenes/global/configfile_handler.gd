@@ -61,8 +61,14 @@ func apply_audio_settings():
 	AudioServer.set_bus_volume_db(1, linear_to_db(audio_settings.music_volume))
 	AudioServer.set_bus_volume_db(2, linear_to_db(audio_settings.sfx_volume))
 func apply_video_settings():
-	#var video_settings = load_video_settings()
-	print("Video settings - not implemented")
+	var video_settings = load_video_settings()
+	if video_settings.get("fullscreen", false):
+		print("Setting fullscreen")
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		print("Restoring previous mode!")
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
 func apply_high_score_settings():
 	#var high_score_settings = load_high_score_settings()
 	print("High Score settings - not implemented")
