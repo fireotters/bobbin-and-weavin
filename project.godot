@@ -27,7 +27,8 @@ config/name="gj2025"
 config/version="1.0"
 run/main_scene="uid://olxmp2tfg8yc"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://bmymjg3w7woom"
+config/windows_native_icon="res://assets/art/ico/windows.ico"
 
 [autoload]
 
