@@ -223,10 +223,12 @@ rope_sprites = [NodePath("Sprite2D/ropes/rope1"), NodePath("Sprite2D/ropes/rope2
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_f0tbg")
 autoplay = "default"
+frame_progress = 0.16672
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
 sprite_frames = SubResource("SpriteFrames_3f3hi")
 autoplay = "default"
+frame_progress = 0.312883
 
 [node name="capturefailgiggle" type="Label" parent="Sprite2D"]
 visible = false

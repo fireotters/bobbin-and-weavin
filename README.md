@@ -2,9 +2,9 @@
 
 Name undecided.
 
-## Placeholder audio
-Music from 'Ultimate Game Music Collection' by John Leonard French: https://johnleonardfrench.gumroad.com/l/Gqks
+## Audio Sources
+Music: Incompetech - Kevin Macleod. Full attributions in User Readme.
 
-SFX from 'Universal Sound FX' by Imphenzia: https://assetstore.unity.com/packages/audio/sound-fx/universal-sound-fx-17256
-
-Replace these sounds in production, ensure proper attribution & correct license usage.
+SFX:
+All but cat sounds: 'Platformer SFX' by Outspacer on itch.io
+Cat sounds: 'Soundly Free Library' (cleared for commercial use) https://getsoundly.com/

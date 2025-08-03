@@ -18,6 +18,17 @@ animations = [{
 "texture": ExtResource("3_c4vp0")
 }],
 "loop": true,
+"name": &"chase",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("2_cteew")
+}, {
+"duration": 5.0,
+"texture": ExtResource("3_c4vp0")
+}],
+"loop": true,
 "name": &"default",
 "speed": 3.0
 }]
@@ -34,7 +45,7 @@ script = ExtResource("1_cteew")
 position = Vector2(20, 6)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_rvq8x")
-frame_progress = 0.0805837
+autoplay = "default"
 
 [node name="Circle" type="Sprite2D" parent="AnimatedSprite2D"]
 modulate = Color(1, 0.22, 0.22, 0.0941176)

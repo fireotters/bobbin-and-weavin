@@ -7,6 +7,7 @@ var can_avoid_enemy := true
 @export var pursue_velocity := 200
 @export var non_target_speed := 75
 var pompom_target: Node2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 static var targetted_pompoms := []
 
@@ -48,6 +49,7 @@ func _physics_process(_delta: float) -> void:
 	if pompom_target != null and !pompom_target.being_pulled:
 		targetted_pompoms.erase(pompom_target)
 		pompom_target = null
+		animated_sprite_2d.animation = "default"
 		$target_lost.play()
 		
 	
@@ -60,8 +62,16 @@ func _physics_process(_delta: float) -> void:
 				pompom_target = pompom
 				targetted_pompoms.append(pompom)
 				$target_adquired.play()
+				animated_sprite_2d.animation = "chase"
 				print("What")
 				break
+		# If PomPom is null, but targeted_pompoms still has an entry, and a new one is not found immediately,
+		# Then that means that a single PomPom has died while cat is targeting it
+		# Perform 'stop targeting' behaviour
+		if len(targetted_pompoms) > 0 and pompom_target == null:
+			targetted_pompoms.clear()
+			animated_sprite_2d.animation = "default"
+			$target_lost.play()
 			
 	if pompom_target != null:
 		velocity = velocity.lerp( global_position.direction_to(pompom_target.global_position) * pursue_velocity, 0.08)

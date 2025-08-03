@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://olxmp2tfg8yc"]
+[gd_scene load_steps=5 format=3 uid="uid://olxmp2tfg8yc"]
 
 [ext_resource type="Script" uid="uid://dp2fkk0d0cvqn" path="res://scenes/ui/menu_main.gd" id="1_5ucki"]
 [ext_resource type="PackedScene" uid="uid://npw4l30hf0k5" path="res://scenes/ui/panel_settings.tscn" id="2_4mdgu"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_ivjyr"]
+[ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="3_5soqu"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3
@@ -14,6 +15,13 @@ grow_vertical = 2
 script = ExtResource("1_5ucki")
 panel_settings = ExtResource("2_4mdgu")
 
+[node name="bg" type="TextureRect" parent="."]
+modulate = Color(0.393086, 0.393086, 0.393085, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_5soqu")
+
 [node name="Title_Logo" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -21,13 +29,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -158.0
-offset_right = 62.0
-offset_bottom = -132.0
+offset_left = -164.0
+offset_top = -111.0
+offset_right = 166.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "JAM TEMPLATE"
+bbcode_enabled = true
+text = "[font_size=30]UNNAMED GAME ABOUT WOOL[/font_size]"
+horizontal_alignment = 1
 
 [node name="VersionText" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -42,17 +52,22 @@ horizontal_alignment = 2
 
 [node name="HighScoreText" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1144.0
-offset_top = 5.0
-offset_right = -906.0
-offset_bottom = 58.0
-grow_horizontal = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = 116.0
+offset_right = 119.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 text = "High Score:"
+horizontal_alignment = 1
 
 [node name="ButtonContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -61,17 +76,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -181.01
-offset_top = -233.22
-offset_right = 181.01
-offset_bottom = -193.22
+offset_left = -297.0
+offset_top = -284.0
+offset_right = 296.0
+offset_bottom = -218.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "Play"
 script = ExtResource("2_ivjyr")
 scene_path = "uid://dytaj53wqmm44"
@@ -79,6 +96,7 @@ scene_path = "uid://dytaj53wqmm44"
 [node name="CreditsButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "How to Play"
 script = ExtResource("2_ivjyr")
 scene_path = "uid://gjfhte4qvwx3"
@@ -86,11 +104,13 @@ scene_path = "uid://gjfhte4qvwx3"
 [node name="SettingsButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "Settings"
 
 [node name="ExitButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "Exit"
 
 [connection signal="pressed" from="ButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

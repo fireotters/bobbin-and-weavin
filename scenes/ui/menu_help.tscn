@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://gjfhte4qvwx3"]
+[gd_scene load_steps=6 format=3 uid="uid://gjfhte4qvwx3"]
 
 [ext_resource type="Script" uid="uid://s6j2y77g74c6" path="res://scenes/ui/menu_help.gd" id="1_t5gox"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_17g36"]
 [ext_resource type="VideoStream" uid="uid://dwpvbmnj265qq" path="res://assets/video/output.ogv" id="2_45270"]
+[ext_resource type="Texture2D" uid="uid://c27qtypgj5h8b" path="res://assets/art/bg/gamescene_bg_table.PNG" id="2_wlrkc"]
 [ext_resource type="Texture2D" uid="uid://bn6gjnmlwk03q" path="res://assets/art/ui/fire_otters_logo.png" id="2_x3nge"]
 
 [node name="MenuHelp" type="Control"]
@@ -14,8 +15,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t5gox")
 
+[node name="bg" type="TextureRect" parent="."]
+modulate = Color(0.393086, 0.393086, 0.393085, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_wlrkc")
+
 [node name="page_1" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,7 +46,7 @@ offset_bottom = -219.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[font_size=30]The Story[/font_size]"
+text = "[font_size=30]How to Play[/font_size]"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -57,9 +66,9 @@ offset_bottom = 191.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[font_size=20]There once were a gang of crafty Pom-Poms. They were very cute, and (they'd like to think) almost as smart. Smart enough to escape from their craft-box prison.
+text = "[font_size=20]There once were a gang of crafty Pom-Poms. They are very cute, and (they'd like to think) almost as smart. Smart enough to escape from their craft-box prison.
 
-You must gather them up as best you can, before too many of them wander into danger! Use your mouse or finger to draw circles around a PomPom. Once immobilised, the PomPom can be dragged back into the box where they came from.[/font_size]"
+You must gather them up as best you can, before too many wander into danger! Use your mouse or finger to draw circles around a Pom-Pom. Once immobilised, the PomPom can be dragged back into the box where they came from.[/font_size]"
 fit_content = true
 scroll_active = false
 
@@ -70,14 +79,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -100.0
-offset_right = -218.0
-offset_bottom = -60.0
+offset_left = -239.0
+offset_top = -68.0
+offset_right = -27.0
+offset_bottom = -28.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
-text = "Credits >"
+theme_override_font_sizes/font_size = 20
+text = "Continue to Credits..."
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="page_1"]
 layout_mode = 1
@@ -98,7 +108,6 @@ loop = true
 
 [node name="page_2" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,9 +123,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -294.0
-offset_top = -226.0
+offset_top = -283.0
 offset_right = 295.0
-offset_bottom = -42.0
+offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -164,7 +173,7 @@ offset_bottom = 82.0
 grow_horizontal = 0
 grow_vertical = 2
 bbcode_enabled = true
-text = "[font_size=20]🪶 Draft[/font_size]"
+text = "[font_size=20]The team this year...[/font_size]"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -178,12 +187,41 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -379.0
-offset_top = -12.0
+offset_top = -87.0
 offset_right = 379.0
-offset_bottom = 192.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
+
+[node name="rioni" type="Control" parent="page_2/devs"]
+custom_minimum_size = Vector2(250, 110)
+layout_mode = 2
+
+[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/rioni"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Rioni
+(Programmer)"
+horizontal_alignment = 1
+
+[node name="site" type="RichTextLabel" parent="page_2/devs/rioni"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[color=cyan][url=https://github.com/Nrosa01]github.com/Nrosa01[/url][/color]"
+horizontal_alignment = 1
 
 [node name="acorn" type="Control" parent="page_2/devs"]
 custom_minimum_size = Vector2(250, 110)
@@ -212,37 +250,6 @@ grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
 text = "[color=cyan][url=\"https://www.example.com/\"]?[/url][/color]"
-horizontal_alignment = 1
-
-[node name="benchi" type="Control" parent="page_2/devs"]
-custom_minimum_size = Vector2(250, 110)
-layout_mode = 2
-
-[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/benchi"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 5.0
-offset_bottom = 55.0
-grow_horizontal = 2
-text = "benchi99
-(Programmer)"
-horizontal_alignment = 1
-
-[node name="site" type="RichTextLabel" parent="page_2/devs/benchi"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -53.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 0
-bbcode_enabled = true
-text = "[color=cyan][url=https://about.ruben
-bermejoromero.com]about.ruben
-bermejoromero.com[/url][/color]"
 horizontal_alignment = 1
 
 [node name="crossfirecam" type="Control" parent="page_2/devs"]
@@ -274,79 +281,71 @@ bbcode_enabled = true
 text = "[color=cyan][url=https://crossfirecam.itch.io]crossfirecam.itch.io[/url][/color]"
 horizontal_alignment = 1
 
-[node name="makako" type="Control" parent="page_2/devs"]
-custom_minimum_size = Vector2(250, 110)
-layout_mode = 2
-
-[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/makako"]
+[node name="specialthx" type="RichTextLabel" parent="page_2"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 5.0
-offset_bottom = 55.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -427.0
+offset_top = 13.0
+offset_right = 428.0
+offset_bottom = 62.0
 grow_horizontal = 2
-text = "Makako
-(Music & Sound)"
-horizontal_alignment = 1
-
-[node name="site" type="RichTextLabel" parent="page_2/devs/makako"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -53.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 bbcode_enabled = true
-text = "[color=cyan][url=\"https://www.example.com/\"]?[/url][/color]"
+text = "Special Thanks to our team-mate 'benchi99', for helping out with the dev process & brainstorming.
+[color=cyan][url=https://about.rubenbermejoromero.com/]about.rubenbermejoromero.com[/url][/color]"
 horizontal_alignment = 1
 
-[node name="rioni" type="Control" parent="page_2/devs"]
-custom_minimum_size = Vector2(250, 110)
-layout_mode = 2
-
-[node name="name_n_role" type="RichTextLabel" parent="page_2/devs/rioni"]
+[node name="attribs" type="RichTextLabel" parent="page_2"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 5.0
-offset_bottom = 55.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -427.0
+offset_top = 73.0
+offset_right = 428.0
+offset_bottom = 270.0
 grow_horizontal = 2
-text = "Rioni
-(Programmer)"
-horizontal_alignment = 1
-
-[node name="site" type="RichTextLabel" parent="page_2/devs/rioni"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -53.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 bbcode_enabled = true
-text = "[color=cyan][url=https://github.com/Nrosa01]github.com/Nrosa01[/url][/color]"
+text = "[font_size=22]Attributions:[/font_size]
+[font_size=14]Developed using Godot Engine.
+
+Music by Kevin MacLeod (incompetech.com) - \"Mischief Maker\" & \"March of the Spoons\"
+Licensed under Creative Commons: By Attribution 4.0 License
+[color=cyan][url=http://creativecommons.org/licenses/by/4.0]http://creativecommons.org/licenses/by/4.0/[/url][/color]
+
+Cat SFX from 'Soundly Free Library' ([color=cyan][url=https://getsoundly.com]getsoundly.com[/url][/color])
+Other SFX from 'Platformer SFX' ([color=cyan][url=https://outspacer.itch.io/platformer-sfx]outspacer.itch.io/platformer-sfx[/url][/color])[/font_size]"
 horizontal_alignment = 1
 
 [node name="ExitButton" type="Button" parent="page_2"]
-layout_mode = 2
-offset_left = 899.0
-offset_top = 545.0
-offset_right = 937.0
-offset_bottom = 585.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = -68.0
+offset_right = -27.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_horizontal = 3
-text = "Exit To Menu"
+theme_override_font_sizes/font_size = 20
+text = "Exit to Menu"
 script = ExtResource("2_17g36")
 scene_path = "uid://olxmp2tfg8yc"
 
 [connection signal="pressed" from="page_1/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="meta_clicked" from="page_2/devs/acorn/site" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_2/devs/benchi/site" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_2/devs/crossfirecam/site" to="." method="_on_site_label_clicked"]
-[connection signal="meta_clicked" from="page_2/devs/makako/site" to="." method="_on_site_label_clicked"]
 [connection signal="meta_clicked" from="page_2/devs/rioni/site" to="." method="_on_site_label_clicked"]
-[connection signal="pressed" from="page_2/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="meta_clicked" from="page_2/devs/acorn/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_2/devs/crossfirecam/site" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_2/specialthx" to="." method="_on_site_label_clicked"]
+[connection signal="meta_clicked" from="page_2/attribs" to="." method="_on_site_label_clicked"]
