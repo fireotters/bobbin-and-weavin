@@ -1,14 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5wrmqx7ct3c3"]
+[gd_scene load_steps=9 format=3 uid="uid://b5wrmqx7ct3c3"]
 
 [ext_resource type="Script" uid="uid://dbagv74345kwv" path="res://scenes/ui/game_ui/hud.gd" id="1_qaxfr"]
 [ext_resource type="Texture2D" uid="uid://cwk81hpxpapln" path="res://assets/art/ui/pause_icon.png" id="2_ggkff"]
 [ext_resource type="Script" uid="uid://bqrug4fyc2vdt" path="res://scenes/ui/components/change_scene_button.gd" id="2_wdn0o"]
+[ext_resource type="Texture2D" uid="uid://dlwk4hxmi7jq3" path="res://assets/art/ui/dialog/all_edited_shrunk.png" id="3_4f4rs"]
+[ext_resource type="Theme" uid="uid://f048kaj3ys0f" path="res://assets/art/ui/button_theme.tres" id="4_btwlr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdn0o"]
 bg_color = Color(0.309804, 0.34902, 0.435294, 0.470588)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_237h2"]
-bg_color = Color(0.309804, 0.490196, 0.6, 1)
+[sub_resource type="Theme" id="Theme_4kgxc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_shbqm"]
+texture = ExtResource("3_4f4rs")
+texture_margin_left = 128.0
+texture_margin_top = 128.0
+texture_margin_right = 128.0
+texture_margin_bottom = 128.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.687214, 0.687215, 0.687214, 1)
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -123,23 +134,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -228.0
-offset_top = -152.0
-offset_right = 228.0
-offset_bottom = 152.0
+offset_left = -197.0
+offset_top = -107.0
+offset_right = 197.0
+offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_237h2")
+theme = SubResource("Theme_4kgxc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_shbqm")
 
 [node name="subpanel_selector" type="VBoxContainer" parent="panel_pause/panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 91.0
-offset_top = 94.0
-offset_right = -91.0
-offset_bottom = -89.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -72.0
+offset_right = 150.0
+offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -147,11 +161,13 @@ theme_override_constants/separation = 10
 [node name="btn_resume" type="Button" parent="panel_pause/panel/subpanel_selector"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("4_btwlr")
 text = "Resume"
 
 [node name="btn_restart" type="Button" parent="panel_pause/panel/subpanel_selector"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("4_btwlr")
 text = "Start Over"
 script = ExtResource("2_wdn0o")
 scene_path = "uid://dytaj53wqmm44"
@@ -159,6 +175,7 @@ scene_path = "uid://dytaj53wqmm44"
 [node name="btn_exit" type="Button" parent="panel_pause/panel/subpanel_selector"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("4_btwlr")
 text = "Exit to Menu"
 script = ExtResource("2_wdn0o")
 scene_path = "uid://olxmp2tfg8yc"
@@ -180,13 +197,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -228.0
-offset_top = -152.0
-offset_right = 228.0
-offset_bottom = 152.0
+offset_left = -197.0
+offset_top = -150.0
+offset_right = 197.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_237h2")
+theme = SubResource("Theme_4kgxc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_shbqm")
 
 [node name="label_gameover" type="RichTextLabel" parent="panel_gameover/panel"]
 layout_mode = 1
@@ -268,13 +286,15 @@ vertical_alignment = 1
 
 [node name="subpanel_selector" type="VBoxContainer" parent="panel_gameover/panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 79.0
-offset_top = 160.0
-offset_right = -79.0
-offset_bottom = -31.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = 3.0
+offset_right = 143.0
+offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
