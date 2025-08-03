@@ -25,6 +25,7 @@ offset_left = 9.0
 offset_top = 8.0
 offset_right = 365.0
 offset_bottom = 83.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_wdn0o")
 
 [node name="btn_pause" type="Button" parent="game_hud/panel"]
