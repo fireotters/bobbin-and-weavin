@@ -23,11 +23,11 @@ resources_spreadsheet_view/freeze_first_column=true
 
 [application]
 
-config/name="gj2025"
+config/name="Bobbin' & Weavin'"
 config/version="1.0"
 run/main_scene="uid://olxmp2tfg8yc"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://bmymjg3w7woom"
+config/icon="res://assets/art/ico/windows.ico"
 config/windows_native_icon="res://assets/art/ico/windows.ico"
 
 [autoload]
