@@ -1,6 +1,6 @@
-# GMTK 2025 Game by Fire Otters
+# Bobbin' & Weavin' by Fire Otters
 
-Name undecided.
+Released for the GMTK Game Jam 2025.
 
 ## Audio Sources
 Music: Incompetech - Kevin Macleod. Full attributions in User Readme.
