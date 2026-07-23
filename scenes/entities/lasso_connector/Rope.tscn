@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmog5acf0kbl3"]
+[gd_scene format=3 uid="uid://dmog5acf0kbl3"]
 
 [ext_resource type="Script" uid="uid://4d2pcxoel8pc" path="res://scenes/entities/lasso_connector/rope.gd" id="1_pbjqq"]
 [ext_resource type="Texture2D" uid="uid://c6rq2ca8q705y" path="res://scenes/entities/lasso_tool/break_particle/break_particle.png" id="1_trmhm"]
@@ -10,7 +10,7 @@
 _data = [Vector2(0.00547945, 1), 0.0, 0.0, 0, 0, Vector2(0.509589, 0.464133), 0.0, 0.0, 0, 0, Vector2(0.983562, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Rope" type="Line2D"]
+[node name="Rope" type="Line2D" unique_id=644775164]
 modulate = Color(0, 0.84, 0.378, 1)
 points = PackedVector2Array(790, 188)
 width = 15.0
@@ -24,10 +24,10 @@ antialiased = true
 script = ExtResource("1_pbjqq")
 particle = ExtResource("2_e1w0f")
 
-[node name="RopeBreakSFX" type="AudioStreamPlayer" parent="."]
+[node name="RopeBreakSFX" type="AudioStreamPlayer" parent="." unique_id=1084647302]
 stream = ExtResource("4_1bcx2")
 bus = &"sfx"
 
-[node name="CapturingSound" type="AudioStreamPlayer" parent="."]
+[node name="CapturingSound" type="AudioStreamPlayer" parent="." unique_id=745024654]
 stream = ExtResource("5_hxls5")
 bus = &"sfx"

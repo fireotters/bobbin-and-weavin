@@ -38,7 +38,6 @@ config/windows_native_icon="res://assets/art/ico/windows.ico"
 
 BeehaveGlobalMetrics="*uid://dcwrnc1shascs"
 BeehaveGlobalDebugger="*uid://b1ah6smymc06j"
-PhantomCameraManager="*uid://duq6jhf6unyis"
 AudioPlayer="*res://scenes/global/audio_player.gd"
 PlayerVariables="*res://scenes/global/player_variables.gd"
 SignalBus="*res://scenes/global/signal_bus.gd"

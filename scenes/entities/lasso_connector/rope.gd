@@ -18,7 +18,7 @@ func last_point_position() -> Vector2: return get_point_position(get_point_count
 func attach_target(target: Node2D):
 	$CapturingSound.play()
 	entity = target
-	points = []
+	clear_points()
 	prev_points = []
 	
 	# Lengh
@@ -58,11 +58,11 @@ func _physics_process(_delta: float) -> void:
 	for i in range(1, rope_points):
 		var velocity = (get_point_position(i) - prev_points[i]) * damping
 		prev_points[i] = get_point_position(i)
-		points[i] += velocity
+		set_point_position(i, get_point_position(i) + velocity)
 	
 	# First point is a fixed anchor. 
 	# Ideally I should make anchors optinal but well, game jam momento xD
-	points[0] = start_pos
+	set_point_position(0, start_pos)
 	
 	# Distance contraint
 	for _iter in range(constraint_iterations):
@@ -74,9 +74,8 @@ func _physics_process(_delta: float) -> void:
 			
 			# Ignoring extremes again.
 			if i > 0:
-				points[i] += correction * 0.5
-			
-			points[i + 1] -= correction * 0.5
+				set_point_position(i, get_point_position(i) + correction * 0.5)
+			set_point_position(i+1, get_point_position(i+1) - correction * 0.5)
 
 func detect_collision_with_path() -> bool:
 	var shape := SegmentShape2D.new()
@@ -103,7 +102,7 @@ func is_attached() -> bool: return entity != null
 func detach_target():
 	$CapturingSound.stop()
 	entity = null
-	points = []
+	clear_points()
 	prev_points = []
 	
 	
