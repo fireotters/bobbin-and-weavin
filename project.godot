@@ -21,20 +21,24 @@ resources_spreadsheet_view/fold_docks=true
 resources_spreadsheet_view/resource_cell_label_mode=1
 resources_spreadsheet_view/freeze_first_column=true
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Bobbin' & Weavin'"
 config/version="1.0"
 run/main_scene="uid://olxmp2tfg8yc"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://assets/art/ico/windows.ico"
 config/windows_native_icon="res://assets/art/ico/windows.ico"
 
 [autoload]
 
-BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
-BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+BeehaveGlobalMetrics="*uid://dcwrnc1shascs"
+BeehaveGlobalDebugger="*uid://b1ah6smymc06j"
+PhantomCameraManager="*uid://duq6jhf6unyis"
 AudioPlayer="*res://scenes/global/audio_player.gd"
 PlayerVariables="*res://scenes/global/player_variables.gd"
 SignalBus="*res://scenes/global/signal_bus.gd"
@@ -46,7 +50,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [input]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://olxmp2tfg8yc"]
+[gd_scene format=3 uid="uid://olxmp2tfg8yc"]
 
 [ext_resource type="Script" uid="uid://dp2fkk0d0cvqn" path="res://scenes/ui/menu_main.gd" id="1_5ucki"]
 [ext_resource type="PackedScene" uid="uid://npw4l30hf0k5" path="res://scenes/ui/panel_settings.tscn" id="2_4mdgu"]
@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://f048kaj3ys0f" path="res://assets/art/ui/button_theme.tres" id="4_4m3xn"]
 [ext_resource type="Texture2D" uid="uid://krg7uotq6yjt" path="res://assets/art/ui/game_logo.PNG" id="4_uioy2"]
 
-[node name="MenuMain" type="Control"]
+[node name="MenuMain" type="Control" unique_id=188113519]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_5ucki")
 panel_settings = ExtResource("2_4mdgu")
 
-[node name="bg" type="TextureRect" parent="."]
+[node name="bg" type="TextureRect" parent="." unique_id=1970456788]
 layout_mode = 0
 offset_left = -25.0
 offset_top = -14.0
@@ -26,7 +26,7 @@ offset_bottom = 1113.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_5soqu")
 
-[node name="logo" type="TextureRect" parent="bg"]
+[node name="logo" type="TextureRect" parent="bg" unique_id=1119557501]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -38,14 +38,14 @@ offset_bottom = 675.0
 grow_horizontal = 2
 texture = ExtResource("4_uioy2")
 
-[node name="panel_version" type="Panel" parent="."]
+[node name="panel_version" type="Panel" parent="." unique_id=1286012798]
 layout_mode = 0
 offset_left = 1035.0
 offset_top = 7.0
 offset_right = 1145.0
 offset_bottom = 38.0
 
-[node name="VersionText" type="RichTextLabel" parent="panel_version"]
+[node name="VersionText" type="RichTextLabel" parent="panel_version" unique_id=1543114960]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -59,7 +59,7 @@ grow_horizontal = 0
 text = "Version "
 horizontal_alignment = 2
 
-[node name="HighScoreText" type="RichTextLabel" parent="."]
+[node name="HighScoreText" type="RichTextLabel" parent="." unique_id=1768584345]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -83,7 +83,7 @@ Test"
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="ButtonContainer" type="VBoxContainer" parent="."]
+[node name="ButtonContainer" type="VBoxContainer" parent="." unique_id=1046685814]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -99,11 +99,11 @@ grow_vertical = 0
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="row_top" type="HBoxContainer" parent="ButtonContainer"]
+[node name="row_top" type="HBoxContainer" parent="ButtonContainer" unique_id=1015710161]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayButton" type="Button" parent="ButtonContainer/row_top"]
+[node name="PlayButton" type="Button" parent="ButtonContainer/row_top" unique_id=1856082578]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_4m3xn")
@@ -112,7 +112,7 @@ text = "Play"
 script = ExtResource("2_ivjyr")
 scene_path = "uid://dytaj53wqmm44"
 
-[node name="CreditsButton" type="Button" parent="ButtonContainer/row_top"]
+[node name="CreditsButton" type="Button" parent="ButtonContainer/row_top" unique_id=895310526]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_4m3xn")
@@ -121,18 +121,18 @@ text = "How to Play"
 script = ExtResource("2_ivjyr")
 scene_path = "uid://gjfhte4qvwx3"
 
-[node name="row_bottom" type="HBoxContainer" parent="ButtonContainer"]
+[node name="row_bottom" type="HBoxContainer" parent="ButtonContainer" unique_id=517488622]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SettingsButton" type="Button" parent="ButtonContainer/row_bottom"]
+[node name="SettingsButton" type="Button" parent="ButtonContainer/row_bottom" unique_id=479766931]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_4m3xn")
 theme_override_font_sizes/font_size = 20
 text = "Settings"
 
-[node name="ExitButton" type="Button" parent="ButtonContainer/row_bottom"]
+[node name="ExitButton" type="Button" parent="ButtonContainer/row_bottom" unique_id=1269368759]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_4m3xn")

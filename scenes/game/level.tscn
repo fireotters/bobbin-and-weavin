@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dytaj53wqmm44"]
+[gd_scene format=3 uid="uid://dytaj53wqmm44"]
 
 [ext_resource type="PackedScene" uid="uid://b5wrmqx7ct3c3" path="res://scenes/ui/game_ui/hud.tscn" id="1_dtmi3"]
 [ext_resource type="PackedScene" uid="uid://cv3re4nykmk1w" path="res://scenes/entities/lasso_tool/lasso_tool.tscn" id="1_khnyk"]
@@ -16,76 +16,76 @@ size = Vector2(193, 795)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eyudv"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" unique_id=1234929000]
 script = ExtResource("1_rhpan")
 npc_pompom = ExtResource("2_dtmi3")
 npc_enemy_scissors = ExtResource("6_65r54")
 npc_enemy_cat = ExtResource("7_p2ltr")
 
-[node name="bg & borders" type="Node2D" parent="."]
+[node name="bg & borders" type="Node2D" parent="." unique_id=2098789146]
 
-[node name="table" type="Sprite2D" parent="bg & borders"]
+[node name="table" type="Sprite2D" parent="bg & borders" unique_id=1935566633]
 z_index = -1000
 position = Vector2(510, 327)
 scale = Vector2(0.612897, 0.613426)
 texture = ExtResource("4_eyudv")
 
-[node name="Box" type="StaticBody2D" parent="bg & borders"]
+[node name="Box" type="StaticBody2D" parent="bg & borders" unique_id=1595107796]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("7_mxnjv")
 
-[node name="Sprite2D" type="Sprite2D" parent="bg & borders/Box"]
+[node name="Sprite2D" type="Sprite2D" parent="bg & borders/Box" unique_id=1394610457]
 position = Vector2(1136.5, 325.5)
 scale = Vector2(0.681818, 0.605099)
 texture = ExtResource("7_aakys")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/Box"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/Box" unique_id=1213313947]
 position = Vector2(1153.5, 337)
 shape = SubResource("RectangleShape2D_65r54")
 
-[node name="world_borders" type="Node2D" parent="bg & borders"]
+[node name="world_borders" type="Node2D" parent="bg & borders" unique_id=1694923929]
 editor_description = "One-way borders. Prevents rope or PomPoms from being placed too far from the game screen, but still slightly offscreen for some tolerance. PomPoms will wander back on-screen if they are stuck outside the camera's vision."
 
-[node name="world_bor_S" type="StaticBody2D" parent="bg & borders/world_borders"]
+[node name="world_bor_S" type="StaticBody2D" parent="bg & borders/world_borders" unique_id=842967266]
 position = Vector2(516, 705)
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_S"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_S" unique_id=36503616]
 shape = SubResource("WorldBoundaryShape2D_eyudv")
 
-[node name="world_bor_N" type="StaticBody2D" parent="bg & borders/world_borders"]
+[node name="world_bor_N" type="StaticBody2D" parent="bg & borders/world_borders" unique_id=441938149]
 position = Vector2(536, -58)
 rotation = -3.14159
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_N"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_N" unique_id=78558932]
 shape = SubResource("WorldBoundaryShape2D_eyudv")
 
-[node name="world_bor_W" type="StaticBody2D" parent="bg & borders/world_borders"]
+[node name="world_bor_W" type="StaticBody2D" parent="bg & borders/world_borders" unique_id=12768111]
 position = Vector2(-62, 326)
 rotation = 1.5708
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_W"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_W" unique_id=1157582101]
 shape = SubResource("WorldBoundaryShape2D_eyudv")
 
-[node name="world_bor_E" type="StaticBody2D" parent="bg & borders/world_borders"]
+[node name="world_bor_E" type="StaticBody2D" parent="bg & borders/world_borders" unique_id=1030652814]
 position = Vector2(1222, 324)
 rotation = -1.5708
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_E"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg & borders/world_borders/world_bor_E" unique_id=1950262581]
 shape = SubResource("WorldBoundaryShape2D_eyudv")
 
-[node name="CaptureHandler" parent="." instance=ExtResource("2_65r54")]
+[node name="CaptureHandler" parent="." unique_id=1773448649 instance=ExtResource("2_65r54")]
 
-[node name="Hud" parent="." instance=ExtResource("1_dtmi3")]
+[node name="Hud" parent="." unique_id=1919917952 instance=ExtResource("1_dtmi3")]
 
-[node name="LassoTool" parent="." instance=ExtResource("1_khnyk")]
+[node name="LassoTool" parent="." unique_id=549218825 instance=ExtResource("1_khnyk")]
 
 [connection signal="capture_success" from="LassoTool" to="CaptureHandler" method="_on_lasso_tool_capture_success"]
