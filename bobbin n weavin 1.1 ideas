@@ -1,0 +1,12 @@
+# major
+- [ ] easy mode: scissors do not cut your rope, pompoms take longer to break free from being tied up
+- [ ] add unused glue object. slows movement of poms being dragged or moving thru it, that's all
+- [ ] try to improve randomisation algo or game balance, to let game go on longer?
+    - Could be that adding the 'glue' object is enough; prevents scissor spam and reduces PomPoms taking unpreventable damage...
+
+# minor
+- [ ] make multi-pickup hitbox bigger
+- [ ] slightly increase rope 'release' cooldown
+- [ ] add tutorial screen on first boot, make it real simple
+- [ ] add confirm dialog for game data deletion
+- [ ] Firefox bugfix: prevent out-of-screen pompom dragging; cheatyboye
